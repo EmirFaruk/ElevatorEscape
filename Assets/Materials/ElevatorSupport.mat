@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1867601210965960700
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StandartDoor
+  m_Name: ElevatorSupport
   m_Shader: {fileID: -6465566751694194690, guid: 25096cc823012c14e846190de786a755, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_d19791cf7a874067bbcf696df741b242:
-        m_Texture: {fileID: 2800000, guid: 9cf882a8a1f69ff43b2216f75cddd54d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 296c95127ab0eee40b334cc33b1bc479, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_d4b820c2ed2448619573db90c65d4b58:
@@ -134,7 +147,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_66b000baf26543adb70b9af1e730a75d: {r: 1, g: 1, b: 1, a: 0}
-    - Color_af7d49c74ee94c3da55c0b443056f361: {r: 0, g: 0, b: 0, a: 1}
+    - Color_af7d49c74ee94c3da55c0b443056f361: {r: 0, g: 0, b: 0, a: 0}
     - Color_fb2ee60f53a34adf809413e8eaa3f331: {r: 1, g: 1, b: 1, a: 1}
     - Vector2_4e31db3b2aa0454793f672ac09c62288: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -142,16 +155,3 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &6973730112280184497
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StandartDoor
+  m_Name: Elevator
   m_Shader: {fileID: -6465566751694194690, guid: 25096cc823012c14e846190de786a755, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_d19791cf7a874067bbcf696df741b242:
-        m_Texture: {fileID: 2800000, guid: 9cf882a8a1f69ff43b2216f75cddd54d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ed68763c04a44fa49a0aa2316c3d46ee, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_d4b820c2ed2448619573db90c65d4b58:
