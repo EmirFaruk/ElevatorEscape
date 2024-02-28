@@ -5,7 +5,6 @@ public class ElevatorButton : Interactable
 {
     [SerializeField] private Elevator elevator;
     [SerializeField] private byte index;
-    [SerializeField] private LayerMask layer = 7;
 
     [Header("Color")]
     [SerializeField] private Color defaultColor;

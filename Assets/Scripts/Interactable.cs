@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
     private void Awake()
     {
-        this.gameObject.layer = 8; // interaction layer;
+        this.gameObject.layer = 7; // interaction layer;
     }
 
 
