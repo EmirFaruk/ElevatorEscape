@@ -1226,6 +1226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f12894ae05caee408c8b53a82696de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stops: []
+  stopsParent: {fileID: 0}
+  door: {fileID: 0}
+  speed: 1
+  buttonClickSoundActive: {fileID: 0}
+  buttonClickSoundPassive: {fileID: 0}
 --- !u!1 &2970740288675466106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,7 +2350,7 @@ GameObject:
   - component: {fileID: 7971437066288125086}
   - component: {fileID: 2959335945179251591}
   - component: {fileID: 604936611358197650}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3521,7 +3527,7 @@ GameObject:
   - component: {fileID: 3715473605439524207}
   - component: {fileID: 1200097422735289221}
   - component: {fileID: 5926825409218073628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4485,7 +4491,7 @@ GameObject:
   - component: {fileID: 2881832854821828682}
   - component: {fileID: 2380134832285689691}
   - component: {fileID: 3340184881751843802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

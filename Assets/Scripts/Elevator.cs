@@ -1,9 +1,12 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
     #region FIELDS
+    public static Action<int> OnReachedStop;
+    public static Action<int> OnReached;
 
     [SerializeField] private Transform[] stops;
     [SerializeField] private Transform stopsParent;
@@ -64,10 +67,13 @@ public class Elevator : MonoBehaviour
             return;
         }
 
+        OnReached?.Invoke(stopIndex);
+
         //Buton sesi oynat
         PlayButtonClickSound(true);
 
         //Kapiyi kapat
+        await Task.Delay(700, destroyCancellationToken);
         MoveDoor(true);
 
         //Kapanin kapanmasini bekle
@@ -91,6 +97,8 @@ public class Elevator : MonoBehaviour
                 await Task.Delay(1000, destroyCancellationToken);
                 doorIsOpen = true;
 
+                OnReachedStop?.Invoke(stopIndex);
+
                 //Player'i serbest birak (player kodunun icinde olacak burasi)
                 GameObject.FindWithTag("Player").transform.parent = null;
                 GameObject.FindWithTag("Player").GetComponent<CharacterController>().enabled = true;
@@ -110,10 +118,11 @@ public class Elevator : MonoBehaviour
         Vector3 targetPosition = door.position;
         targetPosition.x += isOpen ? 1.25f : -1.25f;
         Vector3 direction = isOpen ? Vector3.right : Vector3.left;
+        float doorSpeed = speed / 3;
 
         while (Mathf.Abs(door.transform.position.x - targetPosition.x) > .1f)
         {
-            door.transform.position += speed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
+            door.transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
 
             await Task.Delay(10, destroyCancellationToken);
         }
