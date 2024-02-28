@@ -23,9 +23,6 @@ public class Elevator : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
         if (stopsParent != null)
             for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);
 
@@ -56,6 +53,7 @@ public class Elevator : MonoBehaviour
             return;
         }
 
+        //Hedef pozisyonu belirle
         Vector3 targetPosition = transform.position;
         targetPosition.y = stops[stopIndex].position.y;
 
@@ -66,17 +64,21 @@ public class Elevator : MonoBehaviour
             return;
         }
 
+        //Buton sesi oynat
         PlayButtonClickSound(true);
 
+        //Kapiyi kapat
         MoveDoor(true);
 
+        //Kapanin kapanmasini bekle
         await Task.Delay(1000, destroyCancellationToken);
-
         doorIsOpen = false;
 
+        //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
         GameObject.FindWithTag("Player").transform.parent = transform;
         GameObject.FindWithTag("Player").GetComponent<CharacterController>().enabled = false;
 
+        //Asansoru hareket ettir
         while (!hasReachedStop)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
@@ -84,9 +86,12 @@ public class Elevator : MonoBehaviour
 
             if (hasReachedStop)
             {
+                //Kapiyi ac
                 MoveDoor(false);
+                await Task.Delay(1000, destroyCancellationToken);
                 doorIsOpen = true;
 
+                //Player'i serbest birak (player kodunun icinde olacak burasi)
                 GameObject.FindWithTag("Player").transform.parent = null;
                 GameObject.FindWithTag("Player").GetComponent<CharacterController>().enabled = true;
             }
@@ -112,6 +117,5 @@ public class Elevator : MonoBehaviour
 
             await Task.Delay(10, destroyCancellationToken);
         }
-        //if (Mathf.Abs(door.transform.position.x - targetPosition.x) < .2f) doorIsOpen = !isOpen;
     }
 }
