@@ -24894,7 +24894,7 @@ Transform:
   m_GameObject: {fileID: 699264868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.95, y: 0, z: -24.300001}
+  m_LocalPosition: {x: 14.35, y: -32.9, z: 3.0500002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35216,6 +35216,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1175205228}
+    - target: {fileID: 513007149190126760, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 513007149190126760, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 513007149190126760, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2057658799942344564, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -35288,6 +35300,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1469366600}
+    - target: {fileID: 6861220948961517299, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861220948961517299, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861220948961517299, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6976005096888097680, guid: 06ea1c74b1a01564fa8aab648f4495d7, type: 3}
       propertyPath: m_Mesh
       value: 
