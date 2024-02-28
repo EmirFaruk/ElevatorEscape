@@ -31,8 +31,8 @@ public class CrowdMember : MonoBehaviour
     {
         foreach (CrowdMember member in crowd.GetMembers())
         {        
-            if (member != null)
-                member.SetTargetLocation(obj.transform);
+         //   if (member != null)
+         //       member.SetTargetLocation(obj.transform);
         }
     }
 

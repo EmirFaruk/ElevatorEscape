@@ -9,29 +9,32 @@ public class Zombie : MonoBehaviour
     private BehaviourRunner behaviourRunner;
     private Blackboard blackboard;
 
-    private AIPerceptionBlackboard perceptionBlackboard;
+    [SerializeField]
+    private AudioClip breathingSound;
+
+    [SerializeField]
+    private AudioClip attackSound;
 
 
-    private Transform player;
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
         behaviourRunner = GetComponent<BehaviourRunner>();
-        blackboard = behaviourRunner.GetBlackboard();    
+        blackboard = behaviourRunner.GetBlackboard();  
+        audioSource = GetComponent<AudioSource>();  
     }  
-
-    private void PerceptionBlackboard_OnSourceDetect(AIPerceptionSource obj)
+    
+    public void PlayBreathingSFX()
     {
-        // eger crowd member isen 
-        // diger crowd uyelerine player transform bilgisi gönder.
-
-        if (blackboard.TryFindKey("Player", out TransformKey key))
-        {
-            key.SetValue(obj.transform);
-        }
+        audioSource.PlayOneShot(breathingSound);
     }
-     
 
-    public Blackboard GetBlackboard() { return blackboard; }
+    public void PlayAttackSFX()
+    {
+        audioSource.PlayOneShot(attackSound);
+    }
+  
 
 }
