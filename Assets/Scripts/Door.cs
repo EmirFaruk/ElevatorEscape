@@ -1,25 +1,26 @@
+using StarterAssets;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class Door : Interactable
 {
-    private bool hasKey;
+    [SerializeField] private byte id;
+    private bool hasKey => player.CurrentKey && player.CurrentKey.ID == id;
     private bool isOpen;
     private Transform handle;
     private float angle = 0;
+    private FirstPersonController player;
 
     #region Overriden Methods
-
     public override void OnFocus()
     {
-        print("foc");
+        
     }
 
     public override void OnInteract()
     {
-        if (hasKey) Open();
-        if (!isOpen) Open();
-        else Close();
+        if (isOpen) Close();
+        else if (hasKey) Open();
     }
 
     public override void OnLoseFocus()
@@ -33,6 +34,7 @@ public class Door : Interactable
     {
         handle = transform;//.GetChild(0);
         handle.localEulerAngles = Vector3.zero;
+        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
     }
 
     async void Open()
@@ -53,8 +55,7 @@ public class Door : Interactable
     }
 
     async void Close()
-    {
-        print("close");
+    {        
         while (angle != 0)
         {
             angle = Mathf.Lerp(angle, 0, 0.05f);

@@ -11,7 +11,21 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
-		[Header("Player")]
+        #region Key
+        [SerializeField] Transform keyHandler;
+		private Key currentKey;
+		public Key CurrentKey => currentKey;
+		public void HoldKey(Key key)
+		{
+			currentKey = key;
+			key.transform.SetParent(keyHandler);
+			key.transform.position = keyHandler.transform.position;
+			key.transform.localEulerAngles = Vector3.zero;
+		}
+		#endregion
+
+		/// //////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
