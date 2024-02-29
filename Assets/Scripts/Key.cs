@@ -17,7 +17,8 @@ public class Key : Interactable
 
     public override void OnInteract()
     {
-        player.HoldKey(this);
+        if (!player.CurrentKey) player.HoldKey(this);
+        else player.DropKey();
     }
 
     public override void OnLoseFocus()

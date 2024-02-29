@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RenownedGames.AITree;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -18,10 +19,17 @@ namespace StarterAssets
 		public void HoldKey(Key key)
 		{
 			currentKey = key;
+			key.GetComponent<Rigidbody>().isKinematic = true;
 			key.transform.SetParent(keyHandler);
 			key.transform.position = keyHandler.transform.position;
 			key.transform.localEulerAngles = Vector3.zero;
 		}
+        public void DropKey()
+		{                     
+            currentKey.transform.SetParent(null);
+            currentKey.GetComponent<Rigidbody>().isKinematic = false;
+            currentKey = null;
+        }
 		#endregion
 
 		/// //////////////////////////////////////////////////////////////////////////////////////////////////
