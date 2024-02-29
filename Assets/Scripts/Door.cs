@@ -25,16 +25,18 @@ public class Door : Interactable
 
     public override void OnLoseFocus()
     {
-
+        
     }
 
     #endregion
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         handle = transform;//.GetChild(0);
         handle.localEulerAngles = Vector3.zero;
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
+
+        base.OnEnable();
     }
 
     async void Open()
