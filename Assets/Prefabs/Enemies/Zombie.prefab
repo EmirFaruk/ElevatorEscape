@@ -1304,7 +1304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2887964385481163236
 Transform:
   m_ObjectHideFlags: 0
@@ -2397,6 +2397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breathingSound: {fileID: 8300000, guid: 558b552312bed6246b0ef23512e92d57, type: 3}
   attackSound: {fileID: 8300000, guid: 410b06d9b5f745e448e358798b9de334, type: 3}
+  wayName: Floor4Way
 --- !u!82 &994714114608944100
 AudioSource:
   m_ObjectHideFlags: 0

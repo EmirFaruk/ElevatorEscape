@@ -10,10 +10,10 @@ public class Zombie : MonoBehaviour
     private Blackboard blackboard;
 
     [SerializeField]
-    private AudioClip breathingSound;
+    private List<AudioClip> breathingSounds;
 
     [SerializeField]
-    private AudioClip attackSound;
+    private List<AudioClip> attackSounds;
 
     [SerializeField]
     private string wayName;
@@ -22,9 +22,6 @@ public class Zombie : MonoBehaviour
 
     private void Awake()
     {
-
-
-
         behaviourRunner = GetComponent<BehaviourRunner>();
         blackboard = behaviourRunner.GetBlackboard();
         audioSource = GetComponent<AudioSource>();
@@ -35,14 +32,14 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    //   public void PlayBreathingSFX()
-    //   {
-    //       audioSource.PlayOneShot(breathingSound);
-    //   }
-    //
+    public void PlayBreathingSFX()
+    {
+      //  audioSource.PlayOneShot(breathingSounds[0]);    
+    }
+
     public void PlayAttackSFX()
     {
-        audioSource.PlayOneShot(attackSound);
+        audioSource.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Count)]);
     }
 
 
