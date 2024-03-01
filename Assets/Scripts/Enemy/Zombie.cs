@@ -15,26 +15,35 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private AudioClip attackSound;
 
-
+    [SerializeField]
+    private string wayName;
 
     private AudioSource audioSource;
 
     private void Awake()
     {
+
+
+
         behaviourRunner = GetComponent<BehaviourRunner>();
-        blackboard = behaviourRunner.GetBlackboard();  
-        audioSource = GetComponent<AudioSource>();  
-    }  
-    
-    public void PlayBreathingSFX()
-    {
-        audioSource.PlayOneShot(breathingSound);
+        blackboard = behaviourRunner.GetBlackboard();
+        audioSource = GetComponent<AudioSource>();
+
+        if (blackboard.TryFindKey("WayName", out StringKey stringKey))
+        {
+            stringKey.SetValue(wayName);
+        }
     }
 
+    //   public void PlayBreathingSFX()
+    //   {
+    //       audioSource.PlayOneShot(breathingSound);
+    //   }
+    //
     public void PlayAttackSFX()
     {
         audioSource.PlayOneShot(attackSound);
     }
-  
+
 
 }

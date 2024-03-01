@@ -83,7 +83,7 @@ MonoBehaviour:
   services: []
   ignoreAbortSelf: 0
   key: {fileID: -1718226569892847012, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
-  wayName: Way
+  wayName: {fileID: 8603720072565783802, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
   selectionType: 0
   startNearestPoint: 0
   lastIndex: {fileID: 0}
@@ -472,7 +472,7 @@ MonoBehaviour:
   description: 
   sync: 0
   isLocal: 1
-  value: 4
+  value: 5
 --- !u!114 &7711390507115412430
 MonoBehaviour:
   m_ObjectHideFlags: 0
