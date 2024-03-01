@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: MoveToTask
   m_EditorClassIdentifier: 
   nodeName: Move To
-  nodePosition: {x: 1392, y: 406}
+  nodePosition: {x: 1559, y: 406}
   breakpoint: 0
   decorators: []
   services: []
-  ignoreAbortSelf: 0
+  ignoreAbortSelf: 1
   key: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
-  acceptableRadius: 1.5
+  acceptableRadius: 4
   includeAgentRadius: 1
-  includeGoalRadius: 1
+  includeGoalRadius: 0
   allowPartialPath: 0
   trackMovingGoal: 1
   goLastPointOnLost: 1
@@ -38,12 +38,12 @@ MonoBehaviour:
   m_Name: SetBoolTask
   m_EditorClassIdentifier: 
   nodeName: Set Bool
-  nodePosition: {x: 1200, y: 406}
+  nodePosition: {x: 1381, y: 406}
   breakpoint: 0
   decorators: []
   services: []
   ignoreAbortSelf: 0
-  parameterName: IsMoving
+  parameterName: chase
   value: {fileID: -6229464685401277409}
 --- !u!114 &-7813115329366144912
 MonoBehaviour:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: SetTriggerTask
   m_EditorClassIdentifier: 
   nodeName: Set Trigger
-  nodePosition: {x: 1554, y: 406}
+  nodePosition: {x: 1856, y: 406}
   breakpoint: 0
   decorators: []
   services: []
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: WayPointTask
   m_EditorClassIdentifier: 
   nodeName: Way Point
-  nodePosition: {x: 174, y: 406}
+  nodePosition: {x: 355, y: 406}
   breakpoint: 0
   decorators: []
   services: []
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: SetBoolTask
   m_EditorClassIdentifier: 
   nodeName: Set Bool
-  nodePosition: {x: 701, y: 406}
+  nodePosition: {x: 882, y: 406}
   breakpoint: 0
   decorators: []
   services: []
@@ -123,7 +123,7 @@ MonoBehaviour:
   description: 
   sync: 0
   isLocal: 1
-  value: 3
+  value: 1
 --- !u!114 &-6229464685401277409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Name: SetSpeedTask
   m_EditorClassIdentifier: 
   nodeName: Set Speed
-  nodePosition: {x: 1026, y: 406}
+  nodePosition: {x: 1207, y: 406}
   breakpoint: 0
   decorators: []
   services: []
   ignoreAbortSelf: 0
-  speed: 7
+  speed: 6
 --- !u!114 &-5084652022681802940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,12 +173,12 @@ MonoBehaviour:
   m_Name: SetSpeedTask
   m_EditorClassIdentifier: 
   nodeName: Set Speed
-  nodePosition: {x: 0, y: 406}
+  nodePosition: {x: 181, y: 406}
   breakpoint: 0
   decorators: []
   services: []
   ignoreAbortSelf: 0
-  speed: 3
+  speed: 1
 --- !u!114 &-3768717417496500059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: SelectorNode
   m_EditorClassIdentifier: 
   nodeName: Selector
-  nodePosition: {x: 853, y: 107}
+  nodePosition: {x: 1004, y: 107}
   breakpoint: 0
   decorators: []
   services: []
@@ -216,6 +216,25 @@ MonoBehaviour:
   sync: 0
   isLocal: 1
   value: 1
+--- !u!114 &-2547962065080823705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5260f7ef03252854bace0dc05d0fa5dd, type: 3}
+  m_Name: Slerp
+  m_EditorClassIdentifier: 
+  nodeName: Slerp
+  nodePosition: {x: 1721, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  target: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
 --- !u!114 &-2486812933155395400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,12 +248,13 @@ MonoBehaviour:
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
   nodeName: PatrolAroundWaypoints
-  nodePosition: {x: 372.5, y: 225}
+  nodePosition: {x: 463, y: 225}
   breakpoint: 0
   decorators:
   - {fileID: 1350679319357821516}
   services: []
   children:
+  - {fileID: 7071756552473638902}
   - {fileID: -5084652022681802940}
   - {fileID: -7803976562792006954}
   - {fileID: 5197855928070026889}
@@ -257,7 +277,7 @@ MonoBehaviour:
   nodePosition: {x: 0, y: 0}
   breakpoint: 0
   child: {fileID: 0}
-  notifyObserver: 1
+  notifyObserver: 0
   observerAbort: 3
   key: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
   keyQuery:
@@ -282,7 +302,7 @@ MonoBehaviour:
   m_Name: WaitTask
   m_EditorClassIdentifier: 
   nodeName: Wait
-  nodePosition: {x: 1735, y: 406}
+  nodePosition: {x: 2037, y: 406}
   breakpoint: 0
   decorators: []
   services: []
@@ -340,9 +360,11 @@ MonoBehaviour:
   - {fileID: -1291391208760568809}
   - {fileID: -5084652022681802940}
   - {fileID: 1350679319357821516}
+  - {fileID: -2547962065080823705}
+  - {fileID: 7071756552473638902}
   groups: []
   notes: []
-  selectedNode: {fileID: 0}
+  selectedNode: {fileID: -5569211111340891016}
 --- !u!114 &166983096500123733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +378,7 @@ MonoBehaviour:
   m_Name: MoveToTask
   m_EditorClassIdentifier: 
   nodeName: Move To
-  nodePosition: {x: 539, y: 406}
+  nodePosition: {x: 720, y: 406}
   breakpoint: 0
   decorators: []
   services: []
@@ -368,6 +390,23 @@ MonoBehaviour:
   allowPartialPath: 1
   trackMovingGoal: 1
   goLastPointOnLost: 1
+--- !u!114 &1337549905298404031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b97a1cab3e25e246a1321c1c6515ce3, type: 3}
+  m_Name: value
+  m_EditorClassIdentifier: 
+  category: 
+  description: 
+  sync: 0
+  isLocal: 1
+  value: 0
 --- !u!114 &1350679319357821516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +448,7 @@ MonoBehaviour:
   m_Name: RootNode
   m_EditorClassIdentifier: 
   nodeName: 
-  nodePosition: {x: 867.5, y: 0}
+  nodePosition: {x: 1018.5, y: 0}
   breakpoint: 0
   child: {fileID: -3768717417496500059}
 --- !u!114 &5197855928070026889
@@ -425,7 +464,7 @@ MonoBehaviour:
   m_Name: SetBoolTask
   m_EditorClassIdentifier: 
   nodeName: Set Bool
-  nodePosition: {x: 347, y: 406}
+  nodePosition: {x: 528, y: 406}
   breakpoint: 0
   decorators: []
   services: []
@@ -445,7 +484,7 @@ MonoBehaviour:
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
   nodeName: Chase
-  nodePosition: {x: 1314.5, y: 225}
+  nodePosition: {x: 1556, y: 225}
   breakpoint: 0
   decorators:
   - {fileID: -1573512838390970441}
@@ -454,6 +493,7 @@ MonoBehaviour:
   - {fileID: -5569211111340891016}
   - {fileID: -7899823049623159204}
   - {fileID: -8023880807193053004}
+  - {fileID: -2547962065080823705}
   - {fileID: -7813115329366144912}
   - {fileID: -1291391208760568809}
 --- !u!114 &6448584020064091781
@@ -473,6 +513,26 @@ MonoBehaviour:
   sync: 0
   isLocal: 1
   value: 5
+--- !u!114 &7071756552473638902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
+  m_Name: SetBoolTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Bool
+  nodePosition: {x: 0, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: chase
+  value: {fileID: 1337549905298404031}
 --- !u!114 &7711390507115412430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +546,7 @@ MonoBehaviour:
   m_Name: WaitTask
   m_EditorClassIdentifier: 
   nodeName: Wait
-  nodePosition: {x: 896, y: 406}
+  nodePosition: {x: 1077, y: 406}
   breakpoint: 0
   decorators: []
   services: []
