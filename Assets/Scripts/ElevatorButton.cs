@@ -3,18 +3,19 @@ using UnityEngine.UI;
 
 public class ElevatorButton : Interactable
 {
-    [SerializeField] private Elevator elevator;
-    [SerializeField] private byte index;
+    #region FIELDS
 
-    [Header("Color")]
-    [SerializeField] private Color defaultColor;
-    [SerializeField] private Color hoverColor;
-    [SerializeField] private Color pressedColor;
+    [SerializeField] private byte index;
+    private Elevator elevator;
+
     private bool isPressed = false;
 
+    #endregion
+
+    #region INTERACTABLE OVERRIDE METHODS
     public override void OnFocus()
     {
-        if (!isPressed) GetComponent<Image>().color = hoverColor;
+        if (!isPressed) GetComponent<Image>().color = elevator.HoverColor;
     }
 
     public override void OnInteract()
@@ -24,14 +25,19 @@ public class ElevatorButton : Interactable
 
     public override void OnLoseFocus()
     {
-        if (!isPressed) GetComponent<Image>().color = defaultColor;
+        if (!isPressed) GetComponent<Image>().color = elevator.DefaultColor;
     }
+    #endregion
 
     private void OnEnable()
     {
+        elevator = GetComponentInParent<Elevator>();
         Elevator.OnReachedStop += SetIsNotPressed;
         Elevator.OnReached += SetAsPressed;
+
         gameObject.layer = 7;
+
+        GetComponent<Image>().color = elevator.DefaultColor;
     }
 
     private void OnDisable()
@@ -39,6 +45,8 @@ public class ElevatorButton : Interactable
         Elevator.OnReached -= SetAsPressed;
         Elevator.OnReachedStop -= SetIsNotPressed;
     }
+
+    #region METHODS
 
     void SetIsNotPressed(int index)
     {
@@ -54,7 +62,9 @@ public class ElevatorButton : Interactable
         if (this.index == index)
         {
             isPressed = true;
-            GetComponent<Image>().color = pressedColor;
+            GetComponent<Image>().color = elevator.PressedColor;
         }
     }
+
+    #endregion
 }

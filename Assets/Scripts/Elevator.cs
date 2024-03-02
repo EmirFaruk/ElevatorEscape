@@ -22,6 +22,18 @@ public class Elevator : MonoBehaviour
     private bool hasReachedStop = true;
     private bool doorIsOpen = false;
 
+
+    [Header("Color")]
+    [SerializeField] private Color defaultColor;
+    [SerializeField] private Color hoverColor;
+    [SerializeField] private Color pressedColor;
+
+    #endregion
+
+    #region PROPERTIES
+    public Color DefaultColor => defaultColor;
+    public Color HoverColor => hoverColor;
+    public Color PressedColor => pressedColor;
     #endregion
 
     void Start()

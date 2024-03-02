@@ -1,4 +1,5 @@
 using StarterAssets;
+using System.Linq;
 using UnityEngine;
 
 public class Key : Interactable
@@ -27,6 +28,8 @@ public class Key : Interactable
     public override void OnEnable()
     {
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
-        base.OnEnable();
+
+        interactableRenderer = GetComponentInChildren<Renderer>();
+        materialHandler = interactableRenderer.materials.ToList();
     }
 }
