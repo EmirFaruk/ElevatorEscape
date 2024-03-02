@@ -50,6 +50,8 @@ GameObject:
   - component: {fileID: 8899266642600219824}
   - component: {fileID: 701183208313805736}
   - component: {fileID: 5270048152282934175}
+  - component: {fileID: 5631457844123982739}
+  - component: {fileID: 3053821999530603656}
   m_Layer: 0
   m_Name: Button6
   m_TagString: Untagged
@@ -158,7 +160,57 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 701183208313805736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8295698092706294016}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &5631457844123982739
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145831885949012349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3053821999530603656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145831885949012349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevator: {fileID: 8295698092706294016}
+  index: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverColor: {r: 0.9550788, g: 1, b: 0.15686274, a: 0}
+  pressedColor: {r: 0.3984537, g: 1, b: 0, a: 0}
 --- !u!1 &347956982208287381
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +223,8 @@ GameObject:
   - component: {fileID: 4216116136262072950}
   - component: {fileID: 308919535459587081}
   - component: {fileID: 7505261186543828721}
+  - component: {fileID: 5697736469968233855}
+  - component: {fileID: 7007052176467396686}
   m_Layer: 0
   m_Name: Button5
   m_TagString: Untagged
@@ -279,7 +333,57 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 308919535459587081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8295698092706294016}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &5697736469968233855
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347956982208287381}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7007052176467396686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347956982208287381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevator: {fileID: 8295698092706294016}
+  index: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverColor: {r: 0.9550788, g: 1, b: 0.15686274, a: 0}
+  pressedColor: {r: 0.3984537, g: 1, b: 0, a: 0}
 --- !u!1 &585649900837982644
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +632,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2040
+  m_VersionIndex: 2046
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -879,7 +983,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2968
+  m_VersionIndex: 2974
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1226,12 +1330,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f12894ae05caee408c8b53a82696de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stops: []
+  stops:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   stopsParent: {fileID: 0}
-  door: {fileID: 0}
+  door: {fileID: 8670683911336270092}
   speed: 1
-  buttonClickSoundActive: {fileID: 0}
-  buttonClickSoundPassive: {fileID: 0}
+  buttonClickSoundActive: {fileID: 8300000, guid: 0dfe9f9829141478689194368436b534, type: 3}
+  buttonClickSoundPassive: {fileID: 8300000, guid: 292aad821b16948af9cba9deaca16525, type: 3}
 --- !u!1 &2970740288675466106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1726,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1830
+  m_VersionIndex: 1836
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1966,7 +2078,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1830
+  m_VersionIndex: 1836
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2350,6 +2462,8 @@ GameObject:
   - component: {fileID: 7971437066288125086}
   - component: {fileID: 2959335945179251591}
   - component: {fileID: 604936611358197650}
+  - component: {fileID: 7136108935107759130}
+  - component: {fileID: 4465160986108465548}
   m_Layer: 7
   m_Name: Button1
   m_TagString: Untagged
@@ -2458,7 +2572,57 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2959335945179251591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8295698092706294016}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &7136108935107759130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785882871869089185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4465160986108465548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785882871869089185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevator: {fileID: 8295698092706294016}
+  index: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverColor: {r: 0.9550788, g: 1, b: 0.15686274, a: 0}
+  pressedColor: {r: 0.3984537, g: 1, b: 0, a: 0}
 --- !u!1 &4807326071245016317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,7 +2871,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2040
+  m_VersionIndex: 2046
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3059,7 +3223,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1858
+  m_VersionIndex: 1864
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3411,7 +3575,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1830
+  m_VersionIndex: 1836
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3527,6 +3691,8 @@ GameObject:
   - component: {fileID: 3715473605439524207}
   - component: {fileID: 1200097422735289221}
   - component: {fileID: 5926825409218073628}
+  - component: {fileID: 4747439534804704004}
+  - component: {fileID: 8601096306150631640}
   m_Layer: 7
   m_Name: Button3
   m_TagString: Untagged
@@ -3635,7 +3801,57 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1200097422735289221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8295698092706294016}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &4747439534804704004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984203913832573745}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8601096306150631640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984203913832573745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevator: {fileID: 8295698092706294016}
+  index: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverColor: {r: 0.9550788, g: 1, b: 0.15686274, a: 0}
+  pressedColor: {r: 0.3984537, g: 1, b: 0, a: 0}
 --- !u!1 &7845436510340547968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,6 +3864,8 @@ GameObject:
   - component: {fileID: 2019028341158643473}
   - component: {fileID: 8107927677448402646}
   - component: {fileID: 7085061884693232874}
+  - component: {fileID: 6181572635928119014}
+  - component: {fileID: 8998481293189890863}
   m_Layer: 0
   m_Name: Button4
   m_TagString: Untagged
@@ -3756,7 +3974,57 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8107927677448402646}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8295698092706294016}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &6181572635928119014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845436510340547968}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8998481293189890863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845436510340547968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevator: {fileID: 8295698092706294016}
+  index: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverColor: {r: 0.9550788, g: 1, b: 0.15686274, a: 0}
+  pressedColor: {r: 0.3984537, g: 1, b: 0, a: 0}
 --- !u!1 &7992668953499897449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,7 +4407,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1848
+  m_VersionIndex: 1854
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4491,6 +4759,8 @@ GameObject:
   - component: {fileID: 2881832854821828682}
   - component: {fileID: 2380134832285689691}
   - component: {fileID: 3340184881751843802}
+  - component: {fileID: 514605241856015049}
+  - component: {fileID: 7144340998391916217}
   m_Layer: 7
   m_Name: Button2
   m_TagString: Untagged
@@ -4599,4 +4869,54 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2380134832285689691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8295698092706294016}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &514605241856015049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583959150380834620}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7144340998391916217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583959150380834620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevator: {fileID: 8295698092706294016}
+  index: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverColor: {r: 0.9550788, g: 1, b: 0.15686274, a: 0}
+  pressedColor: {r: 0.3984537, g: 1, b: 0, a: 0}

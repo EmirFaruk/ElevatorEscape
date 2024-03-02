@@ -2344,7 +2344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdca51bd3df52649b0b14f24034c425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSounds: []
+  attackSounds:
+  - {fileID: 8300000, guid: 8fd82d071375257408f947f850bc084b, type: 3}
+  - {fileID: 8300000, guid: 8696df0a3c475704bb0f558208f16670, type: 3}
+  - {fileID: 8300000, guid: 433082219ff3c7044a5aa9cf1c7806cb, type: 3}
+  - {fileID: 8300000, guid: 1dc8021d217401a49b23674fbd0c608f, type: 3}
   wayName: CrowdWay
 --- !u!114 &1518608266331368691
 MonoBehaviour:
