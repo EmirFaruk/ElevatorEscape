@@ -20,6 +20,8 @@ public class Runner : MonoBehaviour
 
     private void Awake()
     {
+
+        perceptionBlackboard = GetComponent<AIPerceptionBlackboard>();
         perceptionBlackboard.OnSourceDetect += PerceptionBlackboard_OnSourceDetect;
 
         behaviourRunner = GetComponent<BehaviourRunner>();
