@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3872447113248654275}
   - component: {fileID: 4361494745350224700}
   - component: {fileID: 189633790574157601}
-  - component: {fileID: 123055328958511610}
+  - component: {fileID: 3012671048982784906}
+  - component: {fileID: 8922602224384307142}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -333,8 +334,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9022599847386980721}
   m_Mesh: {fileID: 0}
---- !u!64 &123055328958511610
-MeshCollider:
+--- !u!65 &3012671048982784906
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -351,10 +352,22 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1.9000001, z: 1.1965678}
+  m_Center: {x: 0, y: 0, z: 0.5482844}
+--- !u!114 &8922602224384307142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022599847386980721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58b1dd8c8713c546b7631f6da3f5228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!1 &9030772235678354268
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +750,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2306560, guid: 1bf3dbbe9f709c54cac0e2d71b64c139, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 166355cbf72591c458e17ccb654d9387, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
