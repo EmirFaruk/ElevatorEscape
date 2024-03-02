@@ -520,6 +520,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6234521525300521516}
   - {fileID: 2482668717746039995}
   - {fileID: 6390952960497319520}
   m_Father: {fileID: 8126997489036632441}
@@ -538,7 +539,7 @@ GameObject:
   - component: {fileID: 5024936903825330259}
   - component: {fileID: 7745128411826920750}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: F1Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,11 +554,11 @@ Transform:
   m_GameObject: {fileID: 2778931713975142955}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.5}
+  m_LocalPosition: {x: 5, y: -1.5, z: 2.5}
   m_LocalScale: {x: 25, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8084130556270397424}
+  m_Father: {fileID: 6511922745662643599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4566355226056010032
 MeshFilter:
@@ -3549,7 +3550,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6234521525300521516}
   - {fileID: 6278857361137029031}
   - {fileID: 8304936061190019772}
   - {fileID: 4659629791863833625}
