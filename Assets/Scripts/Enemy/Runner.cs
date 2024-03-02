@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RenownedGames.AITree;
 using RenownedGames.AITree.PerceptionSystem;
+using UnityEngine.Animations.Rigging;
 
 public class Runner : MonoBehaviour
 {
@@ -16,16 +17,22 @@ public class Runner : MonoBehaviour
     [SerializeField]
     private string wayName;
 
+    private RigBuilder rigBuilder;
+
     private AudioSource audioSource;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         perceptionBlackboard = GetComponent<AIPerceptionBlackboard>();
-        perceptionBlackboard.OnSourceDetect += PerceptionBlackboard_OnSourceDetect;
+        rigBuilder = GetComponent<RigBuilder>();
+
 
         behaviourRunner = GetComponent<BehaviourRunner>();
         blackboard = behaviourRunner.GetBlackboard();
+
+        perceptionBlackboard.OnSourceDetect += PerceptionBlackboard_OnSourceDetect;
+        perceptionBlackboard.OnSourceLoss += PerceptionBlackboard_OnSourceLoss;
 
         if (blackboard.TryFindKey("WayName", out StringKey stringKey))
         {
@@ -33,9 +40,14 @@ public class Runner : MonoBehaviour
         }
     }
 
+    private void PerceptionBlackboard_OnSourceLoss(AIPerceptionSource obj)
+    {
+        rigBuilder.layers[0].rig.weight = 0;
+    }
+
     private void PerceptionBlackboard_OnSourceDetect(AIPerceptionSource obj)
     {
-
+        rigBuilder.layers[0].rig.weight = 1;
     }
 
     public void PlayAttackSFX()
