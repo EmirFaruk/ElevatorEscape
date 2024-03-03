@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Key : Interactable
 {
-    public byte ID => id;
-    [SerializeField] private byte id;
+    public KeyType Type => keyType;
+    [SerializeField] private KeyType keyType;
 
     private FirstPersonController player;
 
     public override void OnFocus()
     {
         base.OnFocus();
+
+        HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2, "Press E to pick up " + keyType + " Key");
     }
 
     public override void OnInteract()
@@ -23,6 +25,7 @@ public class Key : Interactable
     public override void OnLoseFocus()
     {
         base.OnLoseFocus();
+        HUD.Instance.HidePopUp();
     }
 
     public override void OnEnable()
@@ -31,5 +34,59 @@ public class Key : Interactable
 
         interactableRenderer = GetComponentInChildren<Renderer>();
         materialHandler = interactableRenderer.materials.ToList();
+    }
+
+    public enum KeyType
+    {
+        Red,
+        Blue,
+        Green,
+        Purple,
+        Yellow,
+        Orange,
+        White,
+        Black,
+        Brown,
+        Pink,
+        Cyan,
+        Lime,
+        Maroon,
+        Olive,
+        Teal,
+        Navy,
+        Beige,
+        Peach,
+        Lavender,
+        Coral,
+        Mint,
+        Indigo,
+        Amber,
+        Azure,
+        Lilac,
+        Gold,
+        Silver,
+        Bronze,
+        Platinum,
+        Diamond,
+        Ruby,
+        Sapphire,
+        Emerald,
+        Topaz,
+        Amethyst,
+        Opal,
+        Pearl,
+        Garnet,
+        Agate,
+        Aquamarine,
+        Peridot,
+        Citrine,
+        Onyx,
+        Jasper,
+        Malachite,
+        LapisLazuli,
+        Turquoise,
+        Moonstone,
+        Sunstone,
+        Bloodstone,
     }
 }

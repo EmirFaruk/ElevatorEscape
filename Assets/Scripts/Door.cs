@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Door : Interactable
 {
-    [SerializeField] private byte id;
-    private bool hasKey => player.CurrentKey && player.CurrentKey.ID == id;
+    [SerializeField] private Key.KeyType key;
+    private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
     private bool isOpen;
     private Transform handle;
     private float angle = 0;
@@ -14,7 +14,7 @@ public class Door : Interactable
     #region Overriden Methods
     public override void OnFocus()
     {
-        
+
     }
 
     public override void OnInteract()
@@ -25,7 +25,7 @@ public class Door : Interactable
 
     public override void OnLoseFocus()
     {
-        
+
     }
 
     #endregion
@@ -57,7 +57,7 @@ public class Door : Interactable
     }
 
     async void Close()
-    {        
+    {
         while (angle != 0)
         {
             angle = Mathf.Lerp(angle, 0, 0.05f);
