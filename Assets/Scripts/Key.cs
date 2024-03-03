@@ -8,18 +8,33 @@ public class Key : Interactable
     [SerializeField] private KeyType keyType;
 
     private FirstPersonController player;
+    private bool isPickedUp;
+    [SerializeField] private Color color;
 
     public override void OnFocus()
     {
         base.OnFocus();
 
-        HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2, "Press E to pick up " + keyType + " Key");
+        if (!isPickedUp)
+            HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2
+                , "E to pick up ",
+                keyType.ToString(),
+                " Key",
+                color);
     }
 
     public override void OnInteract()
     {
-        if (!player.CurrentKey) player.HoldKey(this);
-        else player.DropKey();
+        if (!player.CurrentKey)
+        {
+            player.HoldKey(this);
+            isPickedUp = true;
+        }
+        else
+        {
+            player.DropKey();
+            isPickedUp = false;
+        }
     }
 
     public override void OnLoseFocus()
