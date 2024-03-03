@@ -14,7 +14,7 @@ public class Key : Interactable
 
     private FirstPersonController player;
     private bool isPickedUp;
-    private bool isDropping;
+    [HideInInspector] public bool CanDropping = true;
 
     #endregion
 
@@ -54,7 +54,7 @@ public class Key : Interactable
     }
     private void Update()
     {
-        if (isPickedUp && !isDropping) Drop();
+        if (isPickedUp && CanDropping) Drop();
     }
 
     public override void OnEnable()
@@ -72,29 +72,30 @@ public class Key : Interactable
         float posY = transform.position.y;
         float rotZ = transform.localEulerAngles.z;
 
+        CanDropping = false;
+
         await Task.Delay(300, destroyCancellationToken);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
-            isDropping = true;
-
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
+                if (!Input.GetKey(KeyCode.E)) break;
                 transform.position += Vector3.up * 0.001f;
                 transform.Rotate(Vector3.forward * Random.RandomRange(-2f, 2f));
                 await Task.Delay(10, destroyCancellationToken);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                player.DropKey();
+                if (player.CurrentKey) player.DropKey();
                 isPickedUp = false;
             }
 
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
-            isDropping = false;
+            CanDropping = true;
         }
-        isDropping = false;
+        CanDropping = true;
     }
 }
 

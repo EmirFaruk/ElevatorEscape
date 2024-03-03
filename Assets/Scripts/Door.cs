@@ -14,6 +14,8 @@ public class Door : Interactable
     #region Overriden Methods
     public override void OnFocus()
     {
+        if (player.CurrentKey) player.CurrentKey.CanDropping = false;
+
         if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.left,
             "E to open",
             key.ToString(), " Door",
@@ -33,6 +35,8 @@ public class Door : Interactable
 
     public override void OnLoseFocus()
     {
+        if (player.CurrentKey) player.CurrentKey.CanDropping = true;
+
         HUD.Instance.HidePopUp();
     }
 
