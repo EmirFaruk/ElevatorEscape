@@ -41,7 +41,6 @@ public class Key : Interactable
         }
         else
         {
-            Drop();
             //player.DropKey();
             //isPickedUp = false;
         }

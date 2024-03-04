@@ -4,24 +4,28 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
+    #region VARIABLES
     protected Renderer interactableRenderer;
     protected List<Material> materialHandler = new();
 
     private Material outlineMaterial;
+    #endregion
 
-
+    #region ABSTRACT METHODS
     public abstract void OnInteract();
+
     public virtual void OnFocus()
     {
-        materialHandler.Add(outlineMaterial);
-        interactableRenderer.materials = materialHandler.ToArray();
+        ShowOutline();
     }
 
     public virtual void OnLoseFocus()
     {
-        materialHandler.Remove(materialHandler.Last());
-        interactableRenderer.materials = materialHandler.ToArray();
+        RemoveOutline();
     }
+    #endregion
+
+    #region UNITY EVENT FUNCTIONS
 
     private void Awake()
     {
@@ -37,4 +41,22 @@ public abstract class Interactable : MonoBehaviour
 
         materialHandler = interactableRenderer.materials.ToList();
     }
+
+    #endregion
+
+    #region METHODS
+
+    void ShowOutline()
+    {
+        materialHandler.Add(outlineMaterial);
+        interactableRenderer.materials = materialHandler.ToArray();
+    }
+
+    void RemoveOutline()
+    {
+        materialHandler.Remove(materialHandler.Last());
+        interactableRenderer.materials = materialHandler.ToArray();
+    }
+
+    #endregion
 }
