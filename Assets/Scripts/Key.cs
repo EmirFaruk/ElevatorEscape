@@ -36,6 +36,7 @@ public class Key : Interactable
         {
             player.HoldKey(this);
             isPickedUp = true;
+            transform.GetChild(0).gameObject.layer = 8;//set model object's layer as HandCamera layer    
         }
         else
         {
@@ -88,6 +89,7 @@ public class Key : Interactable
             {
                 if (player.CurrentKey) player.DropKey();
                 isPickedUp = false;
+                transform.GetChild(0).gameObject.layer = default;//set model object's layer as Default layer  
             }
 
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);

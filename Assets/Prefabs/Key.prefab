@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6586482359018583906}
   - component: {fileID: 7384158534172300785}
   - component: {fileID: 4510273612518671267}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dcd5f2edd62834fae765cc45f8b3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  keyType: 0
+  CanDropping: 1
 --- !u!65 &1655199102869514210
 BoxCollider:
   m_ObjectHideFlags: 0
