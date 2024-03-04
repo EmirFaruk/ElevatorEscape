@@ -16,12 +16,12 @@ public class Door : Interactable
     {
         if (player.CurrentKey) player.CurrentKey.CanDropping = false;
 
-        if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.left,
+        if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.forward,
             "E to open",
             key.ToString(), " Door",
             KeyData.KeyColors[key]);
 
-        else if (!isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.left,
+        else if (!isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.forward,
             "You need a ",
             key.ToString(), " Key",
             KeyData.KeyColors[key]);

@@ -17,7 +17,7 @@ public class Chest : Interactable
         if (player.CurrentKey) player.CurrentKey.CanDropping = false;
 
         if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2,
-            "E to open",
+            "E to open ",
             key.ToString(), " Chest",
             KeyData.KeyColors[key]);
 
