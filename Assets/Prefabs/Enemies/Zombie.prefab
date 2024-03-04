@@ -500,7 +500,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a17dc3e408bd20244aedb5f4d18fa0e7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -658,7 +658,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8696df0a3c475704bb0f558208f16670, type: 3}
   - {fileID: 8300000, guid: 433082219ff3c7044a5aa9cf1c7806cb, type: 3}
   - {fileID: 8300000, guid: 1dc8021d217401a49b23674fbd0c608f, type: 3}
-  wayName: Floor4Way
+  wayName: Floor1Way
 --- !u!114 &7757391021474959171
 MonoBehaviour:
   m_ObjectHideFlags: 0
