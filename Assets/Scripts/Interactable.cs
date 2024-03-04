@@ -6,9 +6,9 @@ public abstract class Interactable : MonoBehaviour
 {
     #region VARIABLES
     protected Renderer interactableRenderer;
-    [SerializeField] protected List<Renderer> interactableRenderers = new();
+    protected List<Renderer> interactableRenderers = new();
     protected List<Material> materialHandler = new();
-    [SerializeField] protected List<Material>[] materialHandlers;
+    protected List<Material>[] materialHandlers;
 
     private Material outlineMaterial;
     private bool hasRenderer;
