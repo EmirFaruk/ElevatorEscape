@@ -1,6 +1,5 @@
 using StarterAssets;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,7 +7,6 @@ public class Key : Interactable
 {
     #region VARIABLES
 
-    public Color KeyColor;
     public KeyData.KeyType Type => keyType;
     [SerializeField] private KeyData.KeyType keyType;
 
@@ -60,8 +58,10 @@ public class Key : Interactable
     {
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
-        interactableRenderer = GetComponentInChildren<Renderer>();
-        materialHandler = interactableRenderer.materials.ToList();
+        base.OnEnable();
+
+        //interactableRenderer = GetComponentInChildren<Renderer>();
+        //materialHandler = interactableRenderer.materials.ToList();
     }
 
     #endregion

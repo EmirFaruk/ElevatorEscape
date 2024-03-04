@@ -12,7 +12,7 @@ public class Item : Interactable
     {
         HUD.Instance.HidePopUp();
         HUD.Instance.SetItemAmount(1);
-        Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
     }
 
     public override void OnLoseFocus()
