@@ -158,7 +158,7 @@ MonoBehaviour:
   services: []
   ignoreAbortSelf: 1
   key: {fileID: 8250176460681486468, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
-  acceptableRadius: 4
+  acceptableRadius: 3
   includeAgentRadius: 1
   includeGoalRadius: 0
   allowPartialPath: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   - {fileID: -3602626468935722189}
   groups: []
   notes: []
-  selectedNode: {fileID: 0}
+  selectedNode: {fileID: -3060151534238776273}
 --- !u!114 &748759249415914601
 MonoBehaviour:
   m_ObjectHideFlags: 0

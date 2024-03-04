@@ -17,9 +17,9 @@ MonoBehaviour:
   breakpoint: 0
   decorators: []
   services: []
-  ignoreAbortSelf: 1
+  ignoreAbortSelf: 0
   key: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
-  acceptableRadius: 4
+  acceptableRadius: 3
   includeAgentRadius: 1
   includeGoalRadius: 0
   allowPartialPath: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
   - {fileID: 7071756552473638902}
   groups: []
   notes: []
-  selectedNode: {fileID: -5569211111340891016}
+  selectedNode: {fileID: -8023880807193053004}
 --- !u!114 &166983096500123733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +495,6 @@ MonoBehaviour:
   - {fileID: -8023880807193053004}
   - {fileID: -2547962065080823705}
   - {fileID: -7813115329366144912}
-  - {fileID: -1291391208760568809}
 --- !u!114 &6448584020064091781
 MonoBehaviour:
   m_ObjectHideFlags: 0
