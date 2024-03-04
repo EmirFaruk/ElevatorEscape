@@ -51,11 +51,12 @@ public class Key : Interactable
     }
     private void Update()
     {
-        if (isPickedUp && CanDropping) Drop();
+        if (isPickedUp && CanDropping && !destroyCancellationToken.IsCancellationRequested) Drop();
     }
 
     public async override void OnEnable()
     {
+        if (destroyCancellationToken.IsCancellationRequested) return;
         await Task.Delay(1000, destroyCancellationToken);
 
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
@@ -77,17 +78,18 @@ public class Key : Interactable
 
         CanDropping = false;
 
-        await Task.Delay(300, destroyCancellationToken);
+        await Task.Delay(300);
 
         if (Input.GetKey(KeyCode.E))
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 50 && !destroyCancellationToken.IsCancellationRequested; i++)
             {
                 if (!Input.GetKey(KeyCode.E)) break;
                 transform.position += Vector3.up * 0.001f;
                 transform.Rotate(Vector3.forward * Random.RandomRange(-2f, 2f));
                 await Task.Delay(10, destroyCancellationToken);
             }
+
             if (Input.GetKey(KeyCode.E))
             {
                 if (player.CurrentKey) player.DropKey();

@@ -9,6 +9,7 @@ public class Door : Interactable
     private bool isOpen;
     private Transform handle;
     private float angle = 0;
+    private float defaultAngleY = 0;
     private FirstPersonController player;
 
     #region Overriden Methods
@@ -45,7 +46,7 @@ public class Door : Interactable
     public override void OnEnable()
     {
         handle = transform;//.GetChild(0);
-        handle.localEulerAngles = Vector3.zero;
+        angle = defaultAngleY = handle.localEulerAngles.y;
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         base.OnEnable();
@@ -53,14 +54,14 @@ public class Door : Interactable
 
     async void Open()
     {
-        while (angle != -120)
+        while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY + 120)
         {
-            angle = Mathf.Lerp(angle, -120, 0.05f);
+            angle = Mathf.Lerp(angle, defaultAngleY + 120, 0.05f);
             handle.localEulerAngles = new Vector3(0, angle, 0);//handle.localEulerAngles += Vector3.down;
 
-            if (angle < -119f)
+            if (angle > defaultAngleY + 119)
             {
-                angle = -120;
+                angle = defaultAngleY + 120;
                 isOpen = true;
             }
 
@@ -70,14 +71,14 @@ public class Door : Interactable
 
     async void Close()
     {
-        while (angle != 0)
+        while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY)
         {
-            angle = Mathf.Lerp(angle, 0, 0.05f);
+            angle = Mathf.Lerp(angle, defaultAngleY, 0.05f);
             handle.localEulerAngles = new Vector3(0, angle, 0);//handle.localEulerAngles += Vector3.down;
 
-            if (angle > -1)
+            if (Mathf.Abs(angle - defaultAngleY) < 1)
             {
-                angle = 0;
+                angle = defaultAngleY;
                 isOpen = false;
             }
             await Task.Delay(10, destroyCancellationToken);
