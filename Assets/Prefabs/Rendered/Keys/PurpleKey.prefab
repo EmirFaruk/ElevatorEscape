@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 885250566217687737}
-  - component: {fileID: 6727434817837897695}
   - component: {fileID: 146931195485233270}
   - component: {fileID: 7603310064568003768}
+  - component: {fileID: 3472939434852802826}
   m_Layer: 7
   m_Name: PurpleKey
   m_TagString: Untagged
@@ -35,28 +35,6 @@ Transform:
   - {fileID: 7144318369948420292}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &6727434817837897695
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458884057031337737}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43089707133843880, guid: 3a4c84b15f42ccf439b175bdf97fe6d3, type: 2}
 --- !u!54 &146931195485233270
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98,6 +76,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 3
   CanDropping: 1
+--- !u!65 &3472939434852802826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458884057031337737}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.025, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0.08}
 --- !u!1 &7632275126145942801
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,9 +92,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4874650221620837023}
-  - component: {fileID: 2374053529772480263}
   - component: {fileID: 1542981143660739804}
   - component: {fileID: 7056842832185029631}
+  - component: {fileID: 1428457656747523862}
   m_Layer: 7
   m_Name: GreenKey
   m_TagString: Untagged
@@ -118,28 +118,6 @@ Transform:
   - {fileID: 7480032274877794100}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2374053529772480263
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2888199899503635176}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43089707133843880, guid: 3a4c84b15f42ccf439b175bdf97fe6d3, type: 2}
 --- !u!54 &1542981143660739804
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,3 +159,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 2
   CanDropping: 1
+--- !u!65 &1428457656747523862
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888199899503635176}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.025, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0.08}

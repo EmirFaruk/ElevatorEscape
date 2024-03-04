@@ -13,21 +13,19 @@ public class KeyData : MonoBehaviour
             KeyMaterials = new KeyMaterialStruct[Enum.GetNames(typeof(KeyType)).Length];
             print("Asigned Key Materials Lenght");
         }
-
-        for (int i = 0; i < Enum.GetNames(typeof(KeyType)).Length; i++)
-        {
-            KeyMaterials[i].name = ((KeyType)i).ToString();
-        }
+        if (KeyMaterials[0].name != ((KeyType)0).ToString())
+            for (int i = 0; i < Enum.GetNames(typeof(KeyType)).Length; i++)
+                KeyMaterials[i].name = ((KeyType)i).ToString();
     }
 #endif
     #endregion
 
-    public static KeyData Instance;
+    public static KeyData Instance => instance;
     private static KeyData instance;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (instance == null) instance = this;
     }
 
     public KeyMaterialStruct[] KeyMaterials = new KeyMaterialStruct[Enum.GetNames(typeof(KeyType)).Length];

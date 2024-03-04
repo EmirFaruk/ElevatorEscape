@@ -56,13 +56,14 @@ public class Key : Interactable
 
     public async override void OnEnable()
     {
+        await Task.Delay(1000, destroyCancellationToken);
+
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
+
+        transform.GetChild(0).GetComponent<Renderer>().materials = KeyData.Instance.KeyMaterials[(int)keyType].materials;
 
         base.OnEnable();
 
-        await Task.Delay(1000, destroyCancellationToken);
-
-        transform.GetChild(0).GetComponent<Renderer>().materials = KeyData.Instance.KeyMaterials[(int)keyType].materials;
         //interactableRenderer = GetComponentInChildren<Renderer>();
         //materialHandler = interactableRenderer.materials.ToList();
     }
