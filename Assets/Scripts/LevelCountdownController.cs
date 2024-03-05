@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class LevelCountdownController : MonoBehaviour
 {
-    [SerializeField] private float timeRemaining = 10;
+    [SerializeField] private int timeRemaining = 10;
+    private int timeRemainingDefault = 0;
     public static Action OnLevelTimeEnd;
     [SerializeField] private TextMeshProUGUI countdownText;
+    
 
     void Start()
     {
         print("Level Countdown Started");
         countdownText = GetComponent<TextMeshProUGUI>();
+        
+        timeRemainingDefault = timeRemaining;
+
+        Elevator.OnReachedStop += ResetCountdow;
 
         CountdownAsync();
 
@@ -22,17 +28,28 @@ public class LevelCountdownController : MonoBehaviour
     }
 
     async void CountdownAsync()
-    {
-        for (int i = (int)timeRemaining; i >= 1 && !destroyCancellationToken.IsCancellationRequested; i--)
+    {        
+        for (; timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested;  timeRemaining--)
         {
-            countdownText.text = TimeSpan.FromSeconds(i).ToString(@"mm\:ss");
+            countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
 
-            if (i * 10 <= Math.Max(10, timeRemaining * .2f * 10)) countdownText.color = Color.red; // Change color to red when 20% of time remaining            
+            if (timeRemaining * 10 <= Math.Max(10, timeRemaining * .2f * 10)) countdownText.color = Color.red; // Change color to red when 20% of time remaining            
             
             await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);            
         }
 
         countdownText.text = "Time End!";
         OnLevelTimeEnd?.Invoke();
+    }
+
+    async void ResetCountdow(int stop)
+    {
+        if (stop == 1)
+        {
+            timeRemaining = timeRemainingDefault;
+            countdownText.color = Color.green;
+            await Task.Delay(1000);
+            countdownText.color = Color.white;
+        }        
     }
 }
