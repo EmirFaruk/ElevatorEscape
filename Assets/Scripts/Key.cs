@@ -23,7 +23,7 @@ public class Key : Interactable
 
         if (!isPickedUp)
             HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2
-                , "E to pick up ",
+                , "Pick up ",
                 keyType.ToString(),
                 " Key",
                 KeyData.KeyColors[keyType]);
