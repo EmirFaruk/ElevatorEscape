@@ -5030,6 +5030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315794337}
   - component: {fileID: 1315794338}
+  - component: {fileID: 1315794339}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -5169,6 +5170,18 @@ MonoBehaviour:
     materials: []
   - name: Bloodstone
     materials: []
+--- !u!114 &1315794339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315794336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a03cd8efeee1e43985f65d16e95f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1341345750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8426,10 +8439,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726975061172158506, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522085529788367911, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
-      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8524590392489013604, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}

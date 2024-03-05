@@ -12,6 +12,7 @@ public class LevelCountdownController : MonoBehaviour
     void Start()
     {
         print("Level Countdown Started");
+        countdownText = GetComponent<TextMeshProUGUI>();
 
         CountdownAsync();
 

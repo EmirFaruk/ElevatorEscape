@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class GameManager : MonoBehaviour
     private void OnLevelTimeEnd()
     {
         print("Level Time Ended");
-        UnityEditor.EditorApplication.isPaused = true;
+
+#if UNITY_EDITOR
+        EditorApplication.isPaused = true;
+#else
+        Time.timeScale = 0.0f;
+#endif
     }
 }
