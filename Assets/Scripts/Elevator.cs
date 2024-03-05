@@ -1,3 +1,4 @@
+using StarterAssets;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -7,11 +8,17 @@ public class Elevator : MonoBehaviour
     #region FIELDS
     public static Action<int> OnReachedStop;
     public static Action<int> OnReached;
+    
+    [SerializeField] private float speed = 3f;
 
-    [SerializeField] private Transform[] stops;
+    [Header("Stop")]
     [SerializeField] private Transform stopsParent;
-    [SerializeField] private Transform door;
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private Transform[] stops;
+
+    [Header("Door")]
+    [SerializeField] private float doorSpeed = 1f;
+    [SerializeField] private float doorOffset = .75f;
+    [SerializeField] private Transform[] doors;
 
     [Header("Auido")]
     [SerializeField] private AudioClip buttonClickSoundActive;
@@ -28,6 +35,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] private Color hoverColor;
     [SerializeField] private Color pressedColor;
 
+    private FirstPersonController player;
     #endregion
 
     #region PROPERTIES
@@ -36,22 +44,23 @@ public class Elevator : MonoBehaviour
     public Color PressedColor => pressedColor;
     #endregion
 
+    #region UNITY EVENT FUNCTIONS
+    
     void Start()
     {
+        // Set Stops with Stops Parent
+        stops = new Transform[stopsParent.childCount];
         if (stopsParent != null)
-            for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);
+            for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);   
 
         audioSource = gameObject.AddComponent<AudioSource>();
+
+        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
+
+        MoveDoor(false);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-    }
+    #endregion
 
     public async void MoveTo(int stopIndex)
     {
@@ -89,12 +98,12 @@ public class Elevator : MonoBehaviour
         MoveDoor(true);
 
         //Kapanin kapanmasini bekle
-        await Task.Delay(1000, destroyCancellationToken);
+        await Task.Delay(1700, destroyCancellationToken);
         doorIsOpen = false;
 
         //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
-        GameObject.FindWithTag("Player").transform.parent = transform;
-        GameObject.FindWithTag("Player").GetComponent<CharacterController>().enabled = false;
+        player.transform.parent = transform;
+        player.GetComponent<CharacterController>().enabled = false;
 
         //Asansoru hareket ettir
         while (!hasReachedStop)
@@ -106,14 +115,16 @@ public class Elevator : MonoBehaviour
             {
                 //Kapiyi ac
                 MoveDoor(false);
+
                 await Task.Delay(1000, destroyCancellationToken);
+
                 doorIsOpen = true;
 
                 OnReachedStop?.Invoke(stopIndex);
 
                 //Player'i serbest birak (player kodunun icinde olacak burasi)
-                GameObject.FindWithTag("Player").transform.parent = null;
-                GameObject.FindWithTag("Player").GetComponent<CharacterController>().enabled = true;
+                player.transform.parent = null;
+                player.GetComponent<CharacterController>().enabled = true;
             }
 
             await Task.Delay(10, destroyCancellationToken);
@@ -126,15 +137,18 @@ public class Elevator : MonoBehaviour
     }
 
     async void MoveDoor(bool isOpen)
-    {
-        Vector3 targetPosition = door.position;
-        targetPosition.x += isOpen ? 1.25f : -1.25f;
+    {                        
+        Vector3 targetPositionDoor1 = doors[0].position;
+        Vector3 targetPostionDoor2 = doors[1].position;
+        targetPositionDoor1.x += isOpen ? doorOffset : -doorOffset;
+        targetPostionDoor2.x += isOpen ? -doorOffset : doorOffset;
         Vector3 direction = isOpen ? Vector3.right : Vector3.left;
-        float doorSpeed = speed / 3;
 
-        while (Mathf.Abs(door.transform.position.x - targetPosition.x) > .1f)
+
+        while (Mathf.Abs(doors[0].transform.position.x - targetPositionDoor1.x) > .1f)
         {
-            door.transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
+            doors[0].transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
+            doors[1].transform.position += doorSpeed * -direction * Time.deltaTime;
 
             await Task.Delay(10, destroyCancellationToken);
         }
