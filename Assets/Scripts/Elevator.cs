@@ -53,7 +53,7 @@ public class Elevator : MonoBehaviour
         if (stopsParent != null)
             for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);   
 
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = Camera.main.GetComponent<AudioSource>();
 
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
@@ -106,7 +106,7 @@ public class Elevator : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = false;
 
         //Asansoru hareket ettir
-        while (!hasReachedStop)
+        while (!destroyCancellationToken.IsCancellationRequested && !hasReachedStop)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             hasReachedStop = transform.position.y == targetPosition.y;
@@ -145,7 +145,7 @@ public class Elevator : MonoBehaviour
         Vector3 direction = isOpen ? Vector3.right : Vector3.left;
 
 
-        while (Mathf.Abs(doors[0].transform.position.x - targetPositionDoor1.x) > .1f)
+        while (!destroyCancellationToken.IsCancellationRequested && Mathf.Abs(doors[0].transform.position.x - targetPositionDoor1.x) > .1f)
         {
             doors[0].transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
             doors[1].transform.position += doorSpeed * -direction * Time.deltaTime;

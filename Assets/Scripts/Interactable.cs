@@ -54,8 +54,7 @@ public abstract class Interactable : MonoBehaviour
             foreach (Transform item in transform)
             {
                 if (item.TryGetComponent(out Renderer renderer1))
-                    interactableRenderers.Add(renderer1);
-                print(interactableRenderers.Count + " : " + interactableRenderers);
+                    interactableRenderers.Add(renderer1);                
             }
 
             materialHandlers = new List<Material>[interactableRenderers.Count];

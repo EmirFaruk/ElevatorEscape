@@ -23,13 +23,13 @@ public class LevelCountdownController : MonoBehaviour
 
     async void CountdownAsync()
     {
-        for (int i = (int)timeRemaining; i >= 1; i--)
+        for (int i = (int)timeRemaining; i >= 1 && !destroyCancellationToken.IsCancellationRequested; i--)
         {
             countdownText.text = TimeSpan.FromSeconds(i).ToString(@"mm\:ss");
 
-            if (i * 10 <= Math.Max(10, timeRemaining * .2f * 10)) countdownText.color = Color.red; // Change color to red when 20% of time remaining
-
-            await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000, destroyCancellationToken);
+            if (i * 10 <= Math.Max(10, timeRemaining * .2f * 10)) countdownText.color = Color.red; // Change color to red when 20% of time remaining            
+            
+            await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);            
         }
 
         countdownText.text = "Time End!";
