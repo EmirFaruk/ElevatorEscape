@@ -11,18 +11,19 @@ public class Door : Interactable
     private float angle = 0;
     private float defaultAngleY = 0;
     private FirstPersonController player;
+    private Collider doorCollider => GetComponent<Collider>();
 
     #region Overriden Methods
     public override void OnFocus()
     {
         if (player.CurrentKey) player.CurrentKey.CanDropping = false;
-
-        if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.forward,
-            "E to open",
+        
+        if (hasKey && !isOpen) HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2,
+            "Open ",
             key.ToString(), " Door",
             KeyData.KeyColors[key]);
 
-        else if (!isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2 + Vector3.forward,
+        else if (!isOpen) HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2,
             "You need a ",
             key.ToString(), " Key",
             KeyData.KeyColors[key]);
