@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -19,9 +20,18 @@ public class HUD : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
+        
+        popUp = Instantiate(popUp);
+        popUp.gameObject.SetActive(false);
         tmp = popUp.GetComponentInChildren<TextMeshProUGUI>();
-
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V)) ActivateTakeDamageEffect();               
+    }
+
+    #region PopUp
 
     public void ShowPopUp(Vector3 position, string messageBase, string hue, string end, Color color)
     {
@@ -36,4 +46,34 @@ public class HUD : MonoBehaviour
     {
         popUp.gameObject.SetActive(false);
     }
+    #endregion
+
+    #region Take Damage Effect
+
+    [SerializeField] private GameObject takeDamageRef;
+    private Animator takeDamageAnim => takeDamageRef.GetComponent<Animator>();
+    private bool isPlayTakeDamageEffect;
+
+    public async void ActivateTakeDamageEffect()
+    {
+        if (!isPlayTakeDamageEffect)
+        {
+            isPlayTakeDamageEffect = true;
+            takeDamageRef.SetActive(true);
+            takeDamageAnim.Play("TakeDamage");            
+
+            await Task.Delay((int)takeDamageAnim.runtimeAnimatorController.animationClips[0].length * 1000);
+
+            takeDamageRef.SetActive(false);
+            isPlayTakeDamageEffect = false;
+        }
+    }    
+
+    public void DeactivateTakeDamageEffect()
+    {
+        takeDamageRef.SetActive(false);
+        isPlayTakeDamageEffect = false;
+    }
+
+    #endregion
 }

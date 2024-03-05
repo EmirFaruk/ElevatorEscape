@@ -2129,7 +2129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8436790421340084909
 Transform:
   m_ObjectHideFlags: 0
@@ -2364,6 +2364,7 @@ GameObject:
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 7108326398876504098}
   - component: {fileID: 710294528045942167}
+  - component: {fileID: 8551965284872420203}
   m_Layer: 6
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -2611,6 +2612,19 @@ MonoBehaviour:
     m_Bits: 128
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0.5}
   interactionRayDistance: 5
+--- !u!114 &8551965284872420203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5e7c50fd1ffb74d8470690ada08bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &8750525046397967832
 GameObject:
   m_ObjectHideFlags: 0
