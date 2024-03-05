@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
 
     #region UNITY EVENT FUNCTIONS
 
-    private void Start()
+    private void Awake()
     {
         _mainCamera = Camera.main;
 

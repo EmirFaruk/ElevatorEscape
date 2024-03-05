@@ -32,14 +32,18 @@ public abstract class Interactable : MonoBehaviour
 
     private void Awake()
     {
-        this.gameObject.layer = 7; // interaction layer;
+        
 
-        Shader outlineShader = Shader.Find("Shader Graphs/OutlineShader");
-        outlineMaterial = new Material(outlineShader);
+        //Shader outlineShader = Shader.Find("Shader Graphs/OutlineShader");
+        
+        
     }
 
     public virtual void OnEnable()
     {
+        this.gameObject.layer = 7; // interaction layer;
+        outlineMaterial = new Material(HUD.Instance.OutlineShader);
+
         //interactableRenderer = GetComponent<Renderer>() ?? GetComponentInChildren<Renderer>();
         if (TryGetComponent(out Renderer renderer))
         {

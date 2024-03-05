@@ -14,6 +14,9 @@ public class HUD : MonoBehaviour
     public void SetItemAmount(int data) { itemAmount += data; itemAmountTmp.SetText(itemAmount.ToString()); }
     #endregion
 
+    [SerializeField] private Shader outlineShader;
+    public Shader OutlineShader => outlineShader;
+
     [SerializeField] private Canvas popUp;
     private TextMeshProUGUI tmp;
 
