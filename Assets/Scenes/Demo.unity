@@ -336,13 +336,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1437232990123297749, guid: f99bbd0754201f448b27f0c455b92b76, type: 3}
-      propertyPath: wayName
-      value: Floor1Way
-      objectReference: {fileID: 0}
     - target: {fileID: 1776966266084158026, guid: f99bbd0754201f448b27f0c455b92b76, type: 3}
       propertyPath: m_Name
       value: F1Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558035157675087805, guid: f99bbd0754201f448b27f0c455b92b76, type: 3}
+      propertyPath: m_Name
+      value: Rig
       objectReference: {fileID: 0}
     - target: {fileID: 6225513514571977223, guid: f99bbd0754201f448b27f0c455b92b76, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
@@ -2589,7 +2589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &725008418
 Transform:
   m_ObjectHideFlags: 0
