@@ -739,13 +739,15 @@ MonoBehaviour:
   speed: 3
   stopsParent: {fileID: 0}
   stops: []
-  doorSpeed: 1
+  doorSpeed: 0.5
   doorOffset: 0.75
   doors:
   - {fileID: 2119795519735855933}
   - {fileID: 2119534864930069499}
   buttonClickSoundActive: {fileID: 8300000, guid: 0dfe9f9829141478689194368436b534, type: 3}
   buttonClickSoundPassive: {fileID: 8300000, guid: 292aad821b16948af9cba9deaca16525, type: 3}
+  movementSound: {fileID: 8300000, guid: 6003d024bfde3bd49bda45b52cd1348b, type: 3}
+  doorMovementSound: {fileID: 8300000, guid: 14e968f7db7a9d148ab0fdba82c9364b, type: 3}
   defaultColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   hoverColor: {r: 1, g: 0.93911445, b: 0.6509804, a: 1}
   pressedColor: {r: 0.58176094, g: 1, b: 0.6001084, a: 1}
@@ -1725,7 +1727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 474793394831010824, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5913740272664310109, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_Pivot.x

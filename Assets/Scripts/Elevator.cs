@@ -23,6 +23,8 @@ public class Elevator : MonoBehaviour
     [Header("Auido")]
     [SerializeField] private AudioClip buttonClickSoundActive;
     [SerializeField] private AudioClip buttonClickSoundPassive;
+    [SerializeField] private AudioClip movementSound;
+    [SerializeField] private AudioClip doorMovementSound;
 
     private AudioSource audioSource;
 
@@ -93,38 +95,45 @@ public class Elevator : MonoBehaviour
         //Buton sesi oynat
         PlayButtonClickSound(true);
 
-        //Kapiyi kapat
+        //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
+        player.transform.parent = transform;
+        player.GetComponent<CharacterController>().enabled = false;
+
+        //Biraz bekle
         await Task.Delay(700, destroyCancellationToken);
+        
+        //Kapiyi kapat
         MoveDoor(true);
 
         //Kapanin kapanmasini bekle
         await Task.Delay(1700, destroyCancellationToken);
+        
         doorIsOpen = false;
-
-        //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
-        player.transform.parent = transform;
-        player.GetComponent<CharacterController>().enabled = false;
+        
+        audioSource.PlayOneShot(movementSound);        
 
         //Asansoru hareket ettir
         while (!destroyCancellationToken.IsCancellationRequested && !hasReachedStop)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             hasReachedStop = transform.position.y == targetPosition.y;
-
+     
             if (hasReachedStop)
             {
+                //Player'i serbest birak (player kodunun icinde olacak burasi)
+                player.transform.parent = null;
+                player.GetComponent<CharacterController>().enabled = true;
+
+                audioSource.Stop();
+
                 //Kapiyi ac
-                MoveDoor(false);
+                MoveDoor(false);                
 
                 await Task.Delay(1000, destroyCancellationToken);
 
                 doorIsOpen = true;
 
                 OnReachedStop?.Invoke(stopIndex);
-
-                //Player'i serbest birak (player kodunun icinde olacak burasi)
-                player.transform.parent = null;
-                player.GetComponent<CharacterController>().enabled = true;
             }
 
             await Task.Delay(10, destroyCancellationToken);
@@ -143,12 +152,15 @@ public class Elevator : MonoBehaviour
         targetPositionDoor1.x += isOpen ? doorOffset : -doorOffset;
         targetPostionDoor2.x += isOpen ? -doorOffset : doorOffset;
         Vector3 direction = isOpen ? Vector3.right : Vector3.left;
+            
+        audioSource.PlayOneShot(doorMovementSound);
 
 
         while (!destroyCancellationToken.IsCancellationRequested && Mathf.Abs(doors[0].transform.position.x - targetPositionDoor1.x) > .1f)
         {
             doors[0].transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
             doors[1].transform.position += doorSpeed * -direction * Time.deltaTime;
+            
 
             await Task.Delay(10, destroyCancellationToken);
         }
