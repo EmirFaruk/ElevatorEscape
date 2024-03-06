@@ -20,6 +20,14 @@ public class HUD : MonoBehaviour
     [SerializeField] private Canvas popUp;
     private TextMeshProUGUI tmp;
 
+    #region SoundManager
+
+    public AudioClip Unlock;
+    public AudioClip LockedDoor;
+    public AudioClip DoorOpening;
+
+    #endregion
+
     private void Awake()
     {
         if (Instance == null) Instance = this;

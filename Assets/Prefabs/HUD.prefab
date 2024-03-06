@@ -616,6 +616,9 @@ MonoBehaviour:
   itemAmountTmp: {fileID: 5151226487528759107}
   outlineShader: {fileID: -6465566751694194690, guid: f52c836c7e75769449567595420f5744, type: 3}
   popUp: {fileID: 5825250346446324090, guid: 2f350d91e21563848aa45f55e0297110, type: 3}
+  Unlock: {fileID: 8300000, guid: a28459e4df4ce144685d67fbfb3d1b91, type: 3}
+  LockedDoor: {fileID: 8300000, guid: bd0ed2e867b55124eb422492c7717833, type: 3}
+  DoorOpening: {fileID: 8300000, guid: f9582f7f646ad7a469146974acd8c412, type: 3}
   takeDamageRef: {fileID: 825839533461865955}
 --- !u!1 &8558494313725379717
 GameObject:

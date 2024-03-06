@@ -5,6 +5,7 @@ using UnityEngine;
 public class Door : Interactable
 {
     [SerializeField] private KeyData.KeyType key;
+    
     private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
     private bool isOpen;
     private Transform handle;
@@ -33,6 +34,7 @@ public class Door : Interactable
     {
         if (isOpen) Close();
         else if (hasKey) Open();
+        else Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.LockedDoor);
     }
 
     public override void OnLoseFocus()
@@ -55,6 +57,9 @@ public class Door : Interactable
 
     async void Open()
     {
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.Unlock);
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.DoorOpening);
+
         while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY + 120)
         {
             angle = Mathf.Lerp(angle, defaultAngleY + 120, 0.05f);
@@ -72,6 +77,9 @@ public class Door : Interactable
 
     async void Close()
     {
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.Unlock);
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.DoorOpening);
+
         while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY)
         {
             angle = Mathf.Lerp(angle, defaultAngleY, 0.05f);
