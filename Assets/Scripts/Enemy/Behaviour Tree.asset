@@ -18,7 +18,7 @@ MonoBehaviour:
   decorators: []
   services: []
   ignoreAbortSelf: 0
-  speed: 6
+  speed: 3
 --- !u!114 &-7548170887518680790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   - {fileID: -3602626468935722189}
   groups: []
   notes: []
-  selectedNode: {fileID: -3060151534238776273}
+  selectedNode: {fileID: 0}
 --- !u!114 &748759249415914601
 MonoBehaviour:
   m_ObjectHideFlags: 0
