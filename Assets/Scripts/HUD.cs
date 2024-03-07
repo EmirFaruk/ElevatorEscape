@@ -10,7 +10,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemAmountTmp;
 
     private int itemAmount;
-    public int GetItemAmount() => itemAmount;
+    public int GetItemAmount => itemAmount;
     public void SetItemAmount(int data) { itemAmount += data; itemAmountTmp.SetText(itemAmount.ToString()); }
     #endregion
 
@@ -31,7 +31,7 @@ public class HUD : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        
+
         popUp = Instantiate(popUp);
         popUp.gameObject.SetActive(false);
         tmp = popUp.GetComponentInChildren<TextMeshProUGUI>();
@@ -39,7 +39,7 @@ public class HUD : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V)) ActivateTakeDamageEffect();               
+        if (Input.GetKeyDown(KeyCode.V)) ActivateTakeDamageEffect();
     }
 
     #region PopUp
@@ -71,14 +71,14 @@ public class HUD : MonoBehaviour
         {
             isPlayTakeDamageEffect = true;
             takeDamageRef.SetActive(true);
-            takeDamageAnim.Play("TakeDamage");            
+            takeDamageAnim.Play("TakeDamage");
 
             await Task.Delay((int)takeDamageAnim.runtimeAnimatorController.animationClips[0].length * 1000);
 
             takeDamageRef.SetActive(false);
             isPlayTakeDamageEffect = false;
         }
-    }    
+    }
 
     public void DeactivateTakeDamageEffect()
     {
