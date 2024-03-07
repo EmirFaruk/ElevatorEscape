@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class ExitDoor : Interactable
 {
+    [SerializeField] private Transform door;
     [SerializeField] private Transform itemsParent;
-    [SerializeField] private Material itemMaterial;
+    [SerializeField] private Transform itemsParent2;
+    //[SerializeField] private Material itemMaterial;
     private readonly List<Transform> items = new();
+    private readonly List<Transform> items2 = new();
     private Collider doorCollider => GetComponent<Collider>();
 
     private void Start()
     {
-        foreach (Transform item in itemsParent) items.Add(item);
+        FindChild(itemsParent, items);
+        FindChild(itemsParent2, items2);
 
-        handle = transform;
-        angle = defaultAngleY = handle.transform.localEulerAngles.y;
+        handle[0] = door.GetChild(0);
+        handle[1] = door.GetChild(1);
+        angle = defaultAngleY = handle[0].transform.localEulerAngles.y;
     }
 
     public override void OnFocus()
@@ -30,10 +35,14 @@ public class ExitDoor : Interactable
             HUD.Instance.HidePopUp();
 
             //Item materyalini degistir
-            items.Last().GetComponent<MeshRenderer>().material = itemMaterial;
+            //items.Last().GetComponent<MeshRenderer>().material = itemMaterial;
+
+            //Item objesini aktif et
+            items.First().gameObject.SetActive(true);
+            items2.First().gameObject.SetActive(true);
 
             //Itemi listeden kaldir
-            items.Remove(items.Last());
+            items.Remove(items.First());
 
             //Item sayisini azalt
             HUD.Instance.SetItemAmount(-1);
@@ -48,8 +57,8 @@ public class ExitDoor : Interactable
     }
 
     float angle = 0;
-    float defaultAngleY = 0;
-    private Transform handle;
+    float defaultAngleY;
+    private Transform[] handle = new Transform[2];
 
     private async void OpenDoor()
     {
@@ -58,14 +67,27 @@ public class ExitDoor : Interactable
         while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY + 120)
         {
             angle = Mathf.Lerp(angle, defaultAngleY + 120, 0.05f);
-            handle.localEulerAngles = new Vector3(0, angle, 0);//handle.localEulerAngles += Vector3.down;
+            handle[0].localEulerAngles = new Vector3(0, -angle, 0);
+            handle[1].localEulerAngles = new Vector3(0, angle + 180, 0);
 
             if (angle > defaultAngleY + 119)
             {
                 angle = defaultAngleY + 120;
             }
 
-            await Task.Delay(10, destroyCancellationToken);
+            await Task.Delay(10);
+        }
+    }
+
+    void FindChild(Transform target, List<Transform> itemList)
+    {
+        foreach (Transform item in target)
+        {
+            if (item.gameObject.activeInHierarchy)
+            {
+                item.GetChild(0).gameObject.SetActive(false);
+                itemList.Add(item.GetChild(0));
+            }
         }
     }
 }

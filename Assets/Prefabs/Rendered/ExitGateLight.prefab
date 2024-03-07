@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Torch_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1075140942906562, guid: df6abd41cb7baef46bb6921f0f0e5be7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4360741164572960, guid: df6abd41cb7baef46bb6921f0f0e5be7, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
