@@ -2,7 +2,7 @@ using StarterAssets;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Key : Interactable
+public class KeyItem : Interactable
 {
     #region VARIABLES
 

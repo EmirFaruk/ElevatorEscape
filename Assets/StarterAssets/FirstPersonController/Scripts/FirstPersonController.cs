@@ -14,9 +14,9 @@ namespace StarterAssets
 	{
         #region Key
         [SerializeField] Transform keyHandler;
-		private Key currentKey;
-		public Key CurrentKey => currentKey;
-		public void HoldKey(Key key)
+		private KeyItem currentKey;
+		public KeyItem CurrentKey => currentKey;
+		public void HoldKey(KeyItem key)
 		{
 			currentKey = key;
 			key.GetComponent<Rigidbody>().isKinematic = true;

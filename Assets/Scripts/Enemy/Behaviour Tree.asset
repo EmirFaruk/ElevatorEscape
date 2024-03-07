@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7681932554630977187
+--- !u!114 &-8908793302066241534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,137 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ad221f3134eb84e95a4ab308a1150c, type: 3}
-  m_Name: SetSpeedTask
+  m_Script: {fileID: 11500000, guid: fd402de4eb7669046830c326d89b03b4, type: 3}
+  m_Name: waitTime
   m_EditorClassIdentifier: 
-  nodeName: Set Speed
-  nodePosition: {x: 0, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  speed: 3
---- !u!114 &-7548170887518680790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5698ffb388202734da990ea472691f90, type: 3}
-  m_Name: SetTriggerTask
-  m_EditorClassIdentifier: 
-  nodeName: Set Trigger
-  nodePosition: {x: 1647, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  parameterName: attack
---- !u!114 &-7462292033002702207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ad221f3134eb84e95a4ab308a1150c, type: 3}
-  m_Name: SetSpeedTask
-  m_EditorClassIdentifier: 
-  nodeName: Set Speed
-  nodePosition: {x: 1181.881, y: 403.04916}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  speed: 6
---- !u!114 &-5131259039692960623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc90431795049814f98a46980d410360, type: 3}
-  m_Name: WayPointTask
-  m_EditorClassIdentifier: 
-  nodeName: Way Point
-  nodePosition: {x: 174, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  key: {fileID: -1490207773652539145, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
-  wayName: {fileID: 4716103842500510827, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
-  selectionType: 0
-  startNearestPoint: 0
-  lastIndex: {fileID: 0}
---- !u!114 &-4249756639693297072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5260f7ef03252854bace0dc05d0fa5dd, type: 3}
-  m_Name: Slerp
-  m_EditorClassIdentifier: 
-  nodeName: Slerp
-  nodePosition: {x: 1512, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  target: {fileID: 8250176460681486468, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
---- !u!114 &-4229241581513048921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85263108a8bd9e0469feac3580755ae9, type: 3}
-  m_Name: WaitTask
-  m_EditorClassIdentifier: 
-  nodeName: Wait
-  nodePosition: {x: 1828, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  waitTime: {fileID: -1703167244406186397}
-  randomDeviation: {fileID: 0}
---- !u!114 &-3602626468935722189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
-  m_Name: SetBoolTask
-  m_EditorClassIdentifier: 
-  nodeName: Set Bool
-  nodePosition: {x: 687, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  parameterName: chase
-  value: {fileID: 9170111273439981633}
---- !u!114 &-3060151534238776273
+  category: 
+  description: 
+  sync: 0
+  isLocal: 1
+  value: 2
+--- !u!114 &-8872070914703944266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,19 +30,173 @@ MonoBehaviour:
   m_Name: MoveToTask
   m_EditorClassIdentifier: 
   nodeName: Move To
-  nodePosition: {x: 1350, y: 406}
+  nodePosition: {x: 736, y: 406}
   breakpoint: 0
   decorators: []
   services: []
-  ignoreAbortSelf: 1
-  key: {fileID: 8250176460681486468, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
-  acceptableRadius: 3
+  ignoreAbortSelf: 0
+  key: {fileID: -1718226569892847012, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
+  acceptableRadius: 1
   includeAgentRadius: 1
-  includeGoalRadius: 0
-  allowPartialPath: 0
+  includeGoalRadius: 1
+  allowPartialPath: 1
   trackMovingGoal: 1
   goLastPointOnLost: 1
---- !u!114 &-1703167244406186397
+--- !u!114 &-8392009507486809131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ecbd642284b504ca1789fb521bbe87, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  nodeName: Chase
+  nodePosition: {x: 1627.5, y: 225}
+  breakpoint: 0
+  decorators:
+  - {fileID: -5847262698925913795}
+  - {fileID: 450100137370969589}
+  services: []
+  children:
+  - {fileID: -7521412357717967978}
+  - {fileID: 9165872448505217658}
+  - {fileID: 4426975175120438903}
+  - {fileID: 2888635873449358795}
+  - {fileID: -7581946125129140720}
+  - {fileID: 3165009905818972248}
+--- !u!114 &-8235073493720287396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b97a1cab3e25e246a1321c1c6515ce3, type: 3}
+  m_Name: value
+  m_EditorClassIdentifier: 
+  category: 
+  description: 
+  sync: 0
+  isLocal: 1
+  value: 0
+--- !u!114 &-7581946125129140720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1a54253e39b814686fd93d56d96cdd, type: 3}
+  m_Name: SetKeyTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Key
+  nodePosition: {x: 1919, y: 469}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  blackboardKey: {fileID: -6574712317111777222, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  keyReceiver:
+    rid: 7943093164421152769
+  references:
+    version: 2
+    RefIds:
+    - rid: 7943093164421152769
+      type: {class: BoolReceiver, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        value: 1
+--- !u!114 &-7521412357717967978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5260f7ef03252854bace0dc05d0fa5dd, type: 3}
+  m_Name: Slerp
+  m_EditorClassIdentifier: 
+  nodeName: Slerp
+  nodePosition: {x: 1209, y: 469}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  target: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
+--- !u!114 &-7236424964413298677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5260f7ef03252854bace0dc05d0fa5dd, type: 3}
+  m_Name: Slerp
+  m_EditorClassIdentifier: 
+  nodeName: Slerp
+  nodePosition: {x: 2489, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  target: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
+--- !u!114 &-5847262698925913795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 0
+  observerAbort: 3
+  key: {fileID: -6574712317111777222, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  keyQuery:
+    rid: 7943093164421152768
+  references:
+    version: 2
+    RefIds:
+    - rid: 7943093164421152768
+      type: {class: BoolQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 0
+--- !u!114 &-5727210967339031114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b97a1cab3e25e246a1321c1c6515ce3, type: 3}
+  m_Name: value
+  m_EditorClassIdentifier: 
+  category: 
+  description: 
+  sync: 0
+  isLocal: 1
+  value: 0
+--- !u!114 &-3895755104798679316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +213,52 @@ MonoBehaviour:
   sync: 0
   isLocal: 1
   value: 1
---- !u!114 &-793996103359818000
+--- !u!114 &-3498732437429034826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ecbd642284b504ca1789fb521bbe87, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  nodeName: Attack
+  nodePosition: {x: 2686.5, y: 225}
+  breakpoint: 0
+  decorators:
+  - {fileID: -1563304408035170500}
+  services: []
+  children:
+  - {fileID: 1100835954761777732}
+  - {fileID: -7236424964413298677}
+  - {fileID: 4970373513045918937}
+  - {fileID: -2953651861562499695}
+  - {fileID: 7946560168988781491}
+  - {fileID: 2797026945235055252}
+--- !u!114 &-2953651861562499695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85263108a8bd9e0469feac3580755ae9, type: 3}
+  m_Name: WaitTask
+  m_EditorClassIdentifier: 
+  nodeName: Wait
+  nodePosition: {x: 2805, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  waitTime: {fileID: -8908793302066241534}
+  randomDeviation: {fileID: 0}
+--- !u!114 &-2142759104276085380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,13 +271,109 @@ MonoBehaviour:
   m_Name: SelectorNode
   m_EditorClassIdentifier: 
   nodeName: Selector
-  nodePosition: {x: 899.5, y: 107}
+  nodePosition: {x: 1584, y: 107}
   breakpoint: 0
   decorators: []
   services: []
   children:
-  - {fileID: 1894959691716364673}
-  - {fileID: 5494722268965958311}
+  - {fileID: 7665839499256808137}
+  - {fileID: -8392009507486809131}
+  - {fileID: -3498732437429034826}
+--- !u!114 &-1563304408035170500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 0
+  observerAbort: 3
+  key: {fileID: -6574712317111777222, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  keyQuery:
+    rid: 7943093164421152770
+  references:
+    version: 2
+    RefIds:
+    - rid: 7943093164421152770
+      type: {class: BoolQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 1
+--- !u!114 &-1409543532593717837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1a54253e39b814686fd93d56d96cdd, type: 3}
+  m_Name: SetKeyTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Key
+  nodePosition: {x: 0, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  blackboardKey: {fileID: -6574712317111777222, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  keyReceiver:
+    rid: 7943093164421152773
+  references:
+    version: 2
+    RefIds:
+    - rid: 7943093164421152773
+      type: {class: BoolReceiver, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        value: 0
+--- !u!114 &-1361943675353729483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ad221f3134eb84e95a4ab308a1150c, type: 3}
+  m_Name: SetSpeedTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Speed
+  nodePosition: {x: 389, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  speed: 3
+--- !u!114 &-963983210790415541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
+  m_Name: SetBoolTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Bool
+  nodePosition: {x: 898, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: chase
+  value: {fileID: -8235073493720287396}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,71 +392,37 @@ MonoBehaviour:
   rootNode: {fileID: 7962532798894178683}
   nodes:
   - {fileID: 7962532798894178683}
-  - {fileID: 5785416220679758736}
-  - {fileID: 2215768102739083939}
-  - {fileID: -793996103359818000}
-  - {fileID: 1894959691716364673}
-  - {fileID: 748759249415914601}
-  - {fileID: -7681932554630977187}
-  - {fileID: -5131259039692960623}
-  - {fileID: 7321908087703192768}
-  - {fileID: 3821002372357246117}
-  - {fileID: 5494722268965958311}
-  - {fileID: -7462292033002702207}
-  - {fileID: -3060151534238776273}
-  - {fileID: -4249756639693297072}
-  - {fileID: -7548170887518680790}
-  - {fileID: -4229241581513048921}
-  - {fileID: -3602626468935722189}
+  - {fileID: 1383110067443955566}
+  - {fileID: -1563304408035170500}
+  - {fileID: -5847262698925913795}
+  - {fileID: 450100137370969589}
+  - {fileID: -2142759104276085380}
+  - {fileID: 7665839499256808137}
+  - {fileID: -1409543532593717837}
+  - {fileID: 2064870608215906654}
+  - {fileID: -1361943675353729483}
+  - {fileID: -8872070914703944266}
+  - {fileID: 1193311751285855987}
+  - {fileID: -3498732437429034826}
+  - {fileID: -7236424964413298677}
+  - {fileID: 4970373513045918937}
+  - {fileID: -2953651861562499695}
+  - {fileID: 7946560168988781491}
+  - {fileID: 2797026945235055252}
+  - {fileID: -8392009507486809131}
+  - {fileID: -7521412357717967978}
+  - {fileID: 9165872448505217658}
+  - {fileID: 2888635873449358795}
+  - {fileID: 4426975175120438903}
+  - {fileID: -7581946125129140720}
+  - {fileID: 3165009905818972248}
+  - {fileID: -963983210790415541}
+  - {fileID: 1100835954761777732}
+  - {fileID: 6211520450042856850}
   groups: []
   notes: []
   selectedNode: {fileID: 0}
---- !u!114 &748759249415914601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
-  m_Name: SetBoolTask
-  m_EditorClassIdentifier: 
-  nodeName: Set Bool
-  nodePosition: {x: 347, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  parameterName: chase
-  value: {fileID: 7662515812345392282}
---- !u!114 &1894959691716364673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20ecbd642284b504ca1789fb521bbe87, type: 3}
-  m_Name: SequencerNode
-  m_EditorClassIdentifier: 
-  nodeName: PatrolAroundWaypoints
-  nodePosition: {x: 358.5, y: 225}
-  breakpoint: 0
-  decorators:
-  - {fileID: 5785416220679758736}
-  services: []
-  children:
-  - {fileID: -7681932554630977187}
-  - {fileID: -5131259039692960623}
-  - {fileID: 748759249415914601}
-  - {fileID: 7321908087703192768}
-  - {fileID: -3602626468935722189}
-  - {fileID: 3821002372357246117}
---- !u!114 &2215768102739083939
+--- !u!114 &450100137370969589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -301,130 +440,17 @@ MonoBehaviour:
   child: {fileID: 0}
   notifyObserver: 0
   observerAbort: 3
-  key: {fileID: 8250176460681486468, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  key: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
   keyQuery:
-    rid: 7943093041742479361
+    rid: 6661033399468425217
   references:
     version: 2
     RefIds:
-    - rid: 7943093041742479361
+    - rid: 6661033399468425217
       type: {class: TransformQuery, ns: RenownedGames.AITree, asm: AITree}
       data:
         comparer: 0
---- !u!114 &3821002372357246117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85263108a8bd9e0469feac3580755ae9, type: 3}
-  m_Name: WaitTask
-  m_EditorClassIdentifier: 
-  nodeName: Wait
-  nodePosition: {x: 868, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  waitTime: {fileID: 4725646222599021901}
-  randomDeviation: {fileID: 0}
---- !u!114 &4725646222599021901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd402de4eb7669046830c326d89b03b4, type: 3}
-  m_Name: waitTime
-  m_EditorClassIdentifier: 
-  category: 
-  description: 
-  sync: 0
-  isLocal: 1
-  value: 2
---- !u!114 &5494722268965958311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20ecbd642284b504ca1789fb521bbe87, type: 3}
-  m_Name: SequencerNode
-  m_EditorClassIdentifier: 
-  nodeName: Chase
-  nodePosition: {x: 1347, y: 225}
-  breakpoint: 0
-  decorators:
-  - {fileID: 2215768102739083939}
-  services: []
-  children:
-  - {fileID: -7462292033002702207}
-  - {fileID: -3060151534238776273}
-  - {fileID: -4249756639693297072}
-  - {fileID: -7548170887518680790}
---- !u!114 &5785416220679758736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
-  m_Name: BlackboardConditionDecorator
-  m_EditorClassIdentifier: 
-  nodeName: Blackboard Condition
-  nodePosition: {x: 0, y: 0}
-  breakpoint: 0
-  child: {fileID: 0}
-  notifyObserver: 0
-  observerAbort: 3
-  key: {fileID: 8250176460681486468, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
-  keyQuery:
-    rid: 7943093041742479362
-  references:
-    version: 2
-    RefIds:
-    - rid: 7943093041742479362
-      type: {class: TransformQuery, ns: RenownedGames.AITree, asm: AITree}
-      data:
-        comparer: 1
---- !u!114 &7321908087703192768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbae3368fdc71954abc4bb1cdb37ba8b, type: 3}
-  m_Name: MoveToTask
-  m_EditorClassIdentifier: 
-  nodeName: Move To
-  nodePosition: {x: 525, y: 406}
-  breakpoint: 0
-  decorators: []
-  services: []
-  ignoreAbortSelf: 0
-  key: {fileID: -1490207773652539145, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
-  acceptableRadius: 1
-  includeAgentRadius: 1
-  includeGoalRadius: 1
-  allowPartialPath: 1
-  trackMovingGoal: 1
-  goLastPointOnLost: 1
---- !u!114 &7662515812345392282
+--- !u!114 &974000419892372643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,7 +467,7 @@ MonoBehaviour:
   sync: 0
   isLocal: 1
   value: 1
---- !u!114 &7962532798894178683
+--- !u!114 &1100835954761777732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,14 +476,265 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df9bdc4129dd9f64c97141f9b4995906, type: 3}
-  m_Name: RootNode
+  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
+  m_Name: SetBoolTask
   m_EditorClassIdentifier: 
-  nodeName: 
-  nodePosition: {x: 914, y: 0}
+  nodeName: Set Bool
+  nodePosition: {x: 2308, y: 406}
   breakpoint: 0
-  child: {fileID: -793996103359818000}
---- !u!114 &9170111273439981633
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: chase
+  value: {fileID: 7865709973544293521}
+--- !u!114 &1193311751285855987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85263108a8bd9e0469feac3580755ae9, type: 3}
+  m_Name: WaitTask
+  m_EditorClassIdentifier: 
+  nodeName: Wait
+  nodePosition: {x: 1079, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  waitTime: {fileID: -3895755104798679316}
+  randomDeviation: {fileID: 0}
+--- !u!114 &1383110067443955566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 0
+  observerAbort: 3
+  key: {fileID: 8250176460681486468, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  keyQuery:
+    rid: 7943093164421152772
+  references:
+    version: 2
+    RefIds:
+    - rid: 7943093164421152772
+      type: {class: TransformQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 1
+--- !u!114 &2064870608215906654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
+  m_Name: SetBoolTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Bool
+  nodePosition: {x: 211, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: chase
+  value: {fileID: 974000419892372643}
+--- !u!114 &2797026945235055252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1a54253e39b814686fd93d56d96cdd, type: 3}
+  m_Name: SetKeyTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Key
+  nodePosition: {x: 3116, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  blackboardKey: {fileID: -6574712317111777222, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  keyReceiver:
+    rid: 7943093164421152771
+  references:
+    version: 2
+    RefIds:
+    - rid: 7943093164421152771
+      type: {class: BoolReceiver, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        value: 0
+--- !u!114 &2888635873449358795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
+  m_Name: SetBoolTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Bool
+  nodePosition: {x: 1741, y: 469}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: chase
+  value: {fileID: 7409931088470419141}
+--- !u!114 &3165009905818972248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a90f41095c9b374291fafa42a2420ac, type: 3}
+  m_Name: SetBoolTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Bool
+  nodePosition: {x: 2127, y: 469}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: chase
+  value: {fileID: -5727210967339031114}
+--- !u!114 &4426975175120438903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead7aaec602fb464f933dbda3d0f3f52, type: 3}
+  m_Name: MoveToWithKey
+  m_EditorClassIdentifier: 
+  nodeName: MoveToWithKey
+  nodePosition: {x: 1516.2609, y: 469}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  key: {fileID: 8340386671583251123, guid: ba196c1993c719149b41b6aa6d5eac22, type: 2}
+  acceptableRadius: {fileID: -7427224895664100267, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  sensivity: 0.5
+  includeAgentRadius: 1
+  includeGoalRadius: 1
+  allowPartialPath: 0
+  trackMovingGoal: 1
+  goLastPointOnLost: 1
+--- !u!114 &4970373513045918937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5698ffb388202734da990ea472691f90, type: 3}
+  m_Name: SetTriggerTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Trigger
+  nodePosition: {x: 2624, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: attack
+--- !u!114 &6211520450042856850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d01cc8ae7efda74698ab74727d7a495, type: 3}
+  m_Name: WaypointKeyTask
+  m_EditorClassIdentifier: 
+  nodeName: WaypointKeyTask
+  nodePosition: {x: 534.05005, y: 412.80002}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  key: {fileID: -1490207773652539145, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  wayName: {fileID: 4716103842500510827, guid: ace1b0ccf2180d541a3f10f37b1b1fcc, type: 2}
+  selectionType: 0
+  startNearestPoint: 0
+  lastIndex: {fileID: 0}
+--- !u!114 &7409931088470419141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b97a1cab3e25e246a1321c1c6515ce3, type: 3}
+  m_Name: value
+  m_EditorClassIdentifier: 
+  category: 
+  description: 
+  sync: 0
+  isLocal: 1
+  value: 1
+--- !u!114 &7665839499256808137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ecbd642284b504ca1789fb521bbe87, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  nodeName: RunningAroundWaypoints
+  nodePosition: {x: 460, y: 225}
+  breakpoint: 0
+  decorators:
+  - {fileID: 1383110067443955566}
+  services: []
+  children:
+  - {fileID: -1409543532593717837}
+  - {fileID: 2064870608215906654}
+  - {fileID: -1361943675353729483}
+  - {fileID: 6211520450042856850}
+  - {fileID: -8872070914703944266}
+  - {fileID: -963983210790415541}
+  - {fileID: 1193311751285855987}
+--- !u!114 &7865709973544293521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,3 +751,57 @@ MonoBehaviour:
   sync: 0
   isLocal: 1
   value: 0
+--- !u!114 &7946560168988781491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5698ffb388202734da990ea472691f90, type: 3}
+  m_Name: SetTriggerTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Trigger
+  nodePosition: {x: 2935, y: 406}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  parameterName: scream
+--- !u!114 &7962532798894178683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9bdc4129dd9f64c97141f9b4995906, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  nodeName: 
+  nodePosition: {x: 1598.5, y: 0}
+  breakpoint: 0
+  child: {fileID: -2142759104276085380}
+--- !u!114 &9165872448505217658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ad221f3134eb84e95a4ab308a1150c, type: 3}
+  m_Name: SetSpeedTask
+  m_EditorClassIdentifier: 
+  nodeName: Set Speed
+  nodePosition: {x: 1344, y: 469}
+  breakpoint: 0
+  decorators: []
+  services: []
+  ignoreAbortSelf: 0
+  speed: 6

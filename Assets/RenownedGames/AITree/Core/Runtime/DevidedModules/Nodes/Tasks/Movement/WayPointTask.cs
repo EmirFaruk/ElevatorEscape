@@ -29,7 +29,7 @@ namespace RenownedGames.AITree.Nodes
 
         [Title("Node")]
         [SerializeField]
-        private StringKey wayName;
+        private string wayName;
 
         [SerializeField]
         private SelectionType selectionType;
@@ -47,7 +47,7 @@ namespace RenownedGames.AITree.Nodes
         protected override void OnStart()
         {
             base.OnStart();
-            way = AIWay.FindWay(wayName.GetValue());
+            way = AIWay.FindWay(wayName);
             if (startNearestPoint && way != null)
             {
                 currentIndex = way.GerNearestPointIndex(GetOwner().transform.position);

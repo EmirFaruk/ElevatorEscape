@@ -4,6 +4,7 @@ using UnityEngine;
 using RenownedGames.AITree;
 using RenownedGames.AITree.PerceptionSystem;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class Zombie : MonoBehaviour
 
     private RigBuilder rigBuilder;
 
+    [SerializeField]
+    private Collider hitCollider;
+
 
     private void Awake()
     {
@@ -42,6 +46,10 @@ public class Zombie : MonoBehaviour
             stringKey.SetValue(wayName);
         }
 
+        if(blackboard.TryFindKey("stopDistance", out FloatKey floatKey))
+        {
+            floatKey.SetValue(2f);
+        }    
     }
 
     private void PerceptionBlackboard_OnSourceLoss(AIPerceptionSource obj)
@@ -51,7 +59,7 @@ public class Zombie : MonoBehaviour
 
     private void PerceptionBlackboard_OnSourceDetect(AIPerceptionSource obj)
     {
-        rigBuilder.layers[0].rig.weight = 1;    
+        rigBuilder.layers[0].rig.weight = 1;
     }
 
     public void PlayBreathingSFX()
@@ -59,9 +67,15 @@ public class Zombie : MonoBehaviour
         //  audioSource.PlayOneShot(breathingSounds[0]);    
     }
 
-    public void PlayAttackSFX()
+    public void OnAttackStart()
     {
         audioSource.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Count)]);
+        hitCollider.enabled = true;
+    }
+
+    public void OnAttackEnd()
+    {
+        hitCollider.enabled = false;
     }
 
 
