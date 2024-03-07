@@ -4,4 +4,10 @@
 public class SoundData : ScriptableObject
 {
     public AudioClip[] Musics;
+
+    public enum SoundEnum
+    {
+        Door,
+
+    }
 }

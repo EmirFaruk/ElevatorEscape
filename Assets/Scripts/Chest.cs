@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Chest : Interactable
 {
+    #region VARIABLES
     [SerializeField] private KeyData.KeyType key;
     private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
     private bool isOpen;
     private Transform handle;
     private float angle = 0;
     private FirstPersonController player;
+    private Item item;
+    #endregion
 
     #region Overriden Methods
     public override void OnFocus()
@@ -29,8 +32,9 @@ public class Chest : Interactable
 
     public override void OnInteract()
     {
-        if (isOpen) Close();
-        else if (hasKey) Open();
+        //if (isOpen) Close();
+        /*else*/
+        if (hasKey) Open();
     }
 
     public override void OnLoseFocus()
@@ -49,6 +53,9 @@ public class Chest : Interactable
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         base.OnEnable();
+
+        item = GetComponentInChildren<Item>();
+        item.GetComponent<Collider>().enabled = false;
     }
 
     async void Open()
@@ -56,12 +63,15 @@ public class Chest : Interactable
         while (angle != -120)
         {
             angle = Mathf.Lerp(angle, -120, 0.05f);
-            handle.localEulerAngles = new Vector3(0, 0, angle);//handle.localEulerAngles += Vector3.down;
+            handle.localEulerAngles = new Vector3(angle, 0, 0);//handle.localEulerAngles += Vector3.down;
 
             if (angle < -119f)
             {
                 angle = -120;
                 isOpen = true;
+                item.GetComponent<Collider>().enabled = true;
+                GetComponent<Collider>().enabled = false;
+                HUD.Instance.HidePopUp();
             }
 
             await Task.Delay(10, destroyCancellationToken);
