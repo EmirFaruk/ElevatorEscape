@@ -50,7 +50,7 @@ public class LevelCountdownController : MonoBehaviour
     bool inBase = true;
     async void ResetCountdow(int stop)
     {
-        if (stop != 1)
+        if (stop != 0)
         {
             inBase = false;
             if (timeRemaining == timeRemainingDefault) CountdownAsync();
