@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8389018986957537227}
   - component: {fileID: 1182822340142375867}
   m_Layer: 7
-  m_Name: Button2
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 2
+  index: 1
 --- !u!1 &407063290798878942
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 3651783734766853638}
   - component: {fileID: 293522785126690266}
   m_Layer: 7
-  m_Name: Button3
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 3
+  index: 2
 --- !u!1 &1567361209999632682
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 2776096850132370404}
   - component: {fileID: 1130106503264011821}
   m_Layer: 7
-  m_Name: Button4
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
+  index: 3
 --- !u!1 &3541282803127672995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 1173042203940555032}
   - component: {fileID: 5672431810442712206}
   m_Layer: 7
-  m_Name: Button1
+  m_Name: Button0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  index: 0
 --- !u!1 &4628183750665419494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,7 +1948,7 @@ GameObject:
   - component: {fileID: 4373233275354371550}
   - component: {fileID: 3614793933305309580}
   m_Layer: 7
-  m_Name: Button8
+  m_Name: Button7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
+  index: 7
 --- !u!1 &7915952476124728522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2117,7 @@ GameObject:
   - component: {fileID: 416139694309716404}
   - component: {fileID: 459158918947830441}
   m_Layer: 7
-  m_Name: Button7
+  m_Name: Button6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
+  index: 6
 --- !u!1 &8163319391209344127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,7 +2286,7 @@ GameObject:
   - component: {fileID: 4425072495730957969}
   - component: {fileID: 6426262843610804618}
   m_Layer: 7
-  m_Name: Button6
+  m_Name: Button5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
+  index: 5
 --- !u!1 &8618702110249818007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2455,7 @@ GameObject:
   - component: {fileID: 4349804125379321981}
   - component: {fileID: 1329118499431927116}
   m_Layer: 7
-  m_Name: Button5
+  m_Name: Button4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2608,4 +2608,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6642a081d14eabc4fb61f2df2170e58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
+  index: 4

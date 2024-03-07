@@ -66,6 +66,7 @@ public class Elevator : MonoBehaviour
 
     #endregion
 
+    bool buttonPressed = false;
     public async void MoveTo(int stopIndex, bool isCallButton)
     {
         if (stopIndex < 0 || stopIndex >= stops.Length)
@@ -74,8 +75,8 @@ public class Elevator : MonoBehaviour
             return;
         }
 
-        //Hareket halindeyse
-        if (!hasReachedStop)
+        //Hareket halindeyse ve kapilar acilmamissa
+        if (buttonPressed)
         {
             PlayButtonClickSound(hasReachedStop);
             return;
@@ -89,6 +90,7 @@ public class Elevator : MonoBehaviour
         if (hasReachedStop = transform.position.y == targetPosition.y)
         {
             PlayButtonClickSound(false);
+            buttonPressed = false;
             return;
         }
 
@@ -96,6 +98,7 @@ public class Elevator : MonoBehaviour
 
         //Buton sesi oynat
         PlayButtonClickSound(true);
+        buttonPressed = true;
 
         //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
         if (!isCallButton)
@@ -140,7 +143,7 @@ public class Elevator : MonoBehaviour
                 await Task.Delay(1000, destroyCancellationToken);
 
                 doorIsOpen = true;
-
+                buttonPressed = false;
                 OnReachedStop?.Invoke(stopIndex);
             }
 

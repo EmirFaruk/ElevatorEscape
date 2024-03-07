@@ -31,7 +31,6 @@ public class LevelCountdownController : MonoBehaviour
 
     async void CountdownAsync()
     {
-        bool condition = !inBase && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested;
         for (; !inBase && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested; timeRemaining--)
         {
             countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
@@ -60,10 +59,18 @@ public class LevelCountdownController : MonoBehaviour
         {
             inBase = true;
             countdownText.color = Color.green;
-            await Task.Delay(1000);
+
+            while (timeRemaining != timeRemainingDefault)
+            {
+                timeRemaining++;
+                countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
+                await Task.Delay(100);
+            }
+
+            await Task.Delay(500);
             countdownText.color = Color.white;
             timeRemaining = timeRemainingDefault;
-            countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
+            //countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");*/
         }
     }
 }
