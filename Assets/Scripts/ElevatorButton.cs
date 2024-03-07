@@ -10,6 +10,8 @@ public class ElevatorButton : Interactable
 
     private bool isPressed = false;
 
+    private bool isCallButton;
+
     #endregion
 
     #region INTERACTABLE OVERRIDE METHODS
@@ -20,7 +22,7 @@ public class ElevatorButton : Interactable
 
     public override void OnInteract()
     {
-        elevator.MoveTo((int)index);
+        elevator.MoveTo((int)index, isCallButton);
     }
 
     public override void OnLoseFocus()
@@ -31,7 +33,8 @@ public class ElevatorButton : Interactable
 
     private void OnEnable()
     {
-        elevator = GetComponentInParent<Elevator>();
+        isCallButton = GetComponentInParent<Elevator>() == null;
+        elevator = GetComponentInParent<Elevator>()?? GameObject.FindWithTag("Elevator").GetComponent<Elevator>();
         Elevator.OnReachedStop += SetIsNotPressed;
         Elevator.OnReached += SetAsPressed;
 

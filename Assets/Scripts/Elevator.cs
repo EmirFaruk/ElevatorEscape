@@ -64,7 +64,7 @@ public class Elevator : MonoBehaviour
 
     #endregion
 
-    public async void MoveTo(int stopIndex)
+    public async void MoveTo(int stopIndex, bool isCallButton)
     {
         if (stopIndex < 0 || stopIndex >= stops.Length)
         {
@@ -96,8 +96,11 @@ public class Elevator : MonoBehaviour
         PlayButtonClickSound(true);
 
         //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
-        player.transform.parent = transform;
-        player.GetComponent<CharacterController>().enabled = false;
+        if (!isCallButton)
+        {
+            player.transform.parent = transform;
+            player.GetComponent<CharacterController>().enabled = false;
+        }
 
         //Biraz bekle
         await Task.Delay(700, destroyCancellationToken);
@@ -121,8 +124,11 @@ public class Elevator : MonoBehaviour
             if (hasReachedStop)
             {
                 //Player'i serbest birak (player kodunun icinde olacak burasi)
-                player.transform.parent = null;
-                player.GetComponent<CharacterController>().enabled = true;
+                if (!isCallButton)
+                {
+                    player.transform.parent = null;
+                    player.GetComponent<CharacterController>().enabled = true;
+                }                
 
                 audioSource.Stop();
 
