@@ -43,6 +43,7 @@ public class ExitDoor : Interactable
 
             //Itemi listeden kaldir
             items.Remove(items.First());
+            items2.Remove(items2.First());
 
             //Item sayisini azalt
             HUD.Instance.SetItemAmount(-1);
@@ -86,7 +87,7 @@ public class ExitDoor : Interactable
             if (item.gameObject.activeInHierarchy)
             {
                 item.GetChild(0).gameObject.SetActive(false);
-                itemList.Add(item.GetChild(0));
+                itemList.Add(item.GetChild(0));                
             }
         }
     }

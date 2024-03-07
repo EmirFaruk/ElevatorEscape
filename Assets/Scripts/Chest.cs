@@ -19,8 +19,10 @@ public class Chest : Interactable
     {
         if (player.CurrentKey) player.CurrentKey.CanDropping = false;
 
+        if (angle != handle.localEulerAngles.x) { HUD.Instance.HidePopUp(); return; }
+
         if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2,
-            "E to open ",
+            "Open ",
             key.ToString(), " Chest",
             KeyData.KeyColors[key]);
 
@@ -35,6 +37,7 @@ public class Chest : Interactable
         //if (isOpen) Close();
         /*else*/
         if (hasKey) Open();
+        HUD.Instance.HidePopUp();
     }
 
     public override void OnLoseFocus()
@@ -49,7 +52,8 @@ public class Chest : Interactable
     public override void OnEnable()
     {
         handle = transform.GetChild(1);
-        handle.localEulerAngles = Vector3.zero;
+        angle = handle.localEulerAngles.x;
+
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         base.OnEnable();
