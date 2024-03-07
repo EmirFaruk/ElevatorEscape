@@ -8,7 +8,9 @@ public class Elevator : MonoBehaviour
     #region FIELDS
     public static Action<int> OnReachedStop;
     public static Action<int> OnReached;
-    
+    public bool InBase => isBase;
+    private bool isBase = true;
+
     [SerializeField] private float speed = 3f;
 
     [Header("Stop")]
@@ -47,13 +49,13 @@ public class Elevator : MonoBehaviour
     #endregion
 
     #region UNITY EVENT FUNCTIONS
-    
+
     void Start()
     {
         // Set Stops with Stops Parent
         stops = new Transform[stopsParent.childCount];
         if (stopsParent != null)
-            for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);   
+            for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);
 
         audioSource = Camera.main.GetComponent<AudioSource>();
 
@@ -104,23 +106,23 @@ public class Elevator : MonoBehaviour
 
         //Biraz bekle
         await Task.Delay(700, destroyCancellationToken);
-        
+
         //Kapiyi kapat
         MoveDoor(true);
 
         //Kapanin kapanmasini bekle
         await Task.Delay(1700, destroyCancellationToken);
-        
+
         doorIsOpen = false;
-        
-        audioSource.PlayOneShot(movementSound);        
+
+        audioSource.PlayOneShot(movementSound);
 
         //Asansoru hareket ettir
         while (!destroyCancellationToken.IsCancellationRequested && !hasReachedStop)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             hasReachedStop = transform.position.y == targetPosition.y;
-     
+
             if (hasReachedStop)
             {
                 //Player'i serbest birak (player kodunun icinde olacak burasi)
@@ -128,12 +130,12 @@ public class Elevator : MonoBehaviour
                 {
                     player.transform.parent = null;
                     player.GetComponent<CharacterController>().enabled = true;
-                }                
+                }
 
                 audioSource.Stop();
 
                 //Kapiyi ac
-                MoveDoor(false);                
+                MoveDoor(false);
 
                 await Task.Delay(1000, destroyCancellationToken);
 
@@ -152,13 +154,13 @@ public class Elevator : MonoBehaviour
     }
 
     async void MoveDoor(bool isOpen)
-    {                        
+    {
         Vector3 targetPositionDoor1 = doors[0].position;
         Vector3 targetPostionDoor2 = doors[1].position;
         targetPositionDoor1.x += isOpen ? doorOffset : -doorOffset;
         targetPostionDoor2.x += isOpen ? -doorOffset : doorOffset;
         Vector3 direction = isOpen ? Vector3.right : Vector3.left;
-            
+
         audioSource.PlayOneShot(doorMovementSound);
 
 
@@ -166,7 +168,7 @@ public class Elevator : MonoBehaviour
         {
             doors[0].transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
             doors[1].transform.position += doorSpeed * -direction * Time.deltaTime;
-            
+
 
             await Task.Delay(10, destroyCancellationToken);
         }
