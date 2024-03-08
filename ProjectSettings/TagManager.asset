@@ -6,7 +6,6 @@ TagManager:
   tags:
   - CinemachineTarget
   - Elevator
-  - Death
   layers:
   - Default
   - TransparentFX

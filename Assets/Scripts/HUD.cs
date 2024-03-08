@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-    public static HUD Instance { get; private set; }
+    private static HUD instance;
+    public static HUD Instance => instance;
 
     #region Item
     [SerializeField] private TextMeshProUGUI itemAmountTmp;
@@ -36,16 +37,16 @@ public class HUD : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-
         Time.timeScale = 1;
+
+        instance = this;
+
+        /*if (instance != null && instance != this) Destroy(this);
+        else instance = this;*/
 
         popUp = Instantiate(popUp);
         popUp.gameObject.SetActive(false);
         tmp = popUp.GetComponentInChildren<TextMeshProUGUI>();
-
-        foreach (Transform child in transform)
-            if (child.CompareTag("Death")) deathPanel = child.gameObject;
     }
 
     private void Start()
@@ -55,8 +56,16 @@ public class HUD : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnDeath += () => { deathPanel.SetActive(true); Time.timeScale = 0; };
-        ExitDoor.OnWin += () => { winPanel.SetActive(true); Time.timeScale = 0; };
+        PlayerHealth.OnDeath += () => EndGame(false);
+        ExitDoor.OnWin += () => EndGame(true);
+    }
+
+    void EndGame(bool isWin)
+    {
+        if (isWin) winPanel.SetActive(true);
+        else deathPanel.SetActive(true);
+
+        Time.timeScale = 0;
     }
 
     private void Update()

@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
         HUD.Instance.ActivateTakeDamageEffect();
 
-        if (currentHealth == 0) OnDeath?.Invoke();
+        if (currentHealth == 0) OnDeath.Invoke();
 
         //  Helper.Camera.DOShakeRotation(.5f, 30, 5);                 
     }
@@ -65,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
 
         HUD.Instance.ActivateTakeDamageEffect();
 
-        if (currentHealth == 0) OnDeath?.Invoke();
+        if (currentHealth == 0) OnDeath.Invoke();
 
         //  Helper.Camera.DOShakeRotation(.5f, 30, 5);                 
     }
