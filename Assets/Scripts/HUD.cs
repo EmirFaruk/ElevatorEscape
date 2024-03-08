@@ -14,11 +14,17 @@ public class HUD : MonoBehaviour
     public void SetItemAmount(int data) { itemAmount += data; itemAmountTmp.SetText(itemAmount.ToString()); }
     #endregion
 
+    //Outline
     [SerializeField] private Shader outlineShader;
     public Shader OutlineShader => outlineShader;
 
+    //PopUp
     [SerializeField] private Canvas popUp;
     private TextMeshProUGUI tmp;
+
+    [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject fadePanel;
+    [SerializeField] private GameObject winPanel;
 
     #region SoundManager
 
@@ -32,9 +38,25 @@ public class HUD : MonoBehaviour
     {
         if (Instance == null) Instance = this;
 
+        Time.timeScale = 1;
+
         popUp = Instantiate(popUp);
         popUp.gameObject.SetActive(false);
         tmp = popUp.GetComponentInChildren<TextMeshProUGUI>();
+
+        foreach (Transform child in transform)
+            if (child.CompareTag("Death")) deathPanel = child.gameObject;
+    }
+
+    private void Start()
+    {
+        fadePanel.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        PlayerHealth.OnDeath += () => { deathPanel.SetActive(true); Time.timeScale = 0; };
+        ExitDoor.OnWin += () => { winPanel.SetActive(true); Time.timeScale = 0; };
     }
 
     private void Update()

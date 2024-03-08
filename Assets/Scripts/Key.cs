@@ -36,6 +36,7 @@ public class KeyItem : Interactable
             player.HoldKey(this);
             isPickedUp = true;
             transform.GetChild(0).gameObject.layer = 8;//set model object's layer as HandCamera layer    
+            if (GetComponentInChildren<Light>()) GetComponentInChildren<Light>().enabled = false;
         }
         else
         {
@@ -94,7 +95,8 @@ public class KeyItem : Interactable
             {
                 if (player.CurrentKey) player.DropKey();
                 isPickedUp = false;
-                transform.GetChild(0).gameObject.layer = default;//set model object's layer as Default layer  
+                transform.GetChild(0).gameObject.layer = default;//set model object's layer as Default layer
+                if (GetComponentInChildren<Light>()) GetComponentInChildren<Light>().enabled = true;
             }
 
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);

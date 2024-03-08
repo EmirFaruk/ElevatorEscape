@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public static Action<float> OnTakeDamage;
     public static Action<float, Transform> OnTakeDamageIndicator;
     public static Action<float> OnDamage;
+    public static Action OnDeath;
     private DamageFeedbackTest damageFeedback;
 
     #endregion
@@ -46,21 +47,25 @@ public class PlayerHealth : MonoBehaviour
     #endregion
 
     #region METHODS
-        
+
     public void ApplyDamage(float damage)
     {
-        currentHealth = Math.Max(0, currentHealth - damage);        
+        currentHealth = Math.Max(0, currentHealth - damage);
 
         HUD.Instance.ActivateTakeDamageEffect();
+
+        if (currentHealth == 0) OnDeath?.Invoke();
 
         //  Helper.Camera.DOShakeRotation(.5f, 30, 5);                 
     }
 
     public void ApplyDamage(float damage, Transform enemy)
     {
-        currentHealth = Math.Max(0, currentHealth - damage);        
+        currentHealth = Math.Max(0, currentHealth - damage);
 
         HUD.Instance.ActivateTakeDamageEffect();
+
+        if (currentHealth == 0) OnDeath?.Invoke();
 
         //  Helper.Camera.DOShakeRotation(.5f, 30, 5);                 
     }

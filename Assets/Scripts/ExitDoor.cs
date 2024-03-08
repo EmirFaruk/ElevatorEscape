@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ public class ExitDoor : Interactable
     private readonly List<Transform> items = new();
     private readonly List<Transform> items2 = new();
     private Collider doorCollider => GetComponent<Collider>();
+    public static Action OnWin;
 
     private void Start()
     {
@@ -78,6 +80,9 @@ public class ExitDoor : Interactable
 
             await Task.Delay(10);
         }
+
+        await Task.Delay(1000);
+        OnWin?.Invoke();
     }
 
     void FindChild(Transform target, List<Transform> itemList)
@@ -87,7 +92,7 @@ public class ExitDoor : Interactable
             if (item.gameObject.activeInHierarchy)
             {
                 item.GetChild(0).gameObject.SetActive(false);
-                itemList.Add(item.GetChild(0));                
+                itemList.Add(item.GetChild(0));
             }
         }
     }
