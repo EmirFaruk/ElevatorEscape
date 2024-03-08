@@ -8,8 +8,6 @@ public class Elevator : MonoBehaviour
     #region FIELDS
     public static Action<int> OnReachedStop;
     public static Action<int> OnReached;
-    public bool InBase => isBase;
-    private bool isBase = true;
 
     [SerializeField] private float speed = 3f;
 
