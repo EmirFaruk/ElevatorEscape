@@ -9,6 +9,7 @@ public class LevelCountdownController : MonoBehaviour
     private int timeRemainingDefault = 0;
     public static Action OnLevelTimeEnd;
     [SerializeField] private TextMeshProUGUI countdownText;
+    private Color defaultColor;
 
     Elevator elevator;
 
@@ -19,6 +20,8 @@ public class LevelCountdownController : MonoBehaviour
 
         timeRemainingDefault = timeRemaining;
         countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
+
+        defaultColor = countdownText.color;
 
         Elevator.OnReachedStop += ResetCountdow;
 
@@ -68,7 +71,7 @@ public class LevelCountdownController : MonoBehaviour
             }
 
             await Task.Delay(500);
-            countdownText.color = Color.white;
+            countdownText.color = defaultColor;
             timeRemaining = timeRemainingDefault;
             //countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");*/
         }
