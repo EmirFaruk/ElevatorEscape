@@ -76,7 +76,7 @@ public class Elevator : MonoBehaviour
         //Hareket halindeyse ve kapilar acilmamissa
         if (buttonPressed)
         {
-            PlayButtonClickSound(hasReachedStop);
+            PlayButtonClickSound(false);
             return;
         }
 
