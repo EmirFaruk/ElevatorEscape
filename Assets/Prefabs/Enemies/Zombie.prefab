@@ -500,7 +500,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a17dc3e408bd20244aedb5f4d18fa0e7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -548,10 +548,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 140
   DopplerLevel: 0.69
-  MinDistance: 0.69
-  MaxDistance: 500
+  MinDistance: 0.09497881
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -652,14 +652,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breathingSounds:
-  - {fileID: 8300000, guid: f697e36e964fe8f4aa431237d917acd2, type: 3}
+  - {fileID: 8300000, guid: bf3911456827a9f4dbe09734e0c242f4, type: 3}
   attackSounds:
   - {fileID: 8300000, guid: 8fd82d071375257408f947f850bc084b, type: 3}
   - {fileID: 8300000, guid: 8696df0a3c475704bb0f558208f16670, type: 3}
   - {fileID: 8300000, guid: 433082219ff3c7044a5aa9cf1c7806cb, type: 3}
   - {fileID: 8300000, guid: 1dc8021d217401a49b23674fbd0c608f, type: 3}
-  wayName: Way
+  screamSounds:
+  - {fileID: 8300000, guid: 7b6564b285c67d642a3cb21210369f01, type: 3}
+  - {fileID: 8300000, guid: 22384f5b905f5214793788000ecb667c, type: 3}
+  - {fileID: 8300000, guid: 30bb5bbb405d8d94f9c4a7e408841339, type: 3}
+  - {fileID: 8300000, guid: 185f729e78b67164da537021d49780ec, type: 3}
+  - {fileID: 8300000, guid: 17ef735660cf75f4fa75eba04c560b0d, type: 3}
+  - {fileID: 8300000, guid: 60035ccd335d529459cdb37c7b72f7ee, type: 3}
+  idleSounds: []
+  wayName: Floor2Way
   hitCollider: {fileID: 452836636025044169}
+  stopDistance: 2
 --- !u!114 &7757391021474959171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,8 +692,8 @@ MonoBehaviour:
       type: {class: AIPerceptionSightConfig, ns: RenownedGames.AITree.PerceptionSystem, asm: AITree.PerceptionSystem}
       data:
         heightOffset: 1.635
-        fov: 180
-        range: {x: 5, y: 15}
+        fov: 60
+        range: {x: 1.3, y: 7.23}
         maxQuery: 10
         cullingLayer:
           serializedVersion: 2

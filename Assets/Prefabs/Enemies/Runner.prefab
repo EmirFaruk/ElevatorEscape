@@ -2010,6 +2010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2183259717416534337}
   - component: {fileID: 4837354767594976583}
+  - component: {fileID: 8578357408933915765}
   m_Layer: 0
   m_Name: HitCollider
   m_TagString: Untagged
@@ -2053,6 +2054,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.76432836, y: 0.19475728, z: 0.079353616}
   m_Center: {x: 0.11783257, y: 0.012201988, z: -0.01}
+--- !u!114 &8578357408933915765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142167495760105101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078c47df35c664147beeefe31978537a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8189003429350298796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581266756febbf447a9cc1da85c40584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedBehaviourTree: {fileID: 11400000, guid: d5fea705b416c2b45bd87222001e44bb, type: 2}
+  sharedBehaviourTree: {fileID: 11400000, guid: 5874c3a150826bc48a2ab4faacdcb290, type: 2}
 --- !u!114 &662396173988387228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2628,5 +2641,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8696df0a3c475704bb0f558208f16670, type: 3}
   - {fileID: 8300000, guid: 433082219ff3c7044a5aa9cf1c7806cb, type: 3}
   - {fileID: 8300000, guid: 1dc8021d217401a49b23674fbd0c608f, type: 3}
+  screamSounds: []
+  idleSounds: []
   wayName: Way
   hitCollider: {fileID: 4837354767594976583}
+  stopDistance: 3

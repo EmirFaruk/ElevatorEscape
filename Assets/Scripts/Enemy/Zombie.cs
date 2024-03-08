@@ -19,6 +19,12 @@ public class Zombie : MonoBehaviour
     private List<AudioClip> attackSounds;
 
     [SerializeField]
+    private List<AudioClip> screamSounds;
+
+    [SerializeField]
+    private List<AudioClip> idleSounds;
+
+    [SerializeField]
     private string wayName;
 
     private AudioSource audioSource;
@@ -27,6 +33,9 @@ public class Zombie : MonoBehaviour
 
     [SerializeField]
     private Collider hitCollider;
+
+    [SerializeField]
+    private float stopDistance;
 
 
     private void Awake()
@@ -46,10 +55,11 @@ public class Zombie : MonoBehaviour
             stringKey.SetValue(wayName);
         }
 
-        if(blackboard.TryFindKey("stopDistance", out FloatKey floatKey))
+        if (blackboard.TryFindKey("stopDistance", out FloatKey floatKey))
         {
-            floatKey.SetValue(2f);
-        }    
+            floatKey.SetValue(stopDistance);
+        }
+
     }
 
     private void PerceptionBlackboard_OnSourceLoss(AIPerceptionSource obj)
@@ -62,10 +72,6 @@ public class Zombie : MonoBehaviour
         rigBuilder.layers[0].rig.weight = 1;
     }
 
-    public void PlayBreathingSFX()
-    {
-        //  audioSource.PlayOneShot(breathingSounds[0]);    
-    }
 
     public void OnAttackStart()
     {
@@ -78,5 +84,9 @@ public class Zombie : MonoBehaviour
         hitCollider.enabled = false;
     }
 
+    public void OnScreamStart()
+    {
+        audioSource.PlayOneShot(screamSounds[Random.Range(0, screamSounds.Count)]);
+    }
 
 }

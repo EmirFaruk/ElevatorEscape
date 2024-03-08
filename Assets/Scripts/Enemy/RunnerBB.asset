@@ -17,7 +17,7 @@ MonoBehaviour:
   sync: 0
   isLocal: 0
   value: 0
---- !u!114 &-6574712317111777222
+--- !u!114 &-3600353164499359228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b97a1cab3e25e246a1321c1c6515ce3, type: 3}
-  m_Name: canAttack
+  m_Name: alert
   m_EditorClassIdentifier: 
   category: 
   description: 
@@ -85,8 +85,8 @@ MonoBehaviour:
   - {fileID: 8250176460681486468}
   - {fileID: 4716103842500510827}
   - {fileID: -1490207773652539145}
-  - {fileID: -6574712317111777222}
   - {fileID: -7427224895664100267}
+  - {fileID: -3600353164499359228}
   parent: {fileID: 0}
 --- !u!114 &4716103842500510827
 MonoBehaviour:
