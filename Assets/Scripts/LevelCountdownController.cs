@@ -9,6 +9,8 @@ public class LevelCountdownController : MonoBehaviour
     [SerializeField] private int timeRemaining = 10;
     private int timeRemainingDefault = 0;
     public static Action OnLevelTimeEnd;
+    public static Action OnLevelTimeReloadStart;
+    public static Action OnLevelTimeReloadEnd;
 
     [SerializeField] private TextMeshProUGUI countdownText;
 
@@ -49,8 +51,10 @@ public class LevelCountdownController : MonoBehaviour
 
         if (!inBase)
         {
+            countdownText.fontSize = 42;
             countdownText.text = "Time End!";
             OnLevelTimeEnd?.Invoke();
+            Restart();
         }
     }
 
@@ -66,17 +70,21 @@ public class LevelCountdownController : MonoBehaviour
         {
             inBase = true;
             countdownText.color = Color.green;
+            OnLevelTimeReloadStart.Invoke();
+            int speed = 200;
 
             while (timeRemaining != timeRemainingDefault)
             {
                 timeRemaining++;
                 countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
-                await Task.Delay(100);
+                await Task.Delay(Math.Max(1, speed -= 5));
+                print("r speed : " + speed);
             }
 
             await Task.Delay(500);
             countdownText.color = defaultColor;
             timeRemaining = timeRemainingDefault;
+            OnLevelTimeReloadEnd.Invoke();
             //countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");*/
         }
     }
@@ -91,7 +99,7 @@ public class LevelCountdownController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 isRestart = true;
             }
-            await Task.Delay(10);
+            await Task.Delay(5);
         }
         isRestart = true;
     }

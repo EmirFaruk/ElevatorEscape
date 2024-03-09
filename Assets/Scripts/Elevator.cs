@@ -38,6 +38,10 @@ public class Elevator : MonoBehaviour
     [SerializeField] private Color pressedColor;
 
     private FirstPersonController player;
+
+    bool buttonPressed = false;
+
+    private bool timeReported = false;
     #endregion
 
     #region PROPERTIES
@@ -62,9 +66,20 @@ public class Elevator : MonoBehaviour
         MoveDoor(false);
     }
 
+    private void OnEnable()
+    {
+        LevelCountdownController.OnLevelTimeReloadStart += () => timeReported = true;
+        LevelCountdownController.OnLevelTimeReloadEnd += () => timeReported = false;
+    }
+
+    private void OnDisable()
+    {
+            
+    }
+
     #endregion
 
-    bool buttonPressed = false;
+
     public async void MoveTo(int stopIndex, bool isCallButton)
     {
         if (stopIndex < 0 || stopIndex >= stops.Length)
@@ -73,8 +88,8 @@ public class Elevator : MonoBehaviour
             return;
         }
 
-        //Hareket halindeyse ve kapilar acilmamissa
-        if (buttonPressed)
+        //Hareket halindeyse ve kapilar acilmamissa ve zaman yeniden doluyorsa
+        if (buttonPressed || timeReported)
         {
             PlayButtonClickSound(false);
             return;
@@ -112,7 +127,7 @@ public class Elevator : MonoBehaviour
         MoveDoor(true);
 
         //Kapanin kapanmasini bekle
-        await Task.Delay(1700, destroyCancellationToken);
+        await Task.Delay(1700);
 
         doorIsOpen = false;
 

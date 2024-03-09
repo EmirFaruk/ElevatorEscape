@@ -56,6 +56,7 @@ public class HUD : MonoBehaviour
 
     private void OnEnable()
     {
+        LevelCountdownController.OnLevelTimeEnd += ()=> EndGame(false);
         PlayerHealth.OnDeath += () => EndGame(false);
         ExitDoor.OnWin += () => EndGame(true);
     }

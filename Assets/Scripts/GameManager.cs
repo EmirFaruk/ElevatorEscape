@@ -16,11 +16,6 @@ public class GameManager : MonoBehaviour
     private void OnLevelTimeEnd()
     {
         print("Level Time Ended");
-
-#if UNITY_EDITOR
-        EditorApplication.isPaused = true;
-#else
         Time.timeScale = 0.0f;
-#endif
     }
 }
