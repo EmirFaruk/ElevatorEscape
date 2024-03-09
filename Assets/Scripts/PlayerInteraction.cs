@@ -39,16 +39,14 @@ public class PlayerInteraction : MonoBehaviour
         Debug.DrawRay(_mainCamera.ViewportPointToRay(interactionRayPoint).origin, _mainCamera.ViewportPointToRay(interactionRayPoint).direction * interactionRayDistance, Color.red);
         if (Physics.Raycast(_mainCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hitInfo, interactionRayDistance))
         {
-            if (((1 << hitInfo.transform.gameObject.layer) & interactionLayer) != 0)
-            {
-                //It matched one
-                print("hitInfo : " + hitInfo.transform.name);
-            }
-
             if (((1 << hitInfo.transform.gameObject.layer) & interactionLayer) == 0)
             {
-                currentInteractable?.OnLoseFocus();
-                currentInteractable = null;
+                if (currentInteractable)
+                {
+                    currentInteractable?.OnLoseFocus();
+                    currentInteractable = null;
+                }
+
                 return;
             }
 
@@ -67,7 +65,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if (currentInteractable)
         {
-            currentInteractable.OnLoseFocus();
+            currentInteractable?.OnLoseFocus();
             currentInteractable = null;
         }
     }
@@ -76,7 +74,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (currentInteractable != null && Physics.Raycast(_mainCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hitInfo, interactionRayDistance, interactionLayer))
         {
-            currentInteractable.OnInteract();
+            currentInteractable?.OnInteract();
         }
     }
 

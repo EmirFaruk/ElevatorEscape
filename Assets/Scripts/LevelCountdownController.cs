@@ -49,7 +49,7 @@ public class LevelCountdownController : MonoBehaviour
             await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);
         }
 
-        if (!inBase)
+        if (!inBase && !destroyCancellationToken.IsCancellationRequested)
         {
             countdownText.fontSize = 42;
             countdownText.text = "Time End!";

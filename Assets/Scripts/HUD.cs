@@ -51,14 +51,23 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
+        deathPanel.SetActive(false);
+        winPanel.SetActive(false);
         fadePanel.SetActive(true);
     }
 
     private void OnEnable()
     {
-        LevelCountdownController.OnLevelTimeEnd += ()=> EndGame(false);
+        LevelCountdownController.OnLevelTimeEnd += () => EndGame(false);
         PlayerHealth.OnDeath += () => EndGame(false);
         ExitDoor.OnWin += () => EndGame(true);
+    }
+
+    private void OnDisable()
+    {
+        LevelCountdownController.OnLevelTimeEnd -= () => EndGame(false);
+        PlayerHealth.OnDeath -= () => EndGame(false);
+        ExitDoor.OnWin -= () => EndGame(true);
     }
 
     void EndGame(bool isWin)

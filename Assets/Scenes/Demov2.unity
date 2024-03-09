@@ -14139,17 +14139,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2158952999057473717, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
-      propertyPath: m_text
-      value: 01:00
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158952999057473717, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158952999057473717, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 72
+    - target: {fileID: 1417752895737940457, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2196506506076938801, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_AnchorMax.y

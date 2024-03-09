@@ -36,12 +36,8 @@ public class KeyItem : Interactable
             player.HoldKey(this);
             isPickedUp = true;
             transform.GetChild(0).gameObject.layer = 8;//set model object's layer as HandCamera layer    
-            if (GetComponentInChildren<Light>()) GetComponentInChildren<Light>().enabled = false;
-        }
-        else
-        {
-            //player.DropKey();
-            //isPickedUp = false;
+
+            ToggleKeyLight();
         }
     }
 
@@ -96,13 +92,30 @@ public class KeyItem : Interactable
                 if (player.CurrentKey) player.DropKey();
                 isPickedUp = false;
                 transform.GetChild(0).gameObject.layer = default;//set model object's layer as Default layer
-                if (GetComponentInChildren<Light>()) GetComponentInChildren<Light>().enabled = true;
+
+                //await Task.Delay(1000);
+
             }
 
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
+            ToggleKeyLight();
             CanDropping = true;
         }
         CanDropping = true;
+    }
+
+    async void ToggleKeyLight()
+    {
+        var light = GetComponentInChildren<Light>();
+        if (light && light.enabled)
+        {
+            light.enabled = false;
+        }
+        else if (light)
+        {
+            await Task.Delay(500);
+            light.enabled = true;
+        }
     }
 }
