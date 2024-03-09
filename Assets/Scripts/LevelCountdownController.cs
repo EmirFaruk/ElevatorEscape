@@ -78,7 +78,6 @@ public class LevelCountdownController : MonoBehaviour
                 timeRemaining++;
                 countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
                 await Task.Delay(Math.Max(1, speed -= 5));
-                print("r speed : " + speed);
             }
 
             await Task.Delay(500);

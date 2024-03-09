@@ -37,8 +37,21 @@ public class PlayerInteraction : MonoBehaviour
     private void HandleInteractionCheck()
     {
         Debug.DrawRay(_mainCamera.ViewportPointToRay(interactionRayPoint).origin, _mainCamera.ViewportPointToRay(interactionRayPoint).direction * interactionRayDistance, Color.red);
-        if (Physics.Raycast(_mainCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hitInfo, interactionRayDistance, interactionLayer))
+        if (Physics.Raycast(_mainCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hitInfo, interactionRayDistance))
         {
+            if (((1 << hitInfo.transform.gameObject.layer) & interactionLayer) != 0)
+            {
+                //It matched one
+                print("hitInfo : " + hitInfo.transform.name);
+            }
+
+            if (((1 << hitInfo.transform.gameObject.layer) & interactionLayer) == 0)
+            {
+                currentInteractable?.OnLoseFocus();
+                currentInteractable = null;
+                return;
+            }
+
             if (currentInteractable != null && hitInfo.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID())
             {
                 currentInteractable.OnLoseFocus();

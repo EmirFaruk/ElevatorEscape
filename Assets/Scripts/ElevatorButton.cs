@@ -17,6 +17,7 @@ public class ElevatorButton : Interactable
     #region INTERACTABLE OVERRIDE METHODS
     public override void OnFocus()
     {
+
         if (!isPressed) GetComponent<Image>().color = elevator.HoverColor;
     }
 
@@ -65,6 +66,7 @@ public class ElevatorButton : Interactable
         if (this.index == index)
         {
             isPressed = true;
+            
             GetComponent<Image>().color = elevator.PressedColor;
         }
     }
