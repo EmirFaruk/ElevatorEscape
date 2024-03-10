@@ -27,7 +27,7 @@ public class ExitDoor : Interactable
 
     public override void OnFocus()
     {
-        HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2, "Collect ", "Items", " to Exit", Color.cyan);
+        HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2, "Collect ", "Batterries", " to Exit", Color.cyan);
     }
 
     public override void OnInteract()
