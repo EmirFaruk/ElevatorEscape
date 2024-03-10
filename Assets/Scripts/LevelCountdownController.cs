@@ -36,6 +36,10 @@ public class LevelCountdownController : MonoBehaviour
 
         PlayerHealth.OnDeath += () => { inBase = true; Restart(); };
         ExitDoor.OnWin += () => { inBase = true; Restart(); };
+
+        toxicUIAnims = transform.parent.GetComponentsInChildren<Animator>();
+        toxicUIAnims[0].enabled = false;
+        toxicUIAnims[1].enabled = false;
     }
 
     async void CountdownAsync()
@@ -58,13 +62,29 @@ public class LevelCountdownController : MonoBehaviour
         }
     }
 
-    bool inBase = true;
+    private Animator[] toxicUIAnims = new Animator[2];
+    async void ToxicUIAnim()
+    {
+        toxicUIAnims[0].enabled = true;
+        toxicUIAnims[1].enabled = true;
+
+        await Task.Delay(3000);
+
+        toxicUIAnims[0].enabled = false;
+        toxicUIAnims[1].enabled = false;
+    }
+
+    private bool inBase = true;
     async void ResetCountdow(int stop)
     {
         if (stop != 0)
         {
             inBase = false;
-            if (timeRemaining == timeRemainingDefault) CountdownAsync();
+            if (timeRemaining == timeRemainingDefault)
+            {
+                CountdownAsync();
+                ToxicUIAnim();
+            }
         }
         else
         {
