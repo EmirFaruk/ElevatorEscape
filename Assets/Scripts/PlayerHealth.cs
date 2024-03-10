@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
 
     //Damage
     public static Action<float> OnTakeDamage;
+    public static Action<float> OnHealthChange;
     public static Action<float, Transform> OnTakeDamageIndicator;
     public static Action<float> OnDamage;
     public static Action OnDeath;

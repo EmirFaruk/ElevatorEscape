@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelCountdownController : MonoBehaviour
 {
@@ -50,7 +49,11 @@ public class LevelCountdownController : MonoBehaviour
 
             if (timeRemaining * 10 <= Math.Max(10, timeRemaining * .2f * 10)) countdownText.color = Color.red; // Change color to red when 20% of time remaining            
 
+#if UNITY_EDITOR
             await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);
+#else
+             await Task.Delay(1000);
+#endif
         }
 
         if (!inBase && !destroyCancellationToken.IsCancellationRequested)
@@ -110,16 +113,28 @@ public class LevelCountdownController : MonoBehaviour
 
     async void Restart()
     {
+        countdownText.fontSize = 42;
+        countdownText.color = Color.red;
+
+        for (int i = 3; i >= 0; i--)
+        {
+            countdownText.text = "Quit in\n" + i;
+            await Task.Delay(1000);
+        }
+
+        Application.Quit();
+
+        /*
         bool isRestart = false;
         while (!isRestart && !destroyCancellationToken.IsCancellationRequested)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 isRestart = true;
             }
             await Task.Delay(5);
         }
-        isRestart = true;
+        isRestart = true;*/
     }
 }
