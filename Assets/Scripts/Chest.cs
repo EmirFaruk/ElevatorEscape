@@ -59,7 +59,7 @@ public class Chest : Interactable
         base.OnEnable();
 
         item = GetComponentInChildren<Item>();
-        item.GetComponent<Collider>().enabled = false;
+        if (item) item.GetComponent<Collider>().enabled = false;
     }
 
     async void Open()
@@ -73,7 +73,7 @@ public class Chest : Interactable
             {
                 angle = -120;
                 isOpen = true;
-                item.GetComponent<Collider>().enabled = true;
+                if (item) item.GetComponent<Collider>().enabled = true;
                 GetComponent<Collider>().enabled = false;
                 HUD.Instance.HidePopUp();
             }

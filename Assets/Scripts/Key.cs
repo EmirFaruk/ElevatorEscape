@@ -48,7 +48,7 @@ public class KeyItem : Interactable
     }
     private void Update()
     {
-        if (isPickedUp && CanDropping && !destroyCancellationToken.IsCancellationRequested) Drop();
+        if (isPickedUp && CanDropping && !destroyCancellationToken.IsCancellationRequested) DropWithoutDelay();
     }
 
     public async override void OnEnable()
@@ -77,17 +77,17 @@ public class KeyItem : Interactable
 
         await Task.Delay(300);
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.G))
         {
             for (int i = 0; i < 50 && !destroyCancellationToken.IsCancellationRequested; i++)
             {
-                if (!Input.GetKey(KeyCode.E)) break;
+                if (!Input.GetKey(KeyCode.G)) break;
                 transform.position += Vector3.up * 0.001f;
                 transform.Rotate(Vector3.forward * Random.RandomRange(-2f, 2f));
                 await Task.Delay(10, destroyCancellationToken);
             }
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.G))
             {
                 if (player.CurrentKey) player.DropKey();
                 isPickedUp = false;
@@ -96,6 +96,27 @@ public class KeyItem : Interactable
                 //await Task.Delay(1000);
 
             }
+
+            transform.position = new Vector3(transform.position.x, posY, transform.position.z);
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
+            ToggleKeyLight();
+            CanDropping = true;
+        }
+        CanDropping = true;
+    }
+
+    void DropWithoutDelay()
+    {
+        float posY = transform.position.y;
+        float rotZ = transform.localEulerAngles.z;
+
+        CanDropping = false;
+
+        if (Input.GetKey(KeyCode.G))
+        {
+            if (player.CurrentKey) player.DropKey();
+            isPickedUp = false;
+            transform.GetChild(0).gameObject.layer = default;//set model object's layer as Default layer
 
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
