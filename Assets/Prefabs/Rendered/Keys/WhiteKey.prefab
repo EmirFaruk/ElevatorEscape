@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3801699791189278091}
   - component: {fileID: 6251024306689814997}
   - component: {fileID: 8412432216668676798}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WhiteKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 56002958272709577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1263182, y: 21.008091, z: 1.5031743}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dcd5f2edd62834fae765cc45f8b3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyType: 1
+  keyType: 6
   CanDropping: 1
 --- !u!65 &8412432216668676798
 BoxCollider:
@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 7299004900801956268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 0.0249, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

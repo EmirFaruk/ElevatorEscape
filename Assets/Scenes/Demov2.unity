@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44551426, g: 0.49518794, b: 0.5741015, a: 1}
+  m_IndirectSpecularColor: {r: 0.44551462, g: 0.49518788, b: 0.5741015, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6420,15 +6420,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8628807555075865107, guid: a5cee128c9c3ece4398ad66fbf4608d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7705
+      value: -1.764
       objectReference: {fileID: 0}
     - target: {fileID: 8628807555075865107, guid: a5cee128c9c3ece4398ad66fbf4608d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0074
+      value: -0.9473
       objectReference: {fileID: 0}
     - target: {fileID: 8628807555075865107, guid: a5cee128c9c3ece4398ad66fbf4608d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.248
+      value: 1.165
       objectReference: {fileID: 0}
     - target: {fileID: 8628807555075865107, guid: a5cee128c9c3ece4398ad66fbf4608d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9401,9 +9401,11 @@ MonoBehaviour:
   - name: Orange
     materials: []
   - name: White
-    materials: []
+    materials:
+    - {fileID: 2100000, guid: 8f8578d1655ecb242a67d27ba4b7b565, type: 2}
   - name: Black
-    materials: []
+    materials:
+    - {fileID: 2100000, guid: f811ccb885753c74599381bcba394806, type: 2}
   - name: Brown
     materials: []
   - name: Pink
@@ -14028,6 +14030,22 @@ PrefabInstance:
     - target: {fileID: 6321948247301284677, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
       propertyPath: m_Name
       value: Elevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089879118031968745, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
+      propertyPath: m_Size.y
+      value: 0.23918971
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089879118031968745, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
+      propertyPath: m_Size.z
+      value: 2.6148846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089879118031968745, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
+      propertyPath: m_Center.y
+      value: -0.07659009
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089879118031968745, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
+      propertyPath: m_Center.z
+      value: 1.1925577
       objectReference: {fileID: 0}
     - target: {fileID: 8699072553982986839, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
       propertyPath: m_text
