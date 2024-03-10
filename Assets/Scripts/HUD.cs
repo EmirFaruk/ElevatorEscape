@@ -26,6 +26,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject tabMenu;
 
     #region SoundManager
 
@@ -54,6 +55,12 @@ public class HUD : MonoBehaviour
         deathPanel.SetActive(false);
         winPanel.SetActive(false);
         fadePanel.SetActive(true);
+        tabMenu.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab)) tabMenu.SetActive(!tabMenu.activeInHierarchy);
     }
 
     private void OnEnable()
@@ -78,10 +85,6 @@ public class HUD : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V)) ActivateTakeDamageEffect();
-    }
 
     #region PopUp
 
