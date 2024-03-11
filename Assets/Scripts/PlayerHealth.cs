@@ -13,9 +13,9 @@ public class PlayerHealth : MonoBehaviour
     //Damage
     public static Action<float> OnTakeDamage;
     public static Action<float> OnHealthChange;
-    public static Action<float, Transform> OnTakeDamageIndicator;
     public static Action<float> OnDamage;
     public static Action OnDeath;
+    //public static Action<float, Transform> OnTakeDamageIndicator;
     private DamageFeedbackTest damageFeedback;
 
     #endregion
@@ -30,8 +30,8 @@ public class PlayerHealth : MonoBehaviour
     private void OnEnable()
     {
         OnTakeDamage += ApplyDamage;
-        OnTakeDamageIndicator += ApplyDamage;
         OnHeal += ApplyHeal;
+        //OnTakeDamageIndicator += ApplyDamage;
     }
 
     private void OnDisable()
@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ApplyDamage(float damage)
     {
-        currentHealth = Math.Max(0, currentHealth - damage);
+        currentHealth = Math.Max(0, currentHealth + damage);
 
         HUD.Instance.ActivateTakeDamageEffect();
 
@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ApplyDamage(float damage, Transform enemy)
     {
-        currentHealth = Math.Max(0, currentHealth - damage);
+        currentHealth = Math.Max(0, currentHealth + damage);
 
         HUD.Instance.ActivateTakeDamageEffect();
 
@@ -71,20 +71,6 @@ public class PlayerHealth : MonoBehaviour
         //  Helper.Camera.DOShakeRotation(.5f, 30, 5);                 
     }
 
-    #region CALISMAYAN APPLY DAMAGE
-    /*
-      public void ApplyDamage(float damage, Transform enemy) // calısmıyor.
-      {
-          damageFeedback.ShowUI(enemy);
-          damageFeedback.ShowDamageIndicator(enemy);
-
-          OnDamage?.Invoke(currentHealth);
-
-          Helper.Camera.DOShakeRotation(.5f, 30, 5);            
-      }
-    */
-    #endregion
-
     public void ApplyHeal(float healValue)
     {
         currentHealth = Mathf.Min(currentHealth + healValue, maxHealth);
@@ -92,24 +78,3 @@ public class PlayerHealth : MonoBehaviour
 
     #endregion
 }
-
-#region Backup
-
-/*#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-            private PlayerInput _playerInput;
-    #endif*/
-
-#region Is Current Device Mouse
-/* {
-     get
-     {
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-         return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-                 return false;
-#endif
-     }
- }*/
-#endregion
-
-#endregion

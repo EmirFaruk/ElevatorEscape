@@ -14,20 +14,18 @@ public class HpBar : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnTakeDamage += UpdateHealthBar;
-        PlayerHealth.OnDeath += () => image.fillAmount = 0;
-        //PlayerHealth.OnHeal += UpdateHealthBar;
+        PlayerHealth.OnDeath += () => UpdateHealthBar(-image.fillAmount);
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnTakeDamage -= UpdateHealthBar;
-        PlayerHealth.OnDeath -= () => image.fillAmount = 0;
-        //PlayerHealth.OnHeal -= UpdateHealthBar;
+        PlayerHealth.OnDeath -= () => UpdateHealthBar(-image.fillAmount); ;
     }
 
     async void UpdateHealthBar(float value)
     {
-        var fillAmount = Mathf.Max(0, image.fillAmount - value / 100);
+        float fillAmount = Mathf.Max(0, image.fillAmount + value / 100);
 
         while (image.fillAmount > fillAmount)
         {
