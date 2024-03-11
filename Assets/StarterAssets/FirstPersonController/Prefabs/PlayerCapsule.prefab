@@ -2611,7 +2611,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0.5}
-  interactionRayDistance: 2
+  interactionRayDistance: 2.5
 --- !u!114 &8551965284872420203
 MonoBehaviour:
   m_ObjectHideFlags: 0

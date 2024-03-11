@@ -5,7 +5,7 @@ public class Item : Interactable
     public override void OnFocus()
     {
         base.OnFocus();
-        HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2, "Pick up ", "Battery", "", Color.white);
+        HUD.Instance.ShowPopUp(transform.position + Vector3.up / 3, "Pick up ", "Battery", "", Color.white);
     }
 
     public override void OnInteract()

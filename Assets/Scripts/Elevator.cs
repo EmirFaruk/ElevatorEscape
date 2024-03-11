@@ -74,7 +74,7 @@ public class Elevator : MonoBehaviour
 
     private void OnDisable()
     {
-            
+
     }
 
     #endregion
@@ -153,7 +153,7 @@ public class Elevator : MonoBehaviour
                 //Kapiyi ac
                 MoveDoor(false);
 
-                await Task.Delay(1000, destroyCancellationToken);
+                await Task.Delay(1000);
 
                 doorIsOpen = true;
                 buttonPressed = false;

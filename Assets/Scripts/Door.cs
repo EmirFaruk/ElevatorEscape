@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : Interactable
 {
     [SerializeField] private KeyData.KeyType key;
-    
+
     private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
     private bool isOpen;
     private Transform handle;
@@ -18,7 +18,7 @@ public class Door : Interactable
     public override void OnFocus()
     {
         if (player.CurrentKey) player.CurrentKey.CanDropping = false;
-        
+
         if (hasKey && !isOpen) HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2,
             "Open ",
             key.ToString(), " Door",
@@ -32,7 +32,7 @@ public class Door : Interactable
 
     public override void OnInteract()
     {
-        if (isOpen) Close();
+        if (isOpen && hasKey) Close();
         else if (hasKey) Open();
         else Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.LockedDoor);
     }
