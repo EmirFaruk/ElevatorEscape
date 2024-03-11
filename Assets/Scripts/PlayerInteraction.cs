@@ -41,29 +41,21 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (((1 << hitInfo.transform.gameObject.layer) & interactionLayer) == 0)
             {
-                if (currentInteractable)
-                {
-                    currentInteractable?.OnLoseFocus();
-                    currentInteractable = null;
-                }
-
+                SetAsNull();
                 return;
             }
 
-            if (currentInteractable != null && hitInfo.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID())
-            {
-                currentInteractable.OnLoseFocus();
-                currentInteractable = null;
-            }
-
-            if (currentInteractable == null)
-            {
-                hitInfo.collider.TryGetComponent(out currentInteractable);
-
+            if (currentInteractable == null && hitInfo.collider.TryGetComponent(out currentInteractable))
                 if (currentInteractable) currentInteractable.OnFocus();
-            }
+                else if (hitInfo.transform.GetInstanceID() != currentInteractable.transform.GetInstanceID())
+                    SetAsNull();
         }
-        else if (currentInteractable)
+        else SetAsNull();
+    }
+
+    private void SetAsNull()
+    {
+        if (currentInteractable)
         {
             currentInteractable?.OnLoseFocus();
             currentInteractable = null;
