@@ -14,13 +14,13 @@ public class HpBar : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnTakeDamage += UpdateHealthBar;
-        PlayerHealth.OnDeath += () => UpdateHealthBar(-image.fillAmount);
+        //PlayerHealth.OnDeath += () => UpdateHealthBar(-image.fillAmount * 100);
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnTakeDamage -= UpdateHealthBar;
-        PlayerHealth.OnDeath -= () => UpdateHealthBar(-image.fillAmount); ;
+        //PlayerHealth.OnDeath -= () => UpdateHealthBar(-image.fillAmount * 100); ;
     }
 
     async void UpdateHealthBar(float value)
@@ -32,5 +32,7 @@ public class HpBar : MonoBehaviour
             image.fillAmount -= Time.deltaTime;
             await Task.Delay(10);
         }
+
+        if (image.fillAmount == .0f) PlayerHealth.OnDeath.Invoke();
     }
 }
