@@ -14,13 +14,11 @@ public class HpBar : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnTakeDamage += UpdateHealthBar;
-        //PlayerHealth.OnDeath += () => UpdateHealthBar(-image.fillAmount * 100);
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnTakeDamage -= UpdateHealthBar;
-        //PlayerHealth.OnDeath -= () => UpdateHealthBar(-image.fillAmount * 100); ;
     }
 
     async void UpdateHealthBar(float value)

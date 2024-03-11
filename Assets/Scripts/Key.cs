@@ -11,7 +11,7 @@ public class KeyItem : Interactable
 
     private FirstPersonController player;
     private bool isPickedUp;
-    [HideInInspector] public bool CanDropping = true;
+    [HideInInspector] public bool CanDrop = true;
 
     #endregion
 
@@ -48,7 +48,7 @@ public class KeyItem : Interactable
     }
     private void Update()
     {
-        if (isPickedUp && CanDropping && !destroyCancellationToken.IsCancellationRequested) DropWithoutDelay();
+        if (isPickedUp && CanDrop && !destroyCancellationToken.IsCancellationRequested) DropWithoutDelay();
     }
 
     public async override void OnEnable()
@@ -73,7 +73,7 @@ public class KeyItem : Interactable
         float posY = transform.position.y;
         float rotZ = transform.localEulerAngles.z;
 
-        CanDropping = false;
+        CanDrop = false;
 
         await Task.Delay(300);
 
@@ -100,9 +100,9 @@ public class KeyItem : Interactable
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
             ToggleKeyLight();
-            CanDropping = true;
+            CanDrop = true;
         }
-        CanDropping = true;
+        CanDrop = true;
     }
 
     void DropWithoutDelay()
@@ -110,7 +110,7 @@ public class KeyItem : Interactable
         float posY = transform.position.y;
         float rotZ = transform.localEulerAngles.z;
 
-        CanDropping = false;
+        CanDrop = false;
 
         if (Input.GetKey(KeyCode.G))
         {
@@ -121,9 +121,9 @@ public class KeyItem : Interactable
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
             ToggleKeyLight();
-            CanDropping = true;
+            CanDrop = true;
         }
-        CanDropping = true;
+        CanDrop = true;
     }
 
     async void ToggleKeyLight()

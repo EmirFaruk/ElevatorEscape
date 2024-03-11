@@ -26,3 +26,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c7785f300e717548abe92e49858dfbb, type: 3}
   - {fileID: 8300000, guid: e14efe578ffb0754fa154c13603d75f5, type: 3}
   - {fileID: 8300000, guid: d5dc4467425b10c48acb8c1d5f68bc03, type: 3}
+  SFX:
+  - {fileID: 8300000, guid: a28459e4df4ce144685d67fbfb3d1b91, type: 3}
+  - {fileID: 8300000, guid: bd0ed2e867b55124eb422492c7717833, type: 3}
+  - {fileID: 8300000, guid: f9582f7f646ad7a469146974acd8c412, type: 3}

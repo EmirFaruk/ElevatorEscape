@@ -17,7 +17,7 @@ public class Chest : Interactable
     #region Overriden Methods
     public override void OnFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDropping = false;
+        if (player.CurrentKey) player.CurrentKey.CanDrop = false;
 
         if (angle != handle.localEulerAngles.x) { HUD.Instance.HidePopUp(); return; }
 
@@ -42,7 +42,7 @@ public class Chest : Interactable
 
     public override void OnLoseFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDropping = true;
+        if (player.CurrentKey) player.CurrentKey.CanDrop = true;
 
         HUD.Instance.HidePopUp();
     }

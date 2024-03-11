@@ -4,10 +4,18 @@
 public class SoundData : ScriptableObject
 {
     public AudioClip[] Musics;
+    [Space]
+    public AudioClip[] SFX;
 
     public enum SoundEnum
     {
-        Door,
+        Unlock,
+        LockedDoor,
+        DoorOpening
+    }
 
+    public AudioClip GetSFXClip(SoundEnum clip)
+    {
+        return SFX[((int)clip)];
     }
 }

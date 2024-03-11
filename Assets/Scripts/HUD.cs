@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
+    #region VARIABLES
+    #region Singleton
     private static HUD instance;
     public static HUD Instance => instance;
+    #endregion
 
     #region Item
     [SerializeField] private TextMeshProUGUI itemAmountTmp;
@@ -15,27 +18,25 @@ public class HUD : MonoBehaviour
     public void SetItemAmount(int data) { itemAmount += data; itemAmountTmp.SetText(itemAmount.ToString()); }
     #endregion
 
-    //Outline
+    #region OutlineShader // nerede olmalý?
     [SerializeField] private Shader outlineShader;
     public Shader OutlineShader => outlineShader;
+    #endregion
 
-    //PopUp
+    #region PopUp
+    [Header("PopUp")]
     [SerializeField] private Canvas popUp;
     private TextMeshProUGUI tmp;
+    #endregion
 
+    #region Panels
+    [Header("Panels")]
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject tabMenu;
-
-    #region SoundManager
-
-    public AudioClip Unlock;
-    public AudioClip LockedDoor;
-    public AudioClip DoorOpening;
-
     #endregion
-
+    #endregion
     private void Awake()
     {
         Time.timeScale = 1;

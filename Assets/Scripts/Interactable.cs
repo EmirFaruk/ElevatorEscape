@@ -30,21 +30,12 @@ public abstract class Interactable : MonoBehaviour
 
     #region UNITY EVENT FUNCTIONS
 
-    private void Awake()
-    {
-        
-
-        //Shader outlineShader = Shader.Find("Shader Graphs/OutlineShader");
-        
-        
-    }
-
     public virtual void OnEnable()
     {
-        this.gameObject.layer = 7; // interaction layer;
+        this.gameObject.layer = 7; //interaction layer;
+
         outlineMaterial = new Material(HUD.Instance.OutlineShader);
 
-        //interactableRenderer = GetComponent<Renderer>() ?? GetComponentInChildren<Renderer>();
         if (TryGetComponent(out Renderer renderer))
         {
             hasRenderer = true;
@@ -57,11 +48,12 @@ public abstract class Interactable : MonoBehaviour
 
             foreach (Transform item in transform)
             {
-                if (item.TryGetComponent(out Renderer renderer1))
-                    interactableRenderers.Add(renderer1);                
+                if (item.TryGetComponent(out Renderer childRenderer))
+                    interactableRenderers.Add(childRenderer);
             }
 
             materialHandlers = new List<Material>[interactableRenderers.Count];
+
             for (int i = 0; i < interactableRenderers.Count; i++)
                 materialHandlers[i] = interactableRenderers[i].materials.ToList();
         }

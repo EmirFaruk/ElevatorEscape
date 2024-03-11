@@ -4,42 +4,47 @@ using UnityEngine;
 
 public class Door : Interactable
 {
+    #region VARIABLES
     [SerializeField] private KeyData.KeyType key;
 
     private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
     private bool isOpen;
-    private Transform handle;
-    private float angle = 0;
-    private float defaultAngleY = 0;
-    private FirstPersonController player;
-    private Collider doorCollider => GetComponent<Collider>();
+    private bool canRotate = true;
 
-    #region Overriden Methods
+    private Transform handle;
+    private float angle;
+
+    //PopUp    
+    private Vector3 popUpPosition => GetComponent<Collider>().bounds.center + Vector3.up / 2;
+    private string popUpHueText => key.ToString();
+    private Color popUpColor => KeyData.KeyColors[key];
+
+
+    private FirstPersonController player;
+    #endregion
+
+    #region Interactable Methods
     public override void OnFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDropping = false;
-
-        if (hasKey && !isOpen) HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2,
-            "Open ",
-            key.ToString(), " Door",
-            KeyData.KeyColors[key]);
-
-        else if (!isOpen) HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2,
-            "You need a ",
-            key.ToString(), " Key",
-            KeyData.KeyColors[key]);
+        if (hasKey && !isOpen)
+            HUD.Instance.ShowPopUp(popUpPosition, "Open ", popUpHueText, " Door", popUpColor);
+        else if (!isOpen)
+            HUD.Instance.ShowPopUp(popUpPosition, "You need a ", popUpHueText, " Key", popUpColor);
     }
 
     public override void OnInteract()
     {
-        if (isOpen && hasKey) Close();
-        else if (hasKey) Open();
-        else Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.LockedDoor);
+        // Close the Door
+        if (isOpen && hasKey && canRotate) RotateDoor(handle.localEulerAngles.y - 120);
+        // Open the Door
+        else if (hasKey && canRotate) RotateDoor(handle.localEulerAngles.y + 120);
+        // Locked Door
+        else AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.LockedDoor);
     }
 
     public override void OnLoseFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDropping = true;
+        if (player.CurrentKey) player.CurrentKey.CanDrop = true;
 
         HUD.Instance.HidePopUp();
     }
@@ -48,48 +53,36 @@ public class Door : Interactable
 
     public override void OnEnable()
     {
-        handle = transform;//.GetChild(0);
-        angle = defaultAngleY = handle.localEulerAngles.y;
+        handle = transform;
+        angle = handle.eulerAngles.y;
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         base.OnEnable();
     }
 
-    async void Open()
+    async void RotateDoor(float targetAngle)
     {
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.Unlock);
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.DoorOpening);
+        canRotate = false;
 
-        while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY + 120)
+        if (!isOpen)
         {
-            angle = Mathf.Lerp(angle, defaultAngleY + 120, 0.05f);
-            handle.localEulerAngles = new Vector3(0, angle, 0);//handle.localEulerAngles += Vector3.down;
-
-            if (angle > defaultAngleY + 119)
-            {
-                angle = defaultAngleY + 120;
-                isOpen = true;
-            }
-
-            await Task.Delay(10, destroyCancellationToken);
+            AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.Unlock);
+            await Task.Delay(100);
         }
-    }
+        AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.DoorOpening);
 
-    async void Close()
-    {
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.Unlock);
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(HUD.Instance.DoorOpening);
-
-        while (!destroyCancellationToken.IsCancellationRequested && angle != defaultAngleY)
+        while (!destroyCancellationToken.IsCancellationRequested && angle != targetAngle)
         {
-            angle = Mathf.Lerp(angle, defaultAngleY, 0.05f);
-            handle.localEulerAngles = new Vector3(0, angle, 0);//handle.localEulerAngles += Vector3.down;
+            angle = Mathf.Lerp(angle, targetAngle, 0.04f);
+            handle.localEulerAngles = new Vector3(0, angle, 0);
 
-            if (Mathf.Abs(angle - defaultAngleY) < 1)
+            if (Mathf.Abs(angle - targetAngle) < 1)
             {
-                angle = defaultAngleY;
-                isOpen = false;
+                angle = targetAngle;
+                isOpen = !isOpen;
+                canRotate = true;
             }
+
             await Task.Delay(10, destroyCancellationToken);
         }
     }
