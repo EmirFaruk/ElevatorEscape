@@ -6,30 +6,32 @@ public class Chest : Interactable
 {
     #region VARIABLES
     [SerializeField] private KeyData.KeyType key;
-    private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
+    private bool hasKey => player.CurrentKey && player.CurrentKey.KeyType == key;
     private bool isOpen;
     private Transform handle;
     private float angle = 0;
     private FirstPersonController player;
     private Item item;
+
+    //PopUp
+    private Vector3 popUpPosition => transform.position + Vector3.up / 2;
+    private Color popUpColor => KeyData.KeyColors[key];
     #endregion
 
-    #region Overriden Methods
+    #region INTERACTABLE METHODS
     public override void OnFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDrop = false;
+        if (angle != handle.localEulerAngles.x)
+        {
+            HUD.Instance.HidePopUp();
+            return;
+        }
 
-        if (angle != handle.localEulerAngles.x) { HUD.Instance.HidePopUp(); return; }
+        if (hasKey && !isOpen)
+            HUD.Instance.ShowPopUp(popUpPosition, "Open ", key.ToString(), " Chest", popUpColor);
 
-        if (hasKey && !isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2,
-            "Open ",
-            key.ToString(), " Chest",
-            KeyData.KeyColors[key]);
-
-        else if (!isOpen) HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2,
-            "You need a ",
-            key.ToString(), " Key",
-            KeyData.KeyColors[key]);
+        else if (!isOpen)
+            HUD.Instance.ShowPopUp(popUpPosition, "You need a ", key.ToString(), " Key", popUpColor);
     }
 
     public override void OnInteract()
@@ -42,8 +44,6 @@ public class Chest : Interactable
 
     public override void OnLoseFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDrop = true;
-
         HUD.Instance.HidePopUp();
     }
 
@@ -58,8 +58,7 @@ public class Chest : Interactable
 
         base.OnEnable();
 
-        item = GetComponentInChildren<Item>();
-        if (item) item.GetComponent<Collider>().enabled = false;
+        if (item = GetComponentInChildren<Item>()) item.GetComponent<Collider>().enabled = false;
     }
 
     async void Open()
@@ -67,33 +66,19 @@ public class Chest : Interactable
         while (angle != -120)
         {
             angle = Mathf.Lerp(angle, -120, 0.05f);
-            handle.localEulerAngles = new Vector3(angle, 0, 0);//handle.localEulerAngles += Vector3.down;
+            handle.localEulerAngles = new Vector3(angle, 0, 0);
 
             if (angle < -119f)
             {
                 angle = -120;
                 isOpen = true;
+
                 if (item) item.GetComponent<Collider>().enabled = true;
                 GetComponent<Collider>().enabled = false;
+
                 HUD.Instance.HidePopUp();
             }
 
-            await Task.Delay(10, destroyCancellationToken);
-        }
-    }
-
-    async void Close()
-    {
-        while (angle != 0)
-        {
-            angle = Mathf.Lerp(angle, 0, 0.05f);
-            handle.localEulerAngles = new Vector3(0, 0, angle);//handle.localEulerAngles += Vector3.down;
-
-            if (angle > -1)
-            {
-                angle = 0;
-                isOpen = false;
-            }
             await Task.Delay(10, destroyCancellationToken);
         }
     }

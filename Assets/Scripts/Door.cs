@@ -7,7 +7,7 @@ public class Door : Interactable
     #region VARIABLES
     [SerializeField] private KeyData.KeyType key;
 
-    private bool hasKey => player.CurrentKey && player.CurrentKey.Type == key;
+    private bool hasKey => player.CurrentKey && player.CurrentKey.KeyType == key;
     private bool isOpen;
     private bool canRotate = true;
 
@@ -35,17 +35,15 @@ public class Door : Interactable
     public override void OnInteract()
     {
         // Close the Door
-        if (isOpen && hasKey && canRotate) RotateDoor(handle.localEulerAngles.y - 120);
+        if (isOpen && hasKey && canRotate) RotateHandle(handle.localEulerAngles.y - 120);
         // Open the Door
-        else if (hasKey && canRotate) RotateDoor(handle.localEulerAngles.y + 120);
+        else if (hasKey && canRotate) RotateHandle(handle.localEulerAngles.y + 120);
         // Locked Door
         else AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.LockedDoor);
     }
 
     public override void OnLoseFocus()
     {
-        if (player.CurrentKey) player.CurrentKey.CanDrop = true;
-
         HUD.Instance.HidePopUp();
     }
 
@@ -60,7 +58,7 @@ public class Door : Interactable
         base.OnEnable();
     }
 
-    async void RotateDoor(float targetAngle)
+    async void RotateHandle(float targetAngle)
     {
         canRotate = false;
 

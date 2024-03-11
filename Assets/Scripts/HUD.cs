@@ -37,14 +37,12 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject tabMenu;
     #endregion
     #endregion
+
     private void Awake()
     {
-        Time.timeScale = 1;
-
         instance = this;
 
-        /*if (instance != null && instance != this) Destroy(this);
-        else instance = this;*/
+        Time.timeScale = 1;
 
         popUp = Instantiate(popUp);
         popUp.gameObject.SetActive(false);

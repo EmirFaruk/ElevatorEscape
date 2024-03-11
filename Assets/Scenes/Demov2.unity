@@ -13693,6 +13693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 8611003283954959846, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 480
+      objectReference: {fileID: 0}
     - target: {fileID: 8758348305585803179, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -608,7 +608,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -900
+  m_Spacing: -870
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1169,14 +1169,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5453773685208376866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 80.75, y: 65.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &546930330985566688
 CanvasRenderer:
@@ -1552,14 +1552,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8758348305585803179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 80.75, y: 65.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &992358641382019719
 CanvasRenderer:
@@ -1751,9 +1751,6 @@ MonoBehaviour:
   fadePanel: {fileID: 4345996099196473832}
   winPanel: {fileID: 3907373232560311179}
   tabMenu: {fileID: 5083778665849633613}
-  Unlock: {fileID: 8300000, guid: a28459e4df4ce144685d67fbfb3d1b91, type: 3}
-  LockedDoor: {fileID: 8300000, guid: bd0ed2e867b55124eb422492c7717833, type: 3}
-  DoorOpening: {fileID: 8300000, guid: f9582f7f646ad7a469146974acd8c412, type: 3}
   takeDamageRef: {fileID: 825839533461865955}
 --- !u!1 &8558494313725379717
 GameObject:
@@ -1958,8 +1955,8 @@ MonoBehaviour:
     there is no poisonous gas on the basement floor. Use the Basement Floor to reset
     the timer.\n\n\nE -> Interact\r\n\nG -> Drop \n\nTab -> Help Menu"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
-  m_sharedMaterial: {fileID: 7159369417392969216, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5556b887cf0ca07468557cfafa2bc425, type: 2}
+  m_sharedMaterial: {fileID: -8978924778732546291, guid: 5556b887cf0ca07468557cfafa2bc425, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2035,35 +2032,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -3
+      value: 477
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -7
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994941524596, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -2111,11 +2108,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994987024016, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 512
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994987024016, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 512
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994987024016, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_LocalScale.y
@@ -2155,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994987024016, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 2293006994987024016, guid: 2c69011616eea704389d1a9d17c9551f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

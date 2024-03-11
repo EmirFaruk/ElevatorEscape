@@ -5,13 +5,16 @@ using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
+    #region VARIABLES
     public SoundData SoundData => soundData;
     [SerializeField] private SoundData soundData;
 
     private AudioSource musicAudioSource;
 
     public static Action<SoundData.SoundEnum> OnSFXCall;
+    #endregion
 
+    #region UNITY EVENT FUNCTIONS
     private void OnEnable()
     {
         OnSFXCall += PlaySFX;
@@ -33,6 +36,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M)) PlayRandomMusic(musicAudioSource.clip);
     }
+    #endregion
 
     #region SFX Methods
 

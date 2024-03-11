@@ -5,28 +5,27 @@ using UnityEngine;
 public class KeyItem : Interactable
 {
     #region VARIABLES
-
-    public KeyData.KeyType Type => keyType;
+    public KeyData.KeyType KeyType => keyType;
     [SerializeField] private KeyData.KeyType keyType;
 
     private FirstPersonController player;
     private bool isPickedUp;
-    [HideInInspector] public bool CanDrop = true;
+    private bool canDrop = true;
 
+    //PopUp
+    private Vector3 popUpPosition => transform.position + Vector3.up / 2;
+    private string popUpHueText => keyType.ToString();
+    private Color popUpColor => KeyData.KeyColors[keyType];
     #endregion
 
-    #region OVERRIDEN METHODS
+    #region INTERACTABLE METHODS    
 
     public override void OnFocus()
     {
         base.OnFocus();
 
         if (!isPickedUp)
-            HUD.Instance.ShowPopUp(transform.position + Vector3.up / 2
-                , "Pick up ",
-                keyType.ToString(),
-                " Key",
-                KeyData.KeyColors[keyType]);
+            HUD.Instance.ShowPopUp(popUpPosition, "Pick up ", popUpHueText, " Key", popUpColor);
     }
 
     public override void OnInteract()
@@ -35,7 +34,9 @@ public class KeyItem : Interactable
         {
             player.HoldKey(this);
             isPickedUp = true;
-            transform.GetChild(0).gameObject.layer = 8;//set model object's layer as HandCamera layer    
+
+            //set model object's layer as HandCamera layer    
+            transform.GetChild(0).gameObject.layer = 8;
 
             ToggleKeyLight();
         }
@@ -46,34 +47,36 @@ public class KeyItem : Interactable
         base.OnLoseFocus();
         HUD.Instance.HidePopUp();
     }
+
+    #endregion
+
+    #region UNITY EVENTS FUNCTIONS
+
     private void Update()
     {
-        if (isPickedUp && CanDrop && !destroyCancellationToken.IsCancellationRequested) DropWithoutDelay();
+        if (isPickedUp && canDrop) DropWithoutDelay();
     }
 
     public async override void OnEnable()
     {
-        if (destroyCancellationToken.IsCancellationRequested) return;
-        await Task.Delay(1000, destroyCancellationToken);
+        await Task.Delay(1000);
 
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         transform.GetChild(0).GetComponent<Renderer>().materials = KeyData.Instance.KeyMaterials[(int)keyType].materials;
 
         base.OnEnable();
-
-        //interactableRenderer = GetComponentInChildren<Renderer>();
-        //materialHandler = interactableRenderer.materials.ToList();
     }
 
     #endregion
 
-    async void Drop()
+    // Hold and Drop Key
+    private async void Drop()
     {
         float posY = transform.position.y;
         float rotZ = transform.localEulerAngles.z;
 
-        CanDrop = false;
+        canDrop = false;
 
         await Task.Delay(300);
 
@@ -100,17 +103,17 @@ public class KeyItem : Interactable
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
             ToggleKeyLight();
-            CanDrop = true;
+            canDrop = true;
         }
-        CanDrop = true;
+        canDrop = true;
     }
 
-    void DropWithoutDelay()
+    private void DropWithoutDelay()
     {
         float posY = transform.position.y;
         float rotZ = transform.localEulerAngles.z;
 
-        CanDrop = false;
+        canDrop = false;
 
         if (Input.GetKey(KeyCode.G))
         {
@@ -121,12 +124,12 @@ public class KeyItem : Interactable
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotZ);
             ToggleKeyLight();
-            CanDrop = true;
+            canDrop = true;
         }
-        CanDrop = true;
+        canDrop = true;
     }
 
-    async void ToggleKeyLight()
+    private async void ToggleKeyLight()
     {
         var light = GetComponentInChildren<Light>();
         if (light && light.enabled)
