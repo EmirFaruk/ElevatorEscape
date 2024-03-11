@@ -18,7 +18,6 @@ public class PlayerInteraction : MonoBehaviour
     private void Awake()
     {
         _mainCamera = Camera.main;
-
     }
 
     private void Update()
@@ -30,9 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     #endregion
 
-    #region METHOODS
-
-    //Interaction
+    #region METHOODS   
 
     private void HandleInteractionCheck()
     {
