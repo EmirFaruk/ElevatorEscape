@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,5 +29,20 @@ public class GameManager : MonoBehaviour
     {
         print("Level Time Ended");
         Time.timeScale = 0.0f;
+    }
+
+    public async void RestartLevel()
+    {
+        bool isRestart = false;
+        while (!isRestart && !destroyCancellationToken.IsCancellationRequested)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                isRestart = true;
+            }
+            await Task.Delay(5);
+        }
+        isRestart = true;
     }
 }

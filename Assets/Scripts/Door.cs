@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 public class Door : Interactable
 {
@@ -19,7 +20,7 @@ public class Door : Interactable
     private string popUpHueText => key.ToString();
     private Color popUpColor => KeyData.KeyColors[key];
 
-
+    [Inject]
     private FirstPersonController player;
     #endregion
 
@@ -53,7 +54,6 @@ public class Door : Interactable
     {
         handle = transform;
         angle = handle.eulerAngles.y;
-        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         base.OnEnable();
     }

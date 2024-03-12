@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 public class KeyItem : Interactable
 {
@@ -8,7 +9,9 @@ public class KeyItem : Interactable
     public KeyData.KeyType KeyType => keyType;
     [SerializeField] private KeyData.KeyType keyType;
 
+    [Inject]
     private FirstPersonController player;
+
     private bool isPickedUp;
     private bool canDrop = true;
 
@@ -60,8 +63,6 @@ public class KeyItem : Interactable
     public async override void OnEnable()
     {
         await Task.Delay(1000);
-
-        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         transform.GetChild(0).GetComponent<Renderer>().materials = KeyData.Instance.KeyMaterials[(int)keyType].materials;
 

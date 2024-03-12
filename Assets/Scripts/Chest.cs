@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 public class Chest : Interactable
 {
@@ -10,7 +11,10 @@ public class Chest : Interactable
     private bool isOpen;
     private Transform handle;
     private float angle = 0;
+
+    [Inject]
     private FirstPersonController player;
+
     private Item item;
 
     //PopUp
@@ -53,8 +57,6 @@ public class Chest : Interactable
     {
         handle = transform.GetChild(1);
         angle = handle.localEulerAngles.x;
-
-        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
 
         base.OnEnable();
 
