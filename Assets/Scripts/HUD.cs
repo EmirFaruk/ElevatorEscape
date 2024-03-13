@@ -64,8 +64,7 @@ public class HUD : MonoBehaviour
         deathPanel.SetActive(false);
         winPanel.SetActive(false);
         fadePanel.SetActive(true);
-        restartButton.transform.parent.gameObject.SetActive(false);
-        quitButton.transform.parent.gameObject.SetActive(false);
+        SetEnabilityButtons(false);
         tabMenu.SetActive(false);
         TabMenuToggle();
 
@@ -93,8 +92,8 @@ public class HUD : MonoBehaviour
 
     void SetEnabilityButtons(bool isActive)
     {
-        restartButton.transform.parent.gameObject.SetActive(isActive);
-        quitButton.transform.parent.gameObject.SetActive(isActive);
+        restartButton.gameObject.SetActive(isActive);
+        quitButton.gameObject.SetActive(isActive);
     }
 
     private void OnEnable()
