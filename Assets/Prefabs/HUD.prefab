@@ -4350,8 +4350,8 @@ MonoBehaviour:
   fadePanel: {fileID: 4345996099196473832}
   winPanel: {fileID: 3907373232560311179}
   tabMenu: {fileID: 5083778665849633613}
-  quitButton: {fileID: 0}
-  restartButton: {fileID: 0}
+  quitButton: {fileID: 776868506733669992}
+  restartButton: {fileID: 3091792136687496906}
   takeDamageRef: {fileID: 825839533461865955}
 --- !u!1 &8558494313725379717
 GameObject:

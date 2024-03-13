@@ -1,7 +1,9 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 public class HUD : MonoBehaviour
 {
@@ -43,6 +45,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private Button restartButton;
     #endregion
 
+    [Inject] ZenjectGetter zenjectGetter;
     #endregion
 
     private void Awake()
@@ -61,8 +64,18 @@ public class HUD : MonoBehaviour
         deathPanel.SetActive(false);
         winPanel.SetActive(false);
         fadePanel.SetActive(true);
+        restartButton.transform.parent.gameObject.SetActive(false);
+        quitButton.transform.parent.gameObject.SetActive(false);
         tabMenu.SetActive(false);
         TabMenuToggle();
+
+        restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+        quitButton.onClick.AddListener(() =>
+#if UNITY_EDITOR        
+        UnityEditor.EditorApplication.isPlaying = false);
+#else 
+        Application.Quit());
+#endif
     }
 
     private void Update()
@@ -73,8 +86,15 @@ public class HUD : MonoBehaviour
     void TabMenuToggle()
     {
         tabMenu.SetActive(!tabMenu.activeInHierarchy);
+        SetEnabilityButtons(tabMenu.activeInHierarchy);
         Cursor.visible = tabMenu.activeInHierarchy;
         Cursor.lockState = tabMenu.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    void SetEnabilityButtons(bool isActive)
+    {
+        restartButton.transform.parent.gameObject.SetActive(isActive);
+        quitButton.transform.parent.gameObject.SetActive(isActive);
     }
 
     private void OnEnable()
@@ -95,6 +115,8 @@ public class HUD : MonoBehaviour
     {
         if (isWin) winPanel.SetActive(true);
         else deathPanel.SetActive(true);
+
+        SetEnabilityButtons(true);
 
         Time.timeScale = 0;
     }
