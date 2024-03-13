@@ -78,6 +78,7 @@ namespace StarterAssets
         // player
         private float _speed;
         private float _rotationVelocity;
+        private bool _canRotate => !Cursor.visible;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
@@ -153,7 +154,7 @@ namespace StarterAssets
         private void CameraRotation()
         {
             // if there is an input
-            if (_input.look.sqrMagnitude >= _threshold)
+            if (_input.look.sqrMagnitude >= _threshold && _canRotate)
             {
                 //Don't multiply mouse input by Time.deltaTime
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;

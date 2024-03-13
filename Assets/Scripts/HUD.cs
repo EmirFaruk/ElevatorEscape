@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
@@ -36,6 +37,12 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject tabMenu;
     #endregion
+
+    #region Buttons
+    [SerializeField] private Button quitButton;
+    [SerializeField] private Button restartButton;
+    #endregion
+
     #endregion
 
     private void Awake()
@@ -54,12 +61,20 @@ public class HUD : MonoBehaviour
         deathPanel.SetActive(false);
         winPanel.SetActive(false);
         fadePanel.SetActive(true);
-        tabMenu.SetActive(true);
+        tabMenu.SetActive(false);
+        TabMenuToggle();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) tabMenu.SetActive(!tabMenu.activeInHierarchy);
+        if (Input.GetKeyDown(KeyCode.Tab)) TabMenuToggle();
+    }
+
+    void TabMenuToggle()
+    {
+        tabMenu.SetActive(!tabMenu.activeInHierarchy);
+        Cursor.visible = tabMenu.activeInHierarchy;
+        Cursor.lockState = tabMenu.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     private void OnEnable()
