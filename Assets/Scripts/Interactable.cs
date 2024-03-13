@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public abstract class Interactable : MonoBehaviour
 {
     #region VARIABLES
+    [Inject] protected ZenjectGetter ZenjectGetter;
+    protected HUD HUD;
     protected Renderer interactableRenderer;
     protected List<Renderer> interactableRenderers = new();
     protected List<Material> materialHandler = new();
@@ -12,6 +15,7 @@ public abstract class Interactable : MonoBehaviour
 
     private Material outlineMaterial;
     private bool hasRenderer;
+
     #endregion
 
     #region ABSTRACT METHODS
@@ -30,11 +34,16 @@ public abstract class Interactable : MonoBehaviour
 
     #region UNITY EVENT FUNCTIONS
 
+    public virtual void Awake()
+    {
+        HUD = ZenjectGetter.HUD;
+    }
+
     public virtual void OnEnable()
     {
         this.gameObject.layer = 7; //interaction layer;
 
-        outlineMaterial = new Material(HUD.Instance.OutlineShader);
+        outlineMaterial = new Material(HUD.OutlineShader);
 
         if (TryGetComponent(out Renderer renderer))
         {

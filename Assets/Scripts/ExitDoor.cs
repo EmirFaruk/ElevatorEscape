@@ -27,14 +27,14 @@ public class ExitDoor : Interactable
 
     public override void OnFocus()
     {
-        HUD.Instance.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2, "Collect ", "Batterries", " to Exit", Color.cyan);
+        HUD.ShowPopUp(doorCollider.bounds.center + Vector3.up / 2, "Collect ", "Batterries", " to Exit", Color.cyan);
     }
 
     public override void OnInteract()
     {
-        if (HUD.Instance.GetItemAmount > 0 && items.Count > 0)
+        if (HUD.GetItemAmount > 0 && items.Count > 0)
         {
-            HUD.Instance.HidePopUp();
+            HUD.HidePopUp();
 
             //Item materyalini degistir
             //items.Last().GetComponent<MeshRenderer>().material = itemMaterial;
@@ -48,7 +48,7 @@ public class ExitDoor : Interactable
             items2.Remove(items2.First());
 
             //Item sayisini azalt
-            HUD.Instance.SetItemAmount(-1);
+            HUD.SetItemAmount(-1);
 
             if (items.Count <= 0) OpenDoor();
         }
@@ -56,7 +56,7 @@ public class ExitDoor : Interactable
 
     public override void OnLoseFocus()
     {
-        HUD.Instance.HidePopUp();
+        HUD.HidePopUp();
     }
 
     float angle = 0;

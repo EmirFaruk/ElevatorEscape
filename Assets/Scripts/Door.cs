@@ -28,24 +28,27 @@ public class Door : Interactable
     public override void OnFocus()
     {
         if (hasKey && !isOpen)
-            HUD.Instance.ShowPopUp(popUpPosition, "Open ", popUpHueText, " Door", popUpColor);
+            HUD.ShowPopUp(popUpPosition, "Open ", popUpHueText, " Door", popUpColor);
+
         else if (!isOpen)
-            HUD.Instance.ShowPopUp(popUpPosition, "You need a ", popUpHueText, " Key", popUpColor);
+            HUD.ShowPopUp(popUpPosition, "You need a ", popUpHueText, " Key", popUpColor);
     }
 
     public override void OnInteract()
     {
         // Close the Door
         if (isOpen && hasKey && canRotate) RotateHandle(handle.localEulerAngles.y - 120);
+
         // Open the Door
         else if (hasKey && canRotate) RotateHandle(handle.localEulerAngles.y + 120);
+
         // Locked Door
         else AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.LockedDoor);
     }
 
     public override void OnLoseFocus()
     {
-        HUD.Instance.HidePopUp();
+        HUD.HidePopUp();
     }
 
     #endregion

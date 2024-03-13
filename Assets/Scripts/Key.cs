@@ -28,7 +28,7 @@ public class KeyItem : Interactable
         base.OnFocus();
 
         if (!isPickedUp)
-            HUD.Instance.ShowPopUp(popUpPosition, "Pick up ", popUpHueText, " Key", popUpColor);
+            HUD.ShowPopUp(popUpPosition, "Pick up ", popUpHueText, " Key", popUpColor);
     }
 
     public override void OnInteract()
@@ -48,7 +48,7 @@ public class KeyItem : Interactable
     public override void OnLoseFocus()
     {
         base.OnLoseFocus();
-        HUD.Instance.HidePopUp();
+        HUD.HidePopUp();
     }
 
     #endregion

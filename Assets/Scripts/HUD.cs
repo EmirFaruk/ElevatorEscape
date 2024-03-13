@@ -8,11 +8,6 @@ using Zenject;
 public class HUD : MonoBehaviour
 {
     #region VARIABLES
-    #region Singleton
-    private static HUD instance;
-    public static HUD Instance => instance;
-    #endregion
-
     #region Item
     [SerializeField] private TextMeshProUGUI itemAmountTmp;
 
@@ -50,8 +45,6 @@ public class HUD : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-
         Time.timeScale = 1;
 
         popUp = Instantiate(popUp);
@@ -63,8 +56,8 @@ public class HUD : MonoBehaviour
     {
         deathPanel.SetActive(false);
         winPanel.SetActive(false);
-        fadePanel.SetActive(true);
         SetEnabilityButtons(false);
+        fadePanel.SetActive(true);
         tabMenu.SetActive(false);
         TabMenuToggle();
 

@@ -15,7 +15,7 @@ public class Chest : Interactable
     [Inject]
     private FirstPersonController player;
 
-    private Item item;
+    private Battery item;
 
     //PopUp
     private Vector3 popUpPosition => transform.position + Vector3.up / 2;
@@ -27,15 +27,15 @@ public class Chest : Interactable
     {
         if (angle != handle.localEulerAngles.x)
         {
-            HUD.Instance.HidePopUp();
+            HUD.HidePopUp();
             return;
         }
 
         if (hasKey && !isOpen)
-            HUD.Instance.ShowPopUp(popUpPosition, "Open ", key.ToString(), " Chest", popUpColor);
+            HUD.ShowPopUp(popUpPosition, "Open ", key.ToString(), " Chest", popUpColor);
 
         else if (!isOpen)
-            HUD.Instance.ShowPopUp(popUpPosition, "You need a ", key.ToString(), " Key", popUpColor);
+            HUD.ShowPopUp(popUpPosition, "You need a ", key.ToString(), " Key", popUpColor);
     }
 
     public override void OnInteract()
@@ -43,12 +43,12 @@ public class Chest : Interactable
         //if (isOpen) Close();
         /*else*/
         if (hasKey) Open();
-        HUD.Instance.HidePopUp();
+        HUD.HidePopUp();
     }
 
     public override void OnLoseFocus()
     {
-        HUD.Instance.HidePopUp();
+        HUD.HidePopUp();
     }
 
     #endregion
@@ -60,7 +60,7 @@ public class Chest : Interactable
 
         base.OnEnable();
 
-        if (item = GetComponentInChildren<Item>()) item.GetComponent<Collider>().enabled = false;
+        if (item = GetComponentInChildren<Battery>()) item.GetComponent<Collider>().enabled = false;
     }
 
     async void Open()
@@ -78,7 +78,7 @@ public class Chest : Interactable
                 if (item) item.GetComponent<Collider>().enabled = true;
                 GetComponent<Collider>().enabled = false;
 
-                HUD.Instance.HidePopUp();
+                HUD.HidePopUp();
             }
 
             await Task.Delay(10, destroyCancellationToken);

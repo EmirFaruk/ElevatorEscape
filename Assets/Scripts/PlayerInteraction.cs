@@ -33,7 +33,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleInteractionCheck()
     {
-        Debug.DrawRay(_mainCamera.ViewportPointToRay(interactionRayPoint).origin, _mainCamera.ViewportPointToRay(interactionRayPoint).direction * interactionRayDistance, Color.red);
+        float rayLength = currentInteractable ? (_mainCamera.ViewportPointToRay(interactionRayPoint).origin - currentInteractable.transform.position).magnitude : interactionRayDistance;
+        Debug.DrawRay(_mainCamera.ViewportPointToRay(interactionRayPoint).origin, _mainCamera.ViewportPointToRay(interactionRayPoint).direction * rayLength, Color.red);
         if (Physics.Raycast(_mainCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hitInfo, interactionRayDistance))
         {
             if (((1 << hitInfo.transform.gameObject.layer) & interactionLayer) == 0)
@@ -42,10 +43,18 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 
-            if (currentInteractable == null && hitInfo.collider.TryGetComponent(out currentInteractable))
+            if (!currentInteractable)
+            {
+                currentInteractable = hitInfo.collider.GetComponent<Interactable>();
+                currentInteractable?.OnFocus();
+            }
+            else if (hitInfo.transform.GetInstanceID() != currentInteractable.transform.GetInstanceID())
+                SetAsNull();
+
+            /*if (currentInteractable == null && hitInfo.collider.TryGetComponent(out currentInteractable))
                 if (currentInteractable) currentInteractable.OnFocus();
                 else if (hitInfo.transform.GetInstanceID() != currentInteractable.transform.GetInstanceID())
-                    SetAsNull();
+                    SetAsNull();*/
         }
         else SetAsNull();
     }

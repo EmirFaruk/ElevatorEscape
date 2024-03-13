@@ -8,17 +8,17 @@ public class ZenjectInstaller : MonoInstaller
         Container.Bind<ZenjectGetter>().AsSingle();
         Container.Bind<FirstPersonController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<HUD>().FromComponentInHierarchy().AsSingle();
     }
 }
 
 public class ZenjectGetter
 {
-    [Inject]
-    public FirstPersonController FirstPersonController;
+    [Inject] public FirstPersonController FirstPersonController;
 
-    [Inject]
-    public GameManager GameManager;
+    [Inject] public GameManager GameManager;
 
+    [Inject] public HUD HUD;
 }
 
 /*public static Getter Getto;

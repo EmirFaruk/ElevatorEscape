@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Zenject;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public static Action<float> OnTakeDamage;
     public static Action OnDeath;
 
+    [Inject] ZenjectGetter ZenjectGetter;
     #endregion
 
     #region UNITY EVENT FUNCTIONS    
@@ -31,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = Math.Max(0, currentHealth + damage);
 
-        HUD.Instance.ActivateTakeDamageEffect();
+        ZenjectGetter.HUD.ActivateTakeDamageEffect();
 
         OnTakeDamage?.Invoke(damage);
 

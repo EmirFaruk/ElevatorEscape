@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
-public class ElevatorButton : Interactable
+public class ElevatorButton3D : Interactable
 {
     #region FIELDS
 
     [SerializeField] private byte index;
+
     private Elevator elevator;
 
     private bool isPressed = false;
@@ -17,8 +17,8 @@ public class ElevatorButton : Interactable
     #region INTERACTABLE OVERRIDE METHODS
     public override void OnFocus()
     {
-
-        if (!isPressed) GetComponent<Image>().color = elevator.HoverColor;
+        print("OnFocus");
+        if (!isPressed) GetComponent<Renderer>().material.color = elevator.HoverColor;
     }
 
     public override void OnInteract()
@@ -28,7 +28,8 @@ public class ElevatorButton : Interactable
 
     public override void OnLoseFocus()
     {
-        if (!isPressed) GetComponent<Image>().color = elevator.DefaultColor;
+        print("OnLoseFocus");
+        if (!isPressed) GetComponent<Renderer>().material.color = elevator.DefaultColor;
     }
     #endregion
 
@@ -41,7 +42,7 @@ public class ElevatorButton : Interactable
 
         gameObject.layer = 7;
 
-        GetComponent<Image>().color = elevator.DefaultColor;
+        GetComponent<Renderer>().material.color = elevator.DefaultColor;
     }
 
     private void OnDisable()
