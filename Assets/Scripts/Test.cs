@@ -10,7 +10,7 @@ public class Test : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) zenjectGetter.firstPersonController.DoSomething();
-        if (Input.GetKeyDown(KeyCode.R)) zenjectGetter.gameManager.RestartLevel();
+        if (Input.GetKeyDown(KeyCode.Z)) zenjectGetter.FirstPersonController.DoSomething();
+        if (Input.GetKeyDown(KeyCode.R)) zenjectGetter.GameManager.RestartLevel();
     }
 }

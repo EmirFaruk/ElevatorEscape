@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelCountdownController : MonoBehaviour
 {
     [SerializeField] private int timeRemaining = 10;
-    private int timeRemainingDefault = 0;
+    private int defaultRemainingTime = 0;
     public static Action OnLevelTimeEnd;
     public static Action OnLevelTimeReloadStart;
     public static Action OnLevelTimeReloadEnd;
@@ -15,39 +15,46 @@ public class LevelCountdownController : MonoBehaviour
 
     private Color defaultColor;
 
+    private void OnEnable()
+    {
+        Elevator.OnReachedStop += ResetCountdow;
+        PlayerHealth.OnDeath += () => { inBase = true; Restart(); };
+        ExitDoor.OnWin += () => { inBase = true; Restart(); };
+    }
+
+    private void OnDisable()
+    {
+        Elevator.OnReachedStop -= ResetCountdow;
+        PlayerHealth.OnDeath -= () => { inBase = true; Restart(); };
+        ExitDoor.OnWin -= () => { inBase = true; Restart(); };
+    }
+
     void Start()
     {
         print("Level Countdown Started");
+
+        defaultRemainingTime = timeRemaining;
+
         countdownText = GetComponent<TextMeshProUGUI>();
-
-        timeRemainingDefault = timeRemaining;
-        countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
-
         defaultColor = countdownText.color;
-
-        Elevator.OnReachedStop += ResetCountdow;
-
-        CountdownAsync();
-
-        //await Task.Delay(TimeSpan.FromSeconds(timeRemaining), destroyCancellationToken);
-
-        //OnLevelTimeEnd?.Invoke();
-
-        PlayerHealth.OnDeath += () => { inBase = true; Restart(); };
-        ExitDoor.OnWin += () => { inBase = true; Restart(); };
+        countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
 
         toxicUIAnims = transform.parent.GetComponentsInChildren<Animator>();
         toxicUIAnims[0].enabled = false;
         toxicUIAnims[1].enabled = false;
+
+        CountdownAsync();
     }
 
+    private bool canCountdown => !inBase && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested;
     async void CountdownAsync()
     {
-        for (; !inBase && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested; timeRemaining--)
+        for (; canCountdown; timeRemaining--)
         {
             countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
 
-            if (timeRemaining * 10 <= Math.Max(10, timeRemaining * .2f * 10)) countdownText.color = Color.red; // Change color to red when 20% of time remaining            
+            // Change color to red when 20% of time remaining            
+            if (timeRemaining <= Math.Max(10, defaultRemainingTime * .2f)) countdownText.color = Color.red;
 
 #if UNITY_EDITOR
             await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);
@@ -61,7 +68,7 @@ public class LevelCountdownController : MonoBehaviour
             countdownText.fontSize = 42;
             countdownText.text = "Time End!";
             OnLevelTimeEnd?.Invoke();
-            Restart();
+            //Restart();
         }
     }
 
@@ -83,7 +90,7 @@ public class LevelCountdownController : MonoBehaviour
         if (stop != 0)
         {
             inBase = false;
-            if (timeRemaining == timeRemainingDefault)
+            if (timeRemaining == defaultRemainingTime)
             {
                 CountdownAsync();
                 ToxicUIAnim();
@@ -96,7 +103,7 @@ public class LevelCountdownController : MonoBehaviour
             OnLevelTimeReloadStart.Invoke();
             int speed = 200;
 
-            while (timeRemaining != timeRemainingDefault)
+            while (timeRemaining != defaultRemainingTime)
             {
                 timeRemaining++;
                 countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
@@ -105,7 +112,7 @@ public class LevelCountdownController : MonoBehaviour
 
             await Task.Delay(500);
             countdownText.color = defaultColor;
-            timeRemaining = timeRemainingDefault;
+            timeRemaining = defaultRemainingTime;
             OnLevelTimeReloadEnd.Invoke();
             //countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");*/
         }

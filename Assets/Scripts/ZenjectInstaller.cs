@@ -14,15 +14,16 @@ public class ZenjectInstaller : MonoInstaller
 public class ZenjectGetter
 {
     [Inject]
-    public FirstPersonController firstPersonController;
+    public FirstPersonController FirstPersonController;
 
     [Inject]
-    public GameManager gameManager;
+    public GameManager GameManager;
 
-    /*public static Getter Getto;
+}
+
+/*public static Getter Getto;
     public struct Getter
     {
         public FirstPersonController firstPersonController;
         public GameManager gameManager;
     }*/
-}
