@@ -27,7 +27,7 @@ namespace VLB_Samples
 
         void Start()
         {
-            useMouseView = true;
+            //useMouseView = true;
 
             var euler = transform.rotation.eulerAngles;
             rotationH = euler.y;
@@ -49,8 +49,8 @@ namespace VLB_Samples
             transform.rotation *= Quaternion.AngleAxis(rotationV, Vector3.right);
 
             var speed = speedNormal;
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))            speed *= speedFactorFast;
-            else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))   speed *= speedFactorSlow;
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) speed *= speedFactorFast;
+            else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) speed *= speedFactorSlow;
 
             transform.position += speed * Input.GetAxis("Vertical") * Time.deltaTime * transform.forward;
             transform.position += speed * Input.GetAxis("Horizontal") * Time.deltaTime * transform.right;
@@ -58,7 +58,7 @@ namespace VLB_Samples
             if (Input.GetKey(KeyCode.Q)) { transform.position += speedClimb * Time.deltaTime * Vector3.up; }
             if (Input.GetKey(KeyCode.E)) { transform.position += speedClimb * Time.deltaTime * Vector3.down; }
 
-            if (
+            /*if (
 #if !UNITY_EDITOR
                 Input.GetMouseButtonDown(0) ||
 #endif
@@ -66,7 +66,7 @@ namespace VLB_Samples
                 useMouseView = !useMouseView;
 
             if (Input.GetKeyDown(KeyCode.Escape))
-                useMouseView = false;
+                useMouseView = false;*/
         }
     }
 }

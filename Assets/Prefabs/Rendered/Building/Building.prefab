@@ -2455,6 +2455,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2003965746595643485, guid: 63656c3d54dc9b94aa0f0b285c886b5d, type: 3}
     - {fileID: 7018723603430982325, guid: 63656c3d54dc9b94aa0f0b285c886b5d, type: 3}
+    - {fileID: 8988657725733238873, guid: 63656c3d54dc9b94aa0f0b285c886b5d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63656c3d54dc9b94aa0f0b285c886b5d, type: 3}
@@ -5813,6 +5814,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23581301254426920, guid: 586a0bdb91e7e3d40aa10c88b73a2ffc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 482d8ff3da2bfc9449ef2ed4cf3bc43b, type: 2}
     - target: {fileID: 5282126639289790887, guid: 586a0bdb91e7e3d40aa10c88b73a2ffc, type: 3}
       propertyPath: door
       value: 
@@ -5821,6 +5826,10 @@ PrefabInstance:
       propertyPath: itemsParent
       value: 
       objectReference: {fileID: 1755543930719080951}
+    - target: {fileID: 6034844033241375834, guid: 586a0bdb91e7e3d40aa10c88b73a2ffc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64543401301672658, guid: 586a0bdb91e7e3d40aa10c88b73a2ffc, type: 3}
     m_RemovedGameObjects: []
@@ -11660,6 +11669,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23975881790183548, guid: 69a8ec37039ab4945b15887ae6028963, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 482d8ff3da2bfc9449ef2ed4cf3bc43b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
