@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7310039391892804938}
   - component: {fileID: 4328553395038918953}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29110dc2a642fc5428f180760abaf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableRenderers: []
 --- !u!65 &4328553395038918953
 BoxCollider:
   m_ObjectHideFlags: 0
