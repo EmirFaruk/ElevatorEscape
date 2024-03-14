@@ -1268,10 +1268,7 @@ MonoBehaviour:
   doors:
   - {fileID: 2119795519735855933}
   - {fileID: 2119534864930069499}
-  buttonClickSoundActive: {fileID: 8300000, guid: 0dfe9f9829141478689194368436b534, type: 3}
-  buttonClickSoundPassive: {fileID: 8300000, guid: 292aad821b16948af9cba9deaca16525, type: 3}
-  movementSound: {fileID: 8300000, guid: 6003d024bfde3bd49bda45b52cd1348b, type: 3}
-  doorMovementSound: {fileID: 8300000, guid: 14e968f7db7a9d148ab0fdba82c9364b, type: 3}
+  tmpFloor: {fileID: 5489774731539134594}
   defaultColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   hoverColor: {r: 1, g: 0.93911445, b: 0.6509804, a: 1}
   pressedColor: {r: 0.58176094, g: 1, b: 0.6001084, a: 1}
@@ -2506,9 +2503,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3141357894250976472}
     m_Modifications:
+    - target: {fileID: 319667277590174270, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 474793394831010824, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_Name
       value: ElevatorCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 474793394831010824, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414999563992821299, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2068993173532401129, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2521,6 +2530,14 @@ PrefabInstance:
     - target: {fileID: 2161048729548980197, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283149224931967106, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541282803127672995, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5542549694573801254, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2618,9 +2635,33 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 7284181371743300350, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8270982389741018317, guid: c6198f403a2bb49439886c8655723cad, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618702110249818007, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2632,3 +2673,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5913740272664310109, guid: c6198f403a2bb49439886c8655723cad, type: 3}
   m_PrefabInstance: {fileID: 7602199978347030214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5489774731539134594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2715645915323260484, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+  m_PrefabInstance: {fileID: 7602199978347030214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

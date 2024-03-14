@@ -1,4 +1,6 @@
+using MoreMountains.Feedbacks;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -14,17 +16,20 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicAudioSource;
 
     public static Action<SoundData.SoundEnum> OnSFXCall;
+    public static Action<AudioSource, SoundData.SoundEnum> OnAudioSourceSet;
     #endregion
 
     #region UNITY EVENT FUNCTIONS
     private void OnEnable()
     {
         OnSFXCall += PlaySFX;
+        OnAudioSourceSet += SetAudioSourceClip;
     }
 
     private void OnDisable()
     {
         OnSFXCall -= PlaySFX;
+        OnAudioSourceSet -= SetAudioSourceClip;
     }
 
     void Start()
@@ -48,12 +53,18 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Sfx")[0];
         audioSource.clip = soundData.GetSFXClip(sfxClip);
-        audioSource.Play();
+        audioSource.Play();        
+        
         await Task.Delay(Math.Max(1000, ((int)audioSource.clip.length) * 1000));
-
         DestroyImmediate(audioSource);
     }
 
+    public void SetAudioSourceClip(AudioSource audioSource, SoundData.SoundEnum sfxClip)
+    {        
+        audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Sfx")[0];
+        audioSource.clip = soundData.GetSFXClip(sfxClip);
+        audioSource.Play();     
+    }
     #endregion
 
     #region Music Methods

@@ -1,7 +1,9 @@
 using StarterAssets;
 using System;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class Elevator : MonoBehaviour
 {
@@ -20,28 +22,23 @@ public class Elevator : MonoBehaviour
     [SerializeField] private float doorOffset = .75f;
     [SerializeField] private Transform[] doors;
 
-    [Header("Auido")]
-    [SerializeField] private AudioClip buttonClickSoundActive;
-    [SerializeField] private AudioClip buttonClickSoundPassive;
-    [SerializeField] private AudioClip movementSound;
-    [SerializeField] private AudioClip doorMovementSound;
-
-    private AudioSource audioSource;
+    [Header("TMP")]
+    [SerializeField] private TextMeshProUGUI tmpFloor;
 
     private bool hasReachedStop = true;
     private bool doorIsOpen = false;
-
+    private AudioSource audioSource;
 
     [Header("Color")]
     [SerializeField] private Color defaultColor;
     [SerializeField] private Color hoverColor;
-    [SerializeField] private Color pressedColor;
-
-    private FirstPersonController player;
+    [SerializeField] private Color pressedColor;    
 
     bool buttonPressed = false;
 
     private bool timeReported = false;
+
+    [Inject] ZenjectGetter zenjectGetter;
     #endregion
 
     #region PROPERTIES
@@ -59,9 +56,9 @@ public class Elevator : MonoBehaviour
         if (stopsParent != null)
             for (byte i = 0; i < stopsParent.childCount; i++) stops[i] = stopsParent.GetChild(i);
 
-        audioSource = Camera.main.GetComponent<AudioSource>();
-
-        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonController>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        
+        tmpFloor.text = "0";
 
         MoveDoor(false);
     }
@@ -116,8 +113,8 @@ public class Elevator : MonoBehaviour
         //Player'i asansore al yoksa duser ya da titrer (player kodunun icinde olacak burasi)
         if (!isCallButton)
         {
-            player.transform.parent = transform;
-            player.GetComponent<CharacterController>().enabled = false;
+            zenjectGetter.FirstPersonController.transform.parent = transform;
+            zenjectGetter.FirstPersonController.GetComponent<CharacterController>().enabled = false;
         }
 
         //Biraz bekle
@@ -131,7 +128,9 @@ public class Elevator : MonoBehaviour
 
         doorIsOpen = false;
 
-        audioSource.PlayOneShot(movementSound);
+        
+        AudioManager.OnAudioSourceSet?.Invoke(audioSource, SoundData.SoundEnum.ElevatorMovement);
+        //audioSource.PlayOneShot(movementSound);
 
         //Asansoru hareket ettir
         while (!destroyCancellationToken.IsCancellationRequested && !hasReachedStop)
@@ -139,16 +138,26 @@ public class Elevator : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             hasReachedStop = transform.position.y == targetPosition.y;
 
+            for (int i = stopIndex; i > 0; i--) 
+            {
+                if (stops[i].position.y <= transform.position.y)
+                {
+                    tmpFloor.text = i.ToString();
+                    break;
+                }
+            }
+
             if (hasReachedStop)
             {
                 //Player'i serbest birak (player kodunun icinde olacak burasi)
                 if (!isCallButton)
                 {
-                    player.transform.parent = null;
-                    player.GetComponent<CharacterController>().enabled = true;
+                    zenjectGetter.FirstPersonController.transform.parent = null;
+                    zenjectGetter.FirstPersonController.GetComponent<CharacterController>().enabled = true;
                 }
 
                 audioSource.Stop();
+                tmpFloor.text = stopIndex.ToString();
 
                 //Kapiyi ac
                 MoveDoor(false);
@@ -166,7 +175,7 @@ public class Elevator : MonoBehaviour
 
     public void PlayButtonClickSound(bool isActive)
     {
-        audioSource.PlayOneShot(isActive ? buttonClickSoundActive : buttonClickSoundPassive);
+        AudioManager.OnSFXCall(isActive ? SoundData.SoundEnum.ElevatorButtonPressedActive : SoundData.SoundEnum.ElevatorButtonPressedPassive);
     }
 
     async void MoveDoor(bool isOpen)
@@ -177,14 +186,12 @@ public class Elevator : MonoBehaviour
         targetPostionDoor2.x += isOpen ? -doorOffset : doorOffset;
         Vector3 direction = isOpen ? Vector3.right : Vector3.left;
 
-        audioSource.PlayOneShot(doorMovementSound);
-
+        AudioManager.OnSFXCall(SoundData.SoundEnum.ElevatorDoorMovement);
 
         while (!destroyCancellationToken.IsCancellationRequested && Mathf.Abs(doors[0].transform.position.x - targetPositionDoor1.x) > .1f)
         {
             doors[0].transform.position += doorSpeed * direction * Time.deltaTime;//Vector3.MoveTowards(door.transform.position, targetPosition, speed * Time.deltaTime);
             doors[1].transform.position += doorSpeed * -direction * Time.deltaTime;
-
 
             await Task.Delay(10, destroyCancellationToken);
         }

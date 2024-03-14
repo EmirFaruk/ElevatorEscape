@@ -1460,6 +1460,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -1613,6 +1614,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -1890,6 +1892,10 @@ PrefabInstance:
     - target: {fileID: 1913293170517222, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
       propertyPath: m_Name
       value: FX_Sparks_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913293170517222, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4921362701108026, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2970,6 +2976,10 @@ PrefabInstance:
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4160,6 +4170,10 @@ PrefabInstance:
     - target: {fileID: 3034952696595560089, guid: 9eb2790d7f4faf2408238d69b9db7af0, type: 3}
       propertyPath: m_Name
       value: Quest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034952696595560089, guid: 9eb2790d7f4faf2408238d69b9db7af0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3215066280055948887, guid: 9eb2790d7f4faf2408238d69b9db7af0, type: 3}
       propertyPath: m_Mesh
@@ -5455,6 +5469,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -6239,6 +6254,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -6622,6 +6638,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -9246,6 +9263,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -10370,6 +10388,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -12146,6 +12165,7 @@ PrefabInstance:
     - {fileID: 8163319391209344127, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7692629778700086397, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     - {fileID: 7915952476124728522, guid: c6198f403a2bb49439886c8655723cad, type: 3}
+    - {fileID: 9058043760954896979, guid: c6198f403a2bb49439886c8655723cad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6198f403a2bb49439886c8655723cad, type: 3}
@@ -12888,6 +12908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 8524590392489013604, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8611003283954959846, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_SizeDelta.x
       value: 480
@@ -13219,6 +13243,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator
       objectReference: {fileID: 0}
+    - target: {fileID: 6321948247301284677, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004794885938989774, guid: 77f5e2d877078454c99bdb4bb1783972, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13275,6 +13307,10 @@ PrefabInstance:
     - target: {fileID: 3981779881817981479, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
       propertyPath: m_Name
       value: Building
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981779881817981479, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
