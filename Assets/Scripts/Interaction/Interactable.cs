@@ -29,7 +29,7 @@ public abstract class Interactable : MonoBehaviour
     public virtual void OnFocus()
     {
         UpdateOutline(true);
-        ShowPopUp();
+        Show();
     }
 
     public virtual void OnLoseFocus()
