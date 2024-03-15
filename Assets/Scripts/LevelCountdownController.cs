@@ -19,14 +19,14 @@ public class LevelCountdownController : MonoBehaviour
     {
         Elevator.OnReachedStop += ResetCountdow;
         PlayerHealth.OnDeath += () => { inBase = true; Restart(); };
-        ExitDoor.OnWin += () => { inBase = true; Restart(); };
+        GameManager.OnWin += () => { inBase = true; Restart(); };
     }
 
     private void OnDisable()
     {
         Elevator.OnReachedStop -= ResetCountdow;
         PlayerHealth.OnDeath -= () => { inBase = true; Restart(); };
-        ExitDoor.OnWin -= () => { inBase = true; Restart(); };
+        GameManager.OnWin -= () => { inBase = true; Restart(); };
     }
 
     void Start()
@@ -68,7 +68,6 @@ public class LevelCountdownController : MonoBehaviour
             countdownText.fontSize = 42;
             countdownText.text = "Time End!";
             OnLevelTimeEnd?.Invoke();
-            //Restart();
         }
     }
 
@@ -113,8 +112,7 @@ public class LevelCountdownController : MonoBehaviour
             await Task.Delay(500);
             countdownText.color = defaultColor;
             timeRemaining = defaultRemainingTime;
-            OnLevelTimeReloadEnd.Invoke();
-            //countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");*/
+            OnLevelTimeReloadEnd.Invoke();         
         }
     }
 

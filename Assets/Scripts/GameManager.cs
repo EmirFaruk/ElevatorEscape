@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     private AudioManager audioManager => GetComponent<AudioManager>();
     public AudioManager AudioManager => audioManager;
+
+    public static Action OnWin;
 
     private void Awake()
     {

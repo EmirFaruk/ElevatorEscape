@@ -6,19 +6,25 @@ using UnityEngine;
 
 public class ExitDoor : Interactable
 {
+    #region VARIABLES
     [SerializeField] private Transform door;
     [SerializeField] private Transform batteryItemsGateParent;
     [SerializeField] private Transform batteryItemsPowerBoxParent;
-    //[SerializeField] private Material itemMaterial;
-    private readonly List<Transform> batteryItemsGate = new();
-    private readonly List<Transform> batteryItemsPowerBox = new();
+    
+    private readonly List<Transform> gateBatteryItems = new();
+    private readonly List<Transform> powerBoxBatteryItems = new();
+
+    private float angle = 0;
+    private float defaultAngleY;
+    private Transform[] handle = new Transform[2];
+
     private Collider doorCollider => GetComponent<Collider>();
-    public static Action OnWin;
+    #endregion
 
     private void Start()
     {
-        FindChild(batteryItemsGateParent, batteryItemsGate);
-        FindChild(batteryItemsPowerBoxParent, batteryItemsPowerBox);
+        SetBatteryItems(batteryItemsGateParent, gateBatteryItems);
+        SetBatteryItems(batteryItemsPowerBoxParent, powerBoxBatteryItems);
 
         handle[0] = door.GetChild(0);
         handle[1] = door.GetChild(1);
@@ -32,33 +38,29 @@ public class ExitDoor : Interactable
 
     public override void OnInteract()
     {
-        if (HUD.GetItemAmount > 0 && batteryItemsGate.Count > 0)
+        if (HUD.GetItemAmount > 0 && gateBatteryItems.Count > 0)
         {
             HUD.HidePopUp();
 
             //Item objesini aktif et
-            batteryItemsGate.First().gameObject.SetActive(true);
-            batteryItemsPowerBox.First().gameObject.SetActive(true);
+            gateBatteryItems.First().gameObject.SetActive(true);
+            powerBoxBatteryItems.First().gameObject.SetActive(true);
 
             //Itemi listeden kaldir
-            batteryItemsGate.Remove(batteryItemsGate.First());
-            batteryItemsPowerBox.Remove(batteryItemsPowerBox.First());
+            gateBatteryItems.Remove(gateBatteryItems.First());
+            powerBoxBatteryItems.Remove(powerBoxBatteryItems.First());
 
             //Item sayisini azalt
             HUD.SetItemAmount(-1);
 
-            if (batteryItemsGate.Count <= 0) OpenDoor();
+            if (gateBatteryItems.Count <= 0) OpenDoor();
         }
     }
 
     public override void OnLoseFocus()
     {
         HUD.HidePopUp();
-    }
-
-    float angle = 0;
-    float defaultAngleY;
-    private Transform[] handle = new Transform[2];
+    }    
 
     private async void OpenDoor()
     {
@@ -79,10 +81,11 @@ public class ExitDoor : Interactable
         }
 
         await Task.Delay(1000);
-        OnWin?.Invoke();
+        
+        GameManager.OnWin?.Invoke();        
     }
 
-    void FindChild(Transform target, List<Transform> itemList)
+    void SetBatteryItems(Transform target, List<Transform> itemList)
     {
         foreach (Transform item in target)
         {
