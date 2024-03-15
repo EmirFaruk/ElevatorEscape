@@ -6,6 +6,7 @@ public class Battery : Interactable
     private const string hue = "Battery";
     private const string end = "";
     private static readonly Color hueColor = Color.white;
+    private static readonly Vector3 popUpOffset = Vector3.up / 3;
 
     /*public Battery(Vector3 popUpPosition, string popUpBase, string popUpHue, string popUpEnd, Color hueColor)
         : base(popUpPosition, popUpBase, popUpHue, popUpEnd, hueColor) { }*/
@@ -13,7 +14,7 @@ public class Battery : Interactable
     public override void Awake()
     {
         base.Awake();
-        Init(transform.position + Vector3.up / 3, messageBase, hue, end, hueColor);
+        Init(transform.position + popUpOffset, messageBase, hue, end, hueColor);
     }
 
     public override void OnFocus()

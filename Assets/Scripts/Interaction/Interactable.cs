@@ -21,26 +21,22 @@ public abstract class Interactable : MonoBehaviour
     private string popUpEnd;
     private Color hueColor;
     private Vector3 popUpPosition;
-    #endregion    
+    #endregion
 
     #region ABSTRACT METHODS
     public abstract void OnInteract();
 
     public virtual void OnFocus()
     {
-        //ShowOutline();
         UpdateOutline(true);
-        Show();
+        ShowPopUp();
     }
 
     public virtual void OnLoseFocus()
     {
-        //RemoveOutline();
         UpdateOutline(false);
         HUD.HidePopUp();
     }
-
-
     #endregion
 
     #region UNITY EVENT FUNCTIONS
@@ -52,11 +48,98 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void OnEnable()
     {
-        this.gameObject.layer = 7; //interaction layer;
+        SetLayer();
+        InitializeOutlineMaterial();
+        InitializeRenderer();
+    }
 
+    #endregion
+
+    #region METHODS
+
+    #region Initialization
+    private void SetLayer()
+    {
+        //interaction layer;
+        this.gameObject.layer = 7;
+    }
+
+    private void InitializeOutlineMaterial()
+    {
         outlineMaterial = new Material(HUD.OutlineShader);
+    }
 
+    private void InitializeRenderer()
+    {
         if (TryGetComponent(out Renderer renderer))
+        {
+            hasRenderer = true;
+            interactableRenderer = renderer;
+            materialHandler = interactableRenderer.materials.ToList();
+        }
+        else
+        {
+            hasRenderer = false;
+            InitializeChildRenderers();
+        }
+    }
+
+    private void InitializeChildRenderers()
+    {
+        foreach (Transform item in transform)
+        {
+            if (item.TryGetComponent(out Renderer childRenderer))
+                interactableRenderers.Add(childRenderer);
+        }
+
+        materialHandlers = new List<Material>[interactableRenderers.Count];
+
+        for (int i = 0; i < interactableRenderers.Count; i++)
+            materialHandlers[i] = interactableRenderers[i].materials.ToList();
+    }
+
+    public virtual void Init(Vector3 popUpPosition, string popUpBase, string popUphue, string popUpEnd, Color hueColor)
+    {
+        this.popUpPosition = popUpPosition;
+        this.popUpBase = popUpBase;
+        this.popUpHue = popUphue;
+        this.popUpEnd = popUpEnd;
+        this.hueColor = hueColor;
+    }
+    #endregion    
+
+    void UpdateOutline(bool isShowing)
+    {
+        if (hasRenderer)
+            UpdateMaterials(interactableRenderer, materialHandler, isShowing);
+
+        else
+            for (int i = 0; i < interactableRenderers.Count; i++)
+                UpdateMaterials(interactableRenderers[i], materialHandlers[i], isShowing);
+    }
+
+    void UpdateMaterials(Renderer currentRenderer, List<Material> currentMaterialHandlers, bool isShowing)
+    {
+        if (isShowing)
+            currentMaterialHandlers.Add(outlineMaterial);
+
+        else
+            currentMaterialHandlers.Remove(currentMaterialHandlers.Last());
+
+        currentRenderer.materials = currentMaterialHandlers.ToArray();
+    }
+
+    private void Show() => ShowPopUp(popUpPosition, popUpBase, popUpHue, popUpEnd, hueColor);
+    public virtual void ShowPopUp(Vector3 position = default, string messageBase = "Interact ", string hue = "this ", string end = "", Color hueColor = default)
+    {
+        HUD.ShowPopUp(position == default ? this.popUpPosition : position, messageBase, hue, end, hueColor);
+    }
+    #endregion
+}
+
+#region Backups
+/*
+    if (TryGetComponent(out Renderer renderer))
         {
             hasRenderer = true;
             interactableRenderer = renderer;
@@ -76,14 +159,11 @@ public abstract class Interactable : MonoBehaviour
 
             for (int i = 0; i < interactableRenderers.Count; i++)
                 materialHandlers[i] = interactableRenderers[i].materials.ToList();
-        }
-    }
+        }*/
 
-    #endregion
-
-    #region METHODS
-
-    void ShowOutline()
+/*
+ 
+ void ShowOutline()
     {
         if (hasRenderer)
         {
@@ -116,42 +196,6 @@ public abstract class Interactable : MonoBehaviour
             }
         }
     }
-
-    void UpdateOutline(bool isShowing)
-    {
-        if (hasRenderer)
-            UpdateMaterials(interactableRenderer, materialHandler, isShowing);
-
-        else
-            for (int i = 0; i < interactableRenderers.Count; i++)
-                UpdateMaterials(interactableRenderers[i], materialHandlers[i], isShowing);
-    }
-
-    void UpdateMaterials(Renderer currentRenderer, List<Material> currentMaterialHandlers, bool isShowing)
-    {
-        if (isShowing)
-            currentMaterialHandlers.Add(outlineMaterial);
-
-        else
-            currentMaterialHandlers.Remove(currentMaterialHandlers.Last());
-
-        currentRenderer.materials = currentMaterialHandlers.ToArray();
-    }
-
-    private void Show() => ShowPopUp(popUpPosition, popUpBase, popUpHue, popUpEnd, hueColor);
-
-    public virtual void ShowPopUp(Vector3 position = default, string messageBase = "Interact ", string hue = "this ", string end = "", Color hueColor = default)
-    {
-        HUD.ShowPopUp(position == default ? popUpPosition : position, messageBase, hue, end, hueColor);
-    }
-
-    public virtual void Init(Vector3 popUpPosition, string popUpBase, string popUphue, string popUpEnd, Color hueColor)
-    {
-        this.popUpPosition = popUpPosition;
-        this.popUpBase = popUpBase;
-        this.popUpHue = popUphue;
-        this.popUpEnd = popUpEnd;
-        this.hueColor = hueColor;
-    }
-    #endregion
-}
+ 
+ */
+#endregion
