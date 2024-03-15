@@ -108,7 +108,7 @@ public abstract class Interactable : MonoBehaviour
     }
     #endregion    
 
-    void UpdateOutline(bool isShowing)
+    protected void UpdateOutline(bool isShowing)
     {
         if (hasRenderer)
             UpdateMaterials(interactableRenderer, materialHandler, isShowing);

@@ -6,76 +6,88 @@ using Zenject;
 public class Chest : Interactable
 {
     #region VARIABLES
-    [SerializeField] private KeyData.KeyType key;
-    private bool hasKey => player.CurrentKey && player.CurrentKey.KeyType == key;
-    private bool isOpen;
-    private Transform handle;
-    private float angle = 0;
+    [SerializeField] private KeyData.KeyType requiredKeyType;
+    
+    [Inject] private FirstPersonController player;
 
-    [Inject]
-    private FirstPersonController player;
-
-    private Battery item;
+    private bool playerHasKey => player.CurrentKey && player.CurrentKey.KeyType == requiredKeyType;
+    private bool chestIsOpen;
+    
+    private Transform chestHandle;
+    private float handleAngle = 0;
+    
+    private Battery batteryItem;
 
     //PopUp
     private Vector3 popUpPosition => transform.position + Vector3.up / 2;
-    private Color popUpColor => KeyData.KeyColors[key];
+    private Color popUpColor => KeyData.KeyColors[requiredKeyType];
+
     #endregion
 
     #region INTERACTABLE METHODS
     public override void OnFocus()
     {
-        if (angle != handle.localEulerAngles.x)
+        if (handleAngle != chestHandle.localEulerAngles.x)
         {
             HUD.HidePopUp();
             return;
         }
 
-        if (hasKey && !isOpen)
-            HUD.ShowPopUp(popUpPosition, "Open ", key.ToString(), " Chest", popUpColor);
+        UpdateOutline(true);
 
-        else if (!isOpen)
-            HUD.ShowPopUp(popUpPosition, "You need a ", key.ToString(), " Key", popUpColor);
+        if (playerHasKey && !chestIsOpen)
+            HUD.ShowPopUp(popUpPosition, "Open ", requiredKeyType.ToString(), " Chest", popUpColor);
+
+        else if (!chestIsOpen)
+            HUD.ShowPopUp(popUpPosition, "You need a ", requiredKeyType.ToString(), " Key", popUpColor);
     }
 
     public override void OnInteract()
     {
-        //if (isOpen) Close();
-        /*else*/
-        if (hasKey) Open();
         HUD.HidePopUp();
+        if (playerHasKey) OpenChest();
     }
 
     public override void OnLoseFocus()
     {
-        HUD.HidePopUp();
+        base.OnLoseFocus();
     }
 
     #endregion
 
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void OnEnable()
     {
-        handle = transform.GetChild(1);
-        angle = handle.localEulerAngles.x;
+        chestHandle = transform.GetChild(1);
+        handleAngle = chestHandle.localEulerAngles.x;
 
         base.OnEnable();
 
-        if (item = GetComponentInChildren<Battery>()) item.GetComponent<Collider>().enabled = false;
+        CheckIfBatteryIsPresent();
     }
 
-    async void Open()
+    private void CheckIfBatteryIsPresent()
     {
-        while (angle != -120)
+        if (batteryItem = GetComponentInChildren<Battery>()) batteryItem.GetComponent<Collider>().enabled = false;
+    }
+
+    private async void OpenChest()
+    {
+        while (handleAngle != -120)
         {
-            angle = Mathf.Lerp(angle, -120, 0.05f);
-            handle.localEulerAngles = new Vector3(angle, 0, 0);
+            handleAngle = Mathf.Lerp(handleAngle, -120, 0.05f);
+            chestHandle.localEulerAngles = new Vector3(handleAngle, 0, 0);
 
-            if (angle < -119f)
+            if (handleAngle < -119f)
             {
-                angle = -120;
-                isOpen = true;
+                handleAngle = -120;
+                chestIsOpen = true;
 
-                if (item) item.GetComponent<Collider>().enabled = true;
+                if (batteryItem) batteryItem.GetComponent<Collider>().enabled = true;
                 GetComponent<Collider>().enabled = false;
 
                 HUD.HidePopUp();
