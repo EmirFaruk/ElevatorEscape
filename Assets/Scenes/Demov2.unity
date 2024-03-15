@@ -2811,6 +2811,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5c5974c400b3fd49ad093ea5889a71d, type: 3}
+--- !u!4 &353656436 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1755543930719080951, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+  m_PrefabInstance: {fileID: 3232701499375673654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &355876356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7879,6 +7884,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03d68db6e89d8a748aadc735ebd56146, type: 3}
+--- !u!4 &1089051694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7718683943788507104, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+  m_PrefabInstance: {fileID: 3232701499375673654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1097009567
 GameObject:
   m_ObjectHideFlags: 0
@@ -15032,6 +15042,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1186702043168656774, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186702043168656774, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186702043168656774, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186702043168656774, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186702043168656774, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3981779881817981479, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
       propertyPath: m_Name
       value: Building
@@ -15039,6 +15069,22 @@ PrefabInstance:
     - target: {fileID: 3981779881817981479, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484850698415131149, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: batteryItemsGateParent
+      value: 
+      objectReference: {fileID: 353656436}
+    - target: {fileID: 7484850698415131149, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: batteryItemsPowerBoxParent
+      value: 
+      objectReference: {fileID: 1089051694}
+    - target: {fileID: 9030412763081236464, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9030412763081236464, guid: 2d07d8e5cf6528c4fb04d9975b2c12f0, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

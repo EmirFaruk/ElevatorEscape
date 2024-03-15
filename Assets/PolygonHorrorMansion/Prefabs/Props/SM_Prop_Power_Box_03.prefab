@@ -100,8 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8118215678f4534db42dbf58c239383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsParent: {fileID: 0}
-  itemsParent2: {fileID: 5011428976638743626}
+  door: {fileID: 0}
+  batteryItemsGateParent: {fileID: 0}
+  batteryItemsPowerBoxParent: {fileID: 5011428976638743626}
 --- !u!65 &4495564384162872253
 BoxCollider:
   m_ObjectHideFlags: 0

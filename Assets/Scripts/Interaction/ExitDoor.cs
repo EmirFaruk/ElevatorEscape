@@ -7,18 +7,18 @@ using UnityEngine;
 public class ExitDoor : Interactable
 {
     [SerializeField] private Transform door;
-    [SerializeField] private Transform itemsParent;
-    [SerializeField] private Transform itemsParent2;
+    [SerializeField] private Transform batteryItemsGateParent;
+    [SerializeField] private Transform batteryItemsPowerBoxParent;
     //[SerializeField] private Material itemMaterial;
-    private readonly List<Transform> items = new();
-    private readonly List<Transform> items2 = new();
+    private readonly List<Transform> batteryItemsGate = new();
+    private readonly List<Transform> batteryItemsPowerBox = new();
     private Collider doorCollider => GetComponent<Collider>();
     public static Action OnWin;
 
     private void Start()
     {
-        FindChild(itemsParent, items);
-        FindChild(itemsParent2, items2);
+        FindChild(batteryItemsGateParent, batteryItemsGate);
+        FindChild(batteryItemsPowerBoxParent, batteryItemsPowerBox);
 
         handle[0] = door.GetChild(0);
         handle[1] = door.GetChild(1);
@@ -32,25 +32,22 @@ public class ExitDoor : Interactable
 
     public override void OnInteract()
     {
-        if (HUD.GetItemAmount > 0 && items.Count > 0)
+        if (HUD.GetItemAmount > 0 && batteryItemsGate.Count > 0)
         {
             HUD.HidePopUp();
 
-            //Item materyalini degistir
-            //items.Last().GetComponent<MeshRenderer>().material = itemMaterial;
-
             //Item objesini aktif et
-            items.First().gameObject.SetActive(true);
-            items2.First().gameObject.SetActive(true);
+            batteryItemsGate.First().gameObject.SetActive(true);
+            batteryItemsPowerBox.First().gameObject.SetActive(true);
 
             //Itemi listeden kaldir
-            items.Remove(items.First());
-            items2.Remove(items2.First());
+            batteryItemsGate.Remove(batteryItemsGate.First());
+            batteryItemsPowerBox.Remove(batteryItemsPowerBox.First());
 
             //Item sayisini azalt
             HUD.SetItemAmount(-1);
 
-            if (items.Count <= 0) OpenDoor();
+            if (batteryItemsGate.Count <= 0) OpenDoor();
         }
     }
 
