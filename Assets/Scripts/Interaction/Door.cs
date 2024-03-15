@@ -55,7 +55,7 @@ public class Door : Interactable
     {
         handle = transform;
         angle = handle.localEulerAngles.y;
-        print("angle on enable : " + angle + " " + name);
+        
         base.OnEnable();
     }
 
@@ -74,7 +74,7 @@ public class Door : Interactable
         {
             angle = Mathf.Lerp(angle, targetAngle, 0.04f);
             handle.localEulerAngles = new Vector3(0, angle, 0);
-            print("angle : " + angle + "    target angle : " + targetAngle);
+            
             if (Mathf.Abs(angle - targetAngle) < 1)
             {
                 angle = targetAngle;
