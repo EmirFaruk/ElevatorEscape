@@ -38,7 +38,7 @@ public class ExitDoor : Interactable
 
     public override void OnInteract()
     {
-        if (HUD.GetItemAmount > 0 && gateBatteryItems.Count > 0)
+        if (HUD.GetBatteryItemAmount > 0 && gateBatteryItems.Count > 0)
         {
             HUD.HidePopUp();
 

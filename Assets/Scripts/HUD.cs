@@ -3,19 +3,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Zenject;
 
 public class HUD : MonoBehaviour, IHUD
 {
     #region VARIABLES
     
     #region Item
-    [SerializeField] private TextMeshProUGUI itemAmountTmp;
+    [SerializeField] private TextMeshProUGUI batteryItemAmountTmp;
 
-    private int itemAmount;
-    public int GetItemAmount => itemAmount;    
+    private int batteryItemAmount;
+    public int GetBatteryItemAmount => batteryItemAmount;    
 
-    public void SetItemAmount(int data) => itemAmountTmp.SetText((itemAmount += data).ToString()); 
+    public void SetItemAmount(int data) => batteryItemAmountTmp.SetText((batteryItemAmount += data).ToString()); 
    
     #endregion    
 
@@ -182,9 +181,27 @@ public class HUD : MonoBehaviour, IHUD
 
 public interface IHUD
 {
-    int GetItemAmount { get; }    
+    int GetBatteryItemAmount { get; }    
     void SetItemAmount(int data);
     void ShowPopUp(Vector3 position, string messageBase, string hue, string end, Color color);
     void HidePopUp();
     void ActivateTakeDamageEffect();
 }
+
+/*
+public interface IItem
+{
+    int GetItemAmount { get; }
+    void SetItemAmount(int data);
+}
+
+public interface IPopUp
+{
+    void ShowPopUp(Vector3 position, string messageBase, string hue, string end, Color color);
+    void HidePopUp();
+}
+
+public interface IDamageEffect
+{
+    void ActivateTakeDamageEffect();
+}*/
