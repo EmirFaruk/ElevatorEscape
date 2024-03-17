@@ -4367,6 +4367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryItemAmountTmp: {fileID: 5151226487528759107}
   popUp: {fileID: 5825250346446324090, guid: 2f350d91e21563848aa45f55e0297110, type: 3}
+  outlineShader: {fileID: -6465566751694194690, guid: f52c836c7e75769449567595420f5744, type: 3}
   deathPanel: {fileID: 1417752895737940457}
   fadePanel: {fileID: 4345996099196473832}
   winPanel: {fileID: 3907373232560311179}

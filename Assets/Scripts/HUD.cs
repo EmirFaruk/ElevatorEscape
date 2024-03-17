@@ -21,6 +21,8 @@ public class HUD : MonoBehaviour, IHUD
     [Header("PopUp")]
     [SerializeField] private Canvas popUp;
     private TextMeshProUGUI tmpPopUp;
+    public Shader OutlineShader => outlineShader;
+    [SerializeField] private Shader outlineShader;
     #endregion
 
     #region Panels
