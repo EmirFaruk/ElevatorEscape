@@ -1,6 +1,4 @@
-using MoreMountains.Feedbacks;
 using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -53,17 +51,17 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Sfx")[0];
         audioSource.clip = soundData.GetSFXClip(sfxClip);
-        audioSource.Play();        
-        
+        audioSource.Play();
+
         await Task.Delay(Math.Max(1000, ((int)audioSource.clip.length) * 1000));
         DestroyImmediate(audioSource);
     }
 
     public void SetAudioSourceClip(AudioSource audioSource, SoundData.SoundEnum sfxClip)
-    {        
+    {
         audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Sfx")[0];
         audioSource.clip = soundData.GetSFXClip(sfxClip);
-        audioSource.Play();     
+        audioSource.Play();
     }
     #endregion
 

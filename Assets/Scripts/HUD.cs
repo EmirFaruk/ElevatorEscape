@@ -7,16 +7,15 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour, IHUD
 {
     #region VARIABLES
-    
-    #region Item
+
+    #region Battery Item
     [SerializeField] private TextMeshProUGUI batteryItemAmountTmp;
 
     private int batteryItemAmount;
-    public int GetBatteryItemAmount => batteryItemAmount;    
+    public int GetBatteryItemAmount => batteryItemAmount;
 
-    public void SetItemAmount(int data) => batteryItemAmountTmp.SetText((batteryItemAmount += data).ToString()); 
-   
-    #endregion    
+    private Animator batteryItemAnim;
+    #endregion
 
     #region PopUp
     [Header("PopUp")]
@@ -41,9 +40,9 @@ public class HUD : MonoBehaviour, IHUD
 
     #region UNITY EVENT FUNCTIONS
     private void Awake()
-    {        
+    {
         SetPopUpReference();
-        takeDamageAnim = takeDamageRef.GetComponent<Animator>();        
+        takeDamageAnim = takeDamageRef.GetComponent<Animator>();
     }
 
     private void SetPopUpReference()
@@ -63,7 +62,7 @@ public class HUD : MonoBehaviour, IHUD
     {
         InitializeGame();
         SetButtonsAction();
-    }    
+    }
 
     private void Update()
     {
@@ -82,6 +81,8 @@ public class HUD : MonoBehaviour, IHUD
         fadePanel.SetActive(true);
         tabMenu.SetActive(false);
         ToggleTabMenu();
+        batteryItemAnim = batteryItemAmountTmp.GetComponentInParent<Animator>();
+        batteryItemAnim.enabled = false;
     }
     #endregion
 
@@ -124,7 +125,7 @@ public class HUD : MonoBehaviour, IHUD
 
     #region EndGame
     public void EndGame(bool isWin)
-    {        
+    {
         if (isWin) winPanel.SetActive(true);
         else deathPanel.SetActive(true);
 
@@ -172,8 +173,25 @@ public class HUD : MonoBehaviour, IHUD
             takeDamageRef.SetActive(false);
             isPlayTakeDamageEffect = false;
         }
-    }    
+    }
 
+    #endregion
+
+    #region Battery Item
+    public void SetItemAmount(int data)
+    {
+        batteryItemAmountTmp.SetText((batteryItemAmount += data).ToString());
+        ActivateBatteryItemEffect();
+    }
+
+    private async void ActivateBatteryItemEffect()
+    {
+        batteryItemAnim.enabled = true;
+
+        await Task.Delay(2000);
+
+        batteryItemAnim.enabled = false;
+    }
     #endregion
 
     #endregion
@@ -181,7 +199,7 @@ public class HUD : MonoBehaviour, IHUD
 
 public interface IHUD
 {
-    int GetBatteryItemAmount { get; }    
+    int GetBatteryItemAmount { get; }
     void SetItemAmount(int data);
     void ShowPopUp(Vector3 position, string messageBase, string hue, string end, Color color);
     void HidePopUp();

@@ -5,127 +5,177 @@ using UnityEngine;
 
 public class LevelCountdownController : MonoBehaviour
 {
-    [SerializeField] private int timeRemaining = 10;
-    private int defaultRemainingTime = 0;
+    #region VARIABLES
     public static Action OnLevelTimeEnd;
     public static Action OnLevelTimeReloadStart;
     public static Action OnLevelTimeReloadEnd;
 
     [SerializeField] private TextMeshProUGUI countdownText;
 
+    [SerializeField] private int timeRemaining = 10;
+    private int defaultRemainingTime = 0;
+
     private Color defaultColor;
 
+    private Animator[] toxicUIAnims = new Animator[2];
+
+    private bool inSafe = true;
+    private bool canCountdown => !inSafe && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested;
+    #endregion
+
+    #region UNITY EVENT FUNCTIONS
     private void OnEnable()
     {
-        Elevator.OnReachedStop += ResetCountdow;        
-        GameManager.OnWin += () => { inBase = true; Restart(); };
+        Elevator.OnReachedStop += ResetCountdow;
+        GameManager.OnWin += Restart;
     }
 
     private void OnDisable()
     {
-        Elevator.OnReachedStop -= ResetCountdow;        
-        GameManager.OnWin -= () => { inBase = true; Restart(); };
+        Elevator.OnReachedStop -= ResetCountdow;
+        GameManager.OnWin -= Restart;
     }
 
     void Start()
     {
-        print("Level Countdown Started");
+        InitializeCountdown();
+        CountdownAsync();
+    }
+    #endregion
 
+    #region METHODS
+
+    #region Initialize
+    private void InitializeCountdown()
+    {
         defaultRemainingTime = timeRemaining;
 
         countdownText = GetComponent<TextMeshProUGUI>();
         defaultColor = countdownText.color;
-        countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
+        UpdateCountdownDisplay();
 
         toxicUIAnims = transform.parent.GetComponentsInChildren<Animator>();
-        toxicUIAnims[0].enabled = false;
-        toxicUIAnims[1].enabled = false;
+        SetEnabilityToxicUIAnimations(false);
+    }
+    #endregion
 
-        CountdownAsync();
+    private void StartCountdown()
+    {
+        inSafe = false;
+
+        if (timeRemaining == defaultRemainingTime)
+        {
+            CountdownAsync();
+            ToxicUIAnim();
+        }
     }
 
-    private bool canCountdown => !inBase && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested;
     async void CountdownAsync()
     {
         for (; canCountdown; timeRemaining--)
         {
-            countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
+            UpdateCountdownDisplay();
 
-            // Change color to red when 20% of time remaining            
-            if (timeRemaining <= Math.Max(10, defaultRemainingTime * .2f)) countdownText.color = Color.red;
+            if (IsTimeCritical())
+            {
+                // Change color to red when 20% of time remaining
+                countdownText.color = Color.red;
+            }
 
 #if UNITY_EDITOR
             await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);
 #else
-             await Task.Delay(1000);
+            await Task.Delay(1000);
 #endif
         }
 
-        if (!inBase && !destroyCancellationToken.IsCancellationRequested)
-        {
-            countdownText.fontSize = 42;
-            countdownText.text = "Time End!";
-            OnLevelTimeEnd?.Invoke();
-        }
+        if (!inSafe && !destroyCancellationToken.IsCancellationRequested)
+            EndLevelTime();
     }
 
-    private Animator[] toxicUIAnims = new Animator[2];
+    private void UpdateCountdownDisplay()
+    {
+        countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
+    }
+
+    private bool IsTimeCritical()
+    {
+        return timeRemaining <= Math.Max(10, defaultRemainingTime * .2f);
+    }
+
+    private void EndLevelTime()
+    {
+        countdownText.fontSize = 42;
+        countdownText.text = "Time End!";
+        ToxicUIAnim();
+        Invoke(nameof(TriggerLevelEndTime), 1);
+        Invoke(nameof(Restart), 1);
+    }
+
+    private void TriggerLevelEndTime()
+    {
+        OnLevelTimeEnd?.Invoke();
+    }
+
+    private async Task ReloadLevelTime()
+    {
+        inSafe = true;
+        countdownText.color = Color.green;
+        OnLevelTimeReloadStart.Invoke();
+        int speed = 200;
+
+        while (timeRemaining != defaultRemainingTime)
+        {
+            timeRemaining++;
+            UpdateCountdownDisplay();
+            await Task.Delay(Math.Max(1, speed -= 5));
+        }
+
+        await Task.Delay(500);
+        countdownText.color = defaultColor;
+        timeRemaining = defaultRemainingTime;
+        OnLevelTimeReloadEnd.Invoke();
+    }
+
+    private void SetEnabilityToxicUIAnimations(bool isEnable)
+    {
+        toxicUIAnims[0].enabled = isEnable;
+        toxicUIAnims[1].enabled = isEnable;
+    }
+
     async void ToxicUIAnim()
     {
-        toxicUIAnims[0].enabled = true;
-        toxicUIAnims[1].enabled = true;
+        SetEnabilityToxicUIAnimations(true);
 
         await Task.Delay(3000);
 
-        toxicUIAnims[0].enabled = false;
-        toxicUIAnims[1].enabled = false;
+        SetEnabilityToxicUIAnimations(false);
     }
 
-    private bool inBase = true;
     async void ResetCountdow(int stop)
     {
-        if (stop != 0)
-        {
-            inBase = false;
-            if (timeRemaining == defaultRemainingTime)
-            {
-                CountdownAsync();
-                ToxicUIAnim();
-            }
-        }
-        else
-        {
-            inBase = true;
-            countdownText.color = Color.green;
-            OnLevelTimeReloadStart.Invoke();
-            int speed = 200;
-
-            while (timeRemaining != defaultRemainingTime)
-            {
-                timeRemaining++;
-                countdownText.text = TimeSpan.FromSeconds(timeRemaining).ToString(@"mm\:ss");
-                await Task.Delay(Math.Max(1, speed -= 5));
-            }
-
-            await Task.Delay(500);
-            countdownText.color = defaultColor;
-            timeRemaining = defaultRemainingTime;
-            OnLevelTimeReloadEnd.Invoke();         
-        }
+        if (stop != 0) StartCountdown();
+        else await ReloadLevelTime();
     }
 
     public async void Restart()
     {
-        inBase = true;
+        inSafe = true;
+
+        PrepareForQuit();
+
+        for (int i = 10; i >= 0; i--, await Task.Delay(1000))
+            countdownText.text = "Quit in\n" + i;
+
+        Application.Quit();
+    }
+
+    private void PrepareForQuit()
+    {
+        inSafe = true;
         countdownText.fontSize = 42;
         countdownText.color = Color.red;
-
-        for (int i = 10; i >= 0; i--)
-        {
-            countdownText.text = "Quit in\n" + i;
-            await Task.Delay(1000);
-        }
-
-        Application.Quit();       
     }
+
+    #endregion
 }

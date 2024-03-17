@@ -55,26 +55,31 @@ public class Door : Interactable
     {
         handle = transform;
         angle = handle.localEulerAngles.y;
-        
+
         base.OnEnable();
+    }
+
+    private async Task PlayDoorOpenSounds()
+    {
+        if (!isOpen)
+        {
+            AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.Unlock);
+            await Task.Delay(400);
+        }
+        AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.DoorOpening);
     }
 
     async void RotateHandle(float targetAngle)
     {
         canRotate = false;
 
-        if (!isOpen)
-        {
-            AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.Unlock);
-            await Task.Delay(200);
-        }
-        AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.DoorOpening);
+        await PlayDoorOpenSounds();
 
         while (!destroyCancellationToken.IsCancellationRequested)
         {
             angle = Mathf.Lerp(angle, targetAngle, 0.04f);
             handle.localEulerAngles = new Vector3(0, angle, 0);
-            
+
             if (Mathf.Abs(angle - targetAngle) < 1)
             {
                 angle = targetAngle;

@@ -1038,8 +1038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cc01fe97f8ba44c94f146fb8a908b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownText: {fileID: 2158952999057473717}
   timeRemaining: 180
-  countdownText: {fileID: 0}
 --- !u!222 &513822463385635606
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1420,6 +1420,7 @@ GameObject:
   - component: {fileID: 8607443576389797412}
   - component: {fileID: 6402967496323276918}
   - component: {fileID: 2261079270678961651}
+  - component: {fileID: 8872501897550796494}
   m_Layer: 5
   m_Name: Image_Battery
   m_TagString: Untagged
@@ -1437,16 +1438,16 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6740093956279414777}
   m_Father: {fileID: 2726975061172158506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40, y: -30}
+  m_AnchoredPosition: {x: -104, y: -94}
   m_SizeDelta: {x: 128, y: 128}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6402967496323276918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1485,6 +1486,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &8872501897550796494
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516407601784555361}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1babf8ed78237a2468dc17f1ca054e7e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2520938069477011886
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,7 +3821,7 @@ GameObject:
   - component: {fileID: 8798637716827950105}
   - component: {fileID: 3729350245563928740}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TMP_Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3933,7 +3955,7 @@ GameObject:
   - component: {fileID: 6357507410145156028}
   - component: {fileID: 664859387113325060}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TMP_Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4256,8 +4278,8 @@ RectTransform:
   - {fileID: 5128697933917416649}
   - {fileID: 3461668979956240156}
   - {fileID: 8611003283954959846}
-  - {fileID: 6469118234382705527}
   - {fileID: 7508404042056216760}
+  - {fileID: 6469118234382705527}
   - {fileID: 2512361417912361039}
   - {fileID: 6355222375824394212}
   - {fileID: 2280320457400768992}
@@ -4343,7 +4365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1266d0e6ee036d94682c56bc7e7b6a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemAmountTmp: {fileID: 5151226487528759107}
+  batteryItemAmountTmp: {fileID: 5151226487528759107}
   popUp: {fileID: 5825250346446324090, guid: 2f350d91e21563848aa45f55e0297110, type: 3}
   deathPanel: {fileID: 1417752895737940457}
   fadePanel: {fileID: 4345996099196473832}
@@ -4364,7 +4386,7 @@ GameObject:
   - component: {fileID: 8745813329724429344}
   - component: {fileID: 5151226487528759107}
   m_Layer: 5
-  m_Name: Text_ItemAmount
+  m_Name: Text_BatteryItemAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4380,15 +4402,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8607443576389797412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 29.900024}
-  m_SizeDelta: {x: 25.500017, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8745813329724429344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4553,7 +4575,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "If you stay in the poisonous gas for more than 3 minutes, you die. However,
     there is no poisonous gas on the basement floor. Use the Basement Floor to reset
-    the timer.\n\n\nE -> Interact\r\n\nG -> Drop \n\nTab -> Help Menu"
+    the timer.\n\n\nE -> Interact\r\n\nG -> Drop \n\nM -> Change Music \n\nTab ->
+    Help Menu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5556b887cf0ca07468557cfafa2bc425, type: 2}
   m_sharedMaterial: {fileID: -8978924778732546291, guid: 5556b887cf0ca07468557cfafa2bc425, type: 2}
