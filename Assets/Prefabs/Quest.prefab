@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: key
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1411479199242559584, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
+      propertyPath: requiredKeyType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2340453057959496053, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
       propertyPath: m_Name
       value: YellowChest
@@ -1429,6 +1433,10 @@ PrefabInstance:
       propertyPath: key
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1411479199242559584, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
+      propertyPath: requiredKeyType
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2340453057959496053, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
       propertyPath: m_Name
       value: WhiteChest
@@ -1543,9 +1551,13 @@ PrefabInstance:
       propertyPath: key
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1411479199242559584, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
+      propertyPath: requiredKeyType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2340453057959496053, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
       propertyPath: m_Name
-      value: Chest (1)
+      value: PurpleChest
       objectReference: {fileID: 0}
     - target: {fileID: 2755462622784409085, guid: 92299f91d00ad174dbc02a8aecd496d7, type: 3}
       propertyPath: m_VersionIndex
