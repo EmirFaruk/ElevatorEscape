@@ -17,15 +17,13 @@ public class LevelCountdownController : MonoBehaviour
 
     private void OnEnable()
     {
-        Elevator.OnReachedStop += ResetCountdow;
-        PlayerHealth.OnDeath += () => { inBase = true; Restart(); };
+        Elevator.OnReachedStop += ResetCountdow;        
         GameManager.OnWin += () => { inBase = true; Restart(); };
     }
 
     private void OnDisable()
     {
-        Elevator.OnReachedStop -= ResetCountdow;
-        PlayerHealth.OnDeath -= () => { inBase = true; Restart(); };
+        Elevator.OnReachedStop -= ResetCountdow;        
         GameManager.OnWin -= () => { inBase = true; Restart(); };
     }
 
@@ -122,25 +120,12 @@ public class LevelCountdownController : MonoBehaviour
         countdownText.fontSize = 42;
         countdownText.color = Color.red;
 
-        for (int i = 3; i >= 0; i--)
+        for (int i = 10; i >= 0; i--)
         {
             countdownText.text = "Quit in\n" + i;
             await Task.Delay(1000);
         }
 
-        Application.Quit();
-
-        /*
-        bool isRestart = false;
-        while (!isRestart && !destroyCancellationToken.IsCancellationRequested)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                isRestart = true;
-            }
-            await Task.Delay(5);
-        }
-        isRestart = true;*/
+        Application.Quit();       
     }
 }

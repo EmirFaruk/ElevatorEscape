@@ -13,7 +13,10 @@ public abstract class Interactable : MonoBehaviour
     protected List<Material> materialHandler = new();
     protected List<Material>[] materialHandlers;
 
+    private static Shader outlineShader => Shader.Find(OUTLINESHADER);
+    private const string OUTLINESHADER = "Shader Graphs/OutlineShader";
     private Material outlineMaterial;
+    
     private bool hasRenderer;
 
     private string popUpBase;
@@ -63,10 +66,10 @@ public abstract class Interactable : MonoBehaviour
         //interaction layer;
         this.gameObject.layer = 7;
     }
-
+    
     private void InitializeOutlineMaterial()
     {
-        outlineMaterial = new Material(HUD.OutlineShader);
+        outlineMaterial = new Material(outlineShader);        
     }
 
     private void InitializeRenderer()

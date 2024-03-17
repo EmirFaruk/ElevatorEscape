@@ -36,7 +36,7 @@ public class HpBar : MonoBehaviour
 
         if (image.fillAmount == .0f)
         {
-            HUD.EndGame(false);
+            HUD.EndGame(false);            
             LevelCountdownController.Restart();
         }
     }

@@ -20,6 +20,8 @@ public class ZenjectGetter
     [Inject] public GameManager GameManager;
 
     [Inject] public HUD HUD;
+
+    [Inject] public LevelCountdownController LevelCountdownController;
 }
 
 /*public static Getter Getto;

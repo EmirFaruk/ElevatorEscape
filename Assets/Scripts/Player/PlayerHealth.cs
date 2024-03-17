@@ -11,8 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
 
     //Damage
-    public static Action<float> OnTakeDamage;
-    public static Action OnDeath;
+    public static Action<float> OnTakeDamage;    
 
     [Inject] ZenjectGetter ZenjectGetter;
     #endregion
