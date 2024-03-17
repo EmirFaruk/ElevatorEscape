@@ -1,10 +1,13 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class HpBar : MonoBehaviour
 {
     private Image image;
+    [Inject] HUD HUD;
+    [Inject] LevelCountdownController LevelCountdownController;
 
     private void Awake()
     {
@@ -31,6 +34,10 @@ public class HpBar : MonoBehaviour
             await Task.Delay(10);
         }
 
-        if (image.fillAmount == .0f) PlayerHealth.OnDeath.Invoke();
+        if (image.fillAmount == .0f)
+        {
+            HUD.EndGame(false);
+            LevelCountdownController.Restart();
+        }
     }
 }

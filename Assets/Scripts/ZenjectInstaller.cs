@@ -9,6 +9,7 @@ public class ZenjectInstaller : MonoInstaller
         Container.Bind<FirstPersonController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<HUD>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<LevelCountdownController>().FromComponentInHierarchy().AsSingle();
     }
 }
 

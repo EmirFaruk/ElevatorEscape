@@ -116,8 +116,9 @@ public class LevelCountdownController : MonoBehaviour
         }
     }
 
-    async void Restart()
+    public async void Restart()
     {
+        inBase = true;
         countdownText.fontSize = 42;
         countdownText.color = Color.red;
 

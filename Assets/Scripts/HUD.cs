@@ -79,8 +79,13 @@ public class HUD : MonoBehaviour
     {
         tabMenu.SetActive(!tabMenu.activeInHierarchy);
         SetEnabilityButtons(tabMenu.activeInHierarchy);
-        Cursor.visible = tabMenu.activeInHierarchy;
-        Cursor.lockState = tabMenu.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
+        SetCursorVisibility(tabMenu.activeInHierarchy);
+    }
+
+    void SetCursorVisibility(bool isVisible)
+    {
+        Cursor.visible = isVisible;
+        Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     void SetEnabilityButtons(bool isActive)
@@ -91,23 +96,24 @@ public class HUD : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelCountdownController.OnLevelTimeEnd += () => EndGame(false);
+        /*LevelCountdownController.OnLevelTimeEnd += () => EndGame(false);
         PlayerHealth.OnDeath += () => EndGame(false);
-        GameManager.OnWin += () => EndGame(true);
+        GameManager.OnWin += () => EndGame(true);*/
     }
 
     private void OnDisable()
     {
-        LevelCountdownController.OnLevelTimeEnd -= () => EndGame(false);
+        /*LevelCountdownController.OnLevelTimeEnd -= () => EndGame(false);
         PlayerHealth.OnDeath -= () => EndGame(false);
-        GameManager.OnWin -= () => EndGame(true);
+        GameManager.OnWin -= () => EndGame(true);*/
     }
 
-    void EndGame(bool isWin)
+    public void EndGame(bool isWin)
     {
         if (isWin) winPanel.SetActive(true);
         else deathPanel.SetActive(true);
 
+        SetCursorVisibility(true);
         SetEnabilityButtons(true);
 
         Time.timeScale = 0;
