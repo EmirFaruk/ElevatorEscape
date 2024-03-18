@@ -36,6 +36,7 @@ public class HUD : MonoBehaviour, IHUD
     #region Buttons
     [SerializeField] private Button quitButton;
     [SerializeField] private Button restartButton;
+    [SerializeField] private Button soundSettingsButton;
     #endregion
 
     #endregion
@@ -79,7 +80,7 @@ public class HUD : MonoBehaviour, IHUD
     {
         deathPanel.SetActive(false);
         winPanel.SetActive(false);
-        SetButtonVisibility(false);
+        SetButtonsVisibility(false);
         fadePanel.SetActive(true);
         tabMenu.SetActive(false);
         ToggleTabMenu();
@@ -100,10 +101,11 @@ public class HUD : MonoBehaviour, IHUD
 #endif
     }
 
-    private void SetButtonVisibility(bool isActive)
+    private void SetButtonsVisibility(bool isActive)
     {
         restartButton.gameObject.SetActive(isActive);
         quitButton.gameObject.SetActive(isActive);
+        soundSettingsButton.gameObject.SetActive(isActive);
     }
     #endregion
 
@@ -112,7 +114,7 @@ public class HUD : MonoBehaviour, IHUD
     {
         bool isActive = !tabMenu.activeInHierarchy;
         tabMenu.SetActive(isActive);
-        SetButtonVisibility(isActive);
+        SetButtonsVisibility(isActive);
         SetCursorVisibility(isActive);
     }
     #endregion
@@ -132,7 +134,7 @@ public class HUD : MonoBehaviour, IHUD
         else deathPanel.SetActive(true);
 
         SetCursorVisibility(true);
-        SetButtonVisibility(true);
+        SetButtonsVisibility(true);
 
         Time.timeScale = 0;
     }
