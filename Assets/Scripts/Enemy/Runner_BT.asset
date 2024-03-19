@@ -650,7 +650,7 @@ MonoBehaviour:
   decorators: []
   services: []
   ignoreAbortSelf: 0
-  speed: 6
+  speed: 4
 --- !u!114 &4138801403310539116
 MonoBehaviour:
   m_ObjectHideFlags: 0
