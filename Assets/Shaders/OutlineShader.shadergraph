@@ -150,7 +150,6 @@
     "m_OutputNode": {
         "m_Id": ""
     },
-    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "6d6a360969724218ba4aab8cbc33ee2c"
@@ -179,9 +178,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.5644136071205139,
-        "g": 1.0,
-        "b": 0.3616350293159485,
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
         "a": 1.0
     },
     "isMainColor": false,
@@ -271,7 +270,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.0499999523162842,
+    "m_Value": 1.0199999809265137,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
