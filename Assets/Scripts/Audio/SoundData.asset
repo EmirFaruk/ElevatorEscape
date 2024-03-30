@@ -48,3 +48,13 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: c44e14e21b4d034439d1e9ac8ad104db, type: 3}
   - name: ElevatorButtonPressedPassive
     Clip: {fileID: 8300000, guid: 3422efd72d9d5354fb673728c43599ca, type: 3}
+  - name: ZombieBreathing
+    Clip: {fileID: 8300000, guid: f697e36e964fe8f4aa431237d917acd2, type: 3}
+  - name: ZombieAttack1
+    Clip: {fileID: 8300000, guid: 8fd82d071375257408f947f850bc084b, type: 3}
+  - name: ZombieAttack2
+    Clip: {fileID: 8300000, guid: 8696df0a3c475704bb0f558208f16670, type: 3}
+  - name: ZombieAttack3
+    Clip: {fileID: 8300000, guid: 433082219ff3c7044a5aa9cf1c7806cb, type: 3}
+  - name: ZombieAttack4
+    Clip: {fileID: 8300000, guid: 1dc8021d217401a49b23674fbd0c608f, type: 3}

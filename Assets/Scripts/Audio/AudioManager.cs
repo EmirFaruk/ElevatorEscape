@@ -12,9 +12,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer soundMixer;
 
     private AudioSource musicAudioSource;
+    private AudioSource zombieAudioSource;
+    public static AudioSource ZombieAudioSource;
 
-    public static Action<SoundData.SoundEnum> OnSFXCall;
-    public static Action<AudioSource, SoundData.SoundEnum> OnAudioSourceSet;
+    public static Action<SoundData.SoundEnum> OnSFXCall = _ => { };
+    public static Action<AudioSource, SoundData.SoundEnum> OnAudioSourceSet = (_, _) => { };
     #endregion
 
     #region UNITY EVENT FUNCTIONS
@@ -30,12 +32,19 @@ public class AudioManager : MonoBehaviour
         OnAudioSourceSet -= SetAudioSourceClip;
     }
 
+    private void Awake()
+    {
+        musicAudioSource = Instantiate(new GameObject("MusicAudioSource"), transform).AddComponent<AudioSource>();
+        zombieAudioSource = Instantiate(new GameObject("ZombieAudioSource"), transform).AddComponent<AudioSource>();
+        ZombieAudioSource = zombieAudioSource;
+    }
+
     void Start()
     {
-        musicAudioSource = gameObject.AddComponent<AudioSource>();
-        musicAudioSource.loop = true;
-        musicAudioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Music")[0];
-        PlayRandomMusic(musicAudioSource.clip);
+        SetAudioSourceAttributes(musicAudioSource, true, "Music");
+        PlayRandomMusic(null);
+
+        SetAudioSourceAttributes(zombieAudioSource, false, "Sfx");
     }
 
     void Update()
@@ -43,6 +52,12 @@ public class AudioManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M)) PlayRandomMusic(musicAudioSource.clip);
     }
     #endregion
+
+    private void SetAudioSourceAttributes(AudioSource audioSource, bool loop, string group)
+    {
+        audioSource.loop = loop;
+        audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups(group)[0];
+    }
 
     #region SFX Methods
 
@@ -57,11 +72,14 @@ public class AudioManager : MonoBehaviour
         DestroyImmediate(audioSource);
     }
 
-    public void SetAudioSourceClip(AudioSource audioSource, SoundData.SoundEnum sfxClip)
+    public async void SetAudioSourceClip(AudioSource audioSource, SoundData.SoundEnum sfxClip)
     {
         audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Sfx")[0];
         audioSource.clip = soundData.GetSFXClip(sfxClip);
         audioSource.Play();
+
+        await Task.Delay(Math.Max(1000, ((int)audioSource.clip.length) * 1000));
+        audioSource.clip = null;
     }
     #endregion
 

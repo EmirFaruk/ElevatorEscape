@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using RenownedGames.AITree;
 using RenownedGames.AITree.PerceptionSystem;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
@@ -75,7 +74,8 @@ public class Zombie : MonoBehaviour
 
     public void OnAttackStart()
     {
-        audioSource.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Count)]);
+        //audioSource.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Count)]);
+        PlayAttackSFX();
         hitCollider.enabled = true;
     }
 
@@ -86,7 +86,19 @@ public class Zombie : MonoBehaviour
 
     public void OnScreamStart()
     {
-        audioSource.PlayOneShot(screamSounds[Random.Range(0, screamSounds.Count)]);
+        //audioSource.PlayOneShot(screamSounds[Random.Range(0, screamSounds.Count)]);
+        AudioManager.OnSFXCall?.Invoke(SoundData.SoundEnum.ZombieBreathing);
     }
 
+    private void PlayAttackSFX()
+    {
+        if (AudioManager.ZombieAudioSource.clip == null)
+        {
+            string randomAttackID = UnityEngine.Random
+            .Range(((int)SoundData.SoundEnum.ZombieAttack1), ((int)SoundData.SoundEnum.ZombieAttack4) + 1).ToString();
+            Enum.TryParse(randomAttackID, out SoundData.SoundEnum value);
+
+            AudioManager.OnAudioSourceSet.Invoke(AudioManager.ZombieAudioSource, value);
+        }
+    }
 }
