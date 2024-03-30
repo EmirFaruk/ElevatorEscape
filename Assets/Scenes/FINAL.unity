@@ -962,6 +962,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556167990}
     m_Modifications:
+    - target: {fileID: 96965946599129944, guid: 0a933bf30cff9624b9f57bb2e5be0b07, type: 3}
+      propertyPath: batteryItemsGateParent
+      value: 
+      objectReference: {fileID: 96856396}
     - target: {fileID: 653969145044092726, guid: 0a933bf30cff9624b9f57bb2e5be0b07, type: 3}
       propertyPath: m_Name
       value: Basement
@@ -1030,6 +1034,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 57409225}
+    - target: {fileID: 8750510029070426538, guid: 0a933bf30cff9624b9f57bb2e5be0b07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1038,6 +1046,11 @@ PrefabInstance:
 --- !u!4 &96856395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2166650141424073514, guid: 0a933bf30cff9624b9f57bb2e5be0b07, type: 3}
+  m_PrefabInstance: {fileID: 96856394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &96856396 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3942229557928732765, guid: 0a933bf30cff9624b9f57bb2e5be0b07, type: 3}
   m_PrefabInstance: {fileID: 96856394}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &105705153
@@ -9083,7 +9096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundData: {fileID: 11400000, guid: 64cb81a0f480786419ed3806b8900b64, type: 2}
-  soundMixer: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
+  soundMixer: {fileID: 24100000, guid: c573637949df9a34388a86080e64abd4, type: 2}
 --- !u!114 &1315794341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13322,6 +13335,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2609045664478740020, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: soundMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c573637949df9a34388a86080e64abd4, type: 2}
     - target: {fileID: 2726975061172158506, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
