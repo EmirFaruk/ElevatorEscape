@@ -74,11 +74,13 @@ public class AudioManager : MonoBehaviour
 
     public async void SetAudioSourceClip(AudioSource audioSource, SoundData.SoundEnum sfxClip)
     {
+
         audioSource.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Sfx")[0];
         audioSource.clip = soundData.GetSFXClip(sfxClip);
         audioSource.Play();
 
         await Task.Delay(Math.Max(1000, ((int)audioSource.clip.length) * 1000));
+        if (destroyCancellationToken.IsCancellationRequested) return;
         audioSource.clip = null;
     }
     #endregion
