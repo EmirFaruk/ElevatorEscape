@@ -45,6 +45,6 @@ MonoBehaviour:
   - name: ElevatorDoorMovement
     Clip: {fileID: 8300000, guid: 14e968f7db7a9d148ab0fdba82c9364b, type: 3}
   - name: ElevatorButtonPressedActive
-    Clip: {fileID: 8300000, guid: 0dfe9f9829141478689194368436b534, type: 3}
+    Clip: {fileID: 8300000, guid: c44e14e21b4d034439d1e9ac8ad104db, type: 3}
   - name: ElevatorButtonPressedPassive
-    Clip: {fileID: 8300000, guid: 292aad821b16948af9cba9deaca16525, type: 3}
+    Clip: {fileID: 8300000, guid: 3422efd72d9d5354fb673728c43599ca, type: 3}
