@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 1
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -2543,15 +2543,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4921362701108026, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.05
+      value: -1.897
       objectReference: {fileID: 0}
     - target: {fileID: 4921362701108026, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.993
+      value: -19.981
       objectReference: {fileID: 0}
     - target: {fileID: 4921362701108026, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.771
+      value: 3.697
       objectReference: {fileID: 0}
     - target: {fileID: 4921362701108026, guid: 8dfb544d73965184f8df4a06e5d90402, type: 3}
       propertyPath: m_LocalRotation.w
