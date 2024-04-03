@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 1437232990123297749}
   - component: {fileID: 7757391021474959171}
   - component: {fileID: 3342478798380630661}
+  - component: {fileID: 2072166205872631659}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -497,10 +498,10 @@ Animator:
   m_GameObject: {fileID: 1776966266084158026}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0112b3ddf6b69f148b600356eb9c21a3, type: 3}
-  m_Controller: {fileID: 9100000, guid: a17dc3e408bd20244aedb5f4d18fa0e7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6ba8fe1930503e842b43b8ebfe0d4b12, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -521,7 +522,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -638,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581266756febbf447a9cc1da85c40584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedBehaviourTree: {fileID: 11400000, guid: fb94b8a0bc95a2a49b195c28260abc5f, type: 2}
+  sharedBehaviourTree: {fileID: 11400000, guid: 7640207d01127644593b5d92a685de1e, type: 2}
 --- !u!114 &1437232990123297749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,9 +667,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 17ef735660cf75f4fa75eba04c560b0d, type: 3}
   - {fileID: 8300000, guid: 60035ccd335d529459cdb37c7b72f7ee, type: 3}
   idleSounds: []
-  wayName: Floor2Way
+  wayName: F6Way
   hitCollider: {fileID: 452836636025044169}
   stopDistance: 2
+  player: {fileID: 0}
 --- !u!114 &7757391021474959171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,8 +694,8 @@ MonoBehaviour:
       type: {class: AIPerceptionSightConfig, ns: RenownedGames.AITree.PerceptionSystem, asm: AITree.PerceptionSystem}
       data:
         heightOffset: 1.635
-        fov: 60
-        range: {x: 1.3, y: 7.23}
+        fov: 75
+        range: {x: 2, y: 7.23}
         maxQuery: 10
         cullingLayer:
           serializedVersion: 2
@@ -717,6 +719,24 @@ MonoBehaviour:
   - m_Rig: {fileID: 544635550121741812}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &2072166205872631659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776966266084158026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4816ffa80d15c3146aca38baf96f6d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootMotion: 0
+  minVelocityToMove: 0.5
+  velocitySmoothSpeed: 1
+  speedParameter: Speed
+  directionParameter: Direction
+  isMovingParameter: IsMoving
 --- !u!1 &1786999476906242876
 GameObject:
   m_ObjectHideFlags: 0

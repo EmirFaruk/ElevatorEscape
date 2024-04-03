@@ -36,6 +36,10 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private float stopDistance;
 
+    private bool canAttack;
+
+    [SerializeField] private Transform player;
+
 
     private void Awake()
     {
@@ -60,6 +64,27 @@ public class Zombie : MonoBehaviour
         }
 
     }
+
+
+    private void Update()
+    {
+        if (blackboard.TryFindKey("distance", out FloatKey floatKey))
+        {
+            floatKey.SetValue(Vector3.Distance(this.transform.position, player.position));
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            if (blackboard.TryFindKey("canAttack", out BoolKey boolKey))
+            {
+                canAttack = !canAttack;
+                boolKey.SetValue(canAttack);
+            }
+        }
+    }
+
+
 
     private void PerceptionBlackboard_OnSourceLoss(AIPerceptionSource obj)
     {
