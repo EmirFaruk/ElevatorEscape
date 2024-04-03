@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
   nodeName: Chase
-  nodePosition: {x: 44.5, y: 406}
+  nodePosition: {x: 44.130436, y: 406}
   breakpoint: 0
   decorators:
   - {fileID: -6293848077409291553}

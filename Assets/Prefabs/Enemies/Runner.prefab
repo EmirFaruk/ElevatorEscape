@@ -2546,7 +2546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581266756febbf447a9cc1da85c40584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedBehaviourTree: {fileID: 11400000, guid: 5874c3a150826bc48a2ab4faacdcb290, type: 2}
+  sharedBehaviourTree: {fileID: 11400000, guid: b284261a03c3aa34ea6ee3f38741aab7, type: 2}
 --- !u!114 &662396173988387228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2570,8 +2570,8 @@ MonoBehaviour:
       type: {class: AIPerceptionSightConfig, ns: RenownedGames.AITree.PerceptionSystem, asm: AITree.PerceptionSystem}
       data:
         heightOffset: 1.3
-        fov: 60
-        range: {x: 2, y: 10}
+        fov: 100
+        range: {x: 4, y: 10}
         maxQuery: 10
         cullingLayer:
           serializedVersion: 2
@@ -2643,6 +2643,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dc8021d217401a49b23674fbd0c608f, type: 3}
   screamSounds: []
   idleSounds: []
-  wayName: Way
+  wayName: CrowdWay
   hitCollider: {fileID: 4837354767594976583}
-  stopDistance: 3
+  stopDistance: 2
+  player: {fileID: 0}
