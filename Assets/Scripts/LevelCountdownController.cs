@@ -1,5 +1,5 @@
 using System;
-using System.Threading.Tasks;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +11,7 @@ public class LevelCountdownController : MonoBehaviour
     public static Action OnLevelTimeReloadEnd;
 
     [SerializeField] private TextMeshProUGUI countdownText;
+    [SerializeField] private Transform toxicUIPanel;
 
     [SerializeField] private int timeRemaining = 10;
     private int defaultRemainingTime = 0;
@@ -20,7 +21,7 @@ public class LevelCountdownController : MonoBehaviour
     private Animator[] toxicUIAnims = new Animator[2];
 
     private bool inSafe = true;
-    private bool canCountdown => !inSafe && timeRemaining >= 1 && !destroyCancellationToken.IsCancellationRequested;
+    private bool canCountdown => !inSafe && timeRemaining >= 1;
     #endregion
 
     #region UNITY EVENT FUNCTIONS
@@ -39,7 +40,8 @@ public class LevelCountdownController : MonoBehaviour
     void Start()
     {
         InitializeCountdown();
-        CountdownAsync();
+        StartCoroutine(CountdownCoroutine());
+        SetActiveToxicUIPanel(false);
     }
     #endregion
 
@@ -50,7 +52,7 @@ public class LevelCountdownController : MonoBehaviour
     {
         defaultRemainingTime = timeRemaining;
 
-        countdownText = GetComponent<TextMeshProUGUI>();
+        // countdownText = GetComponent<TextMeshProUGUI>();
         defaultColor = countdownText.color;
         UpdateCountdownDisplay();
 
@@ -65,15 +67,16 @@ public class LevelCountdownController : MonoBehaviour
 
         if (timeRemaining == defaultRemainingTime)
         {
-            CountdownAsync();
-            ToxicUIAnim();
+            StartCoroutine(CountdownCoroutine());
+            StartCoroutine(ToxicUIAnimCoroutine());
         }
     }
 
-    async void CountdownAsync()
+    private IEnumerator CountdownCoroutine()
     {
-        for (; canCountdown; timeRemaining--)
+        while (canCountdown)
         {
+            timeRemaining--;
             UpdateCountdownDisplay();
 
             if (IsTimeCritical())
@@ -83,13 +86,13 @@ public class LevelCountdownController : MonoBehaviour
             }
 
 #if UNITY_EDITOR
-            await Task.Delay(Input.GetKey(KeyCode.T) ? 100 : 1000);
+            yield return new WaitForSeconds(Input.GetKey(KeyCode.T) ? 0.1f : 1f);
 #else
-            await Task.Delay(1000);
+            yield return new WaitForSeconds(1f);
 #endif
         }
 
-        if (!inSafe && !destroyCancellationToken.IsCancellationRequested)
+        if (!inSafe)
             EndLevelTime();
     }
 
@@ -107,7 +110,7 @@ public class LevelCountdownController : MonoBehaviour
     {
         countdownText.fontSize = 42;
         countdownText.text = "Time End!";
-        ToxicUIAnim();
+        StartCoroutine(ToxicUIAnimCoroutine());
         Invoke(nameof(TriggerLevelEndTime), 1);
         Invoke(nameof(Restart), 1);
     }
@@ -117,7 +120,7 @@ public class LevelCountdownController : MonoBehaviour
         OnLevelTimeEnd?.Invoke();
     }
 
-    private async Task ReloadLevelTime()
+    private IEnumerator ReloadLevelTimeCoroutine()
     {
         inSafe = true;
         countdownText.color = Color.green;
@@ -128,13 +131,15 @@ public class LevelCountdownController : MonoBehaviour
         {
             timeRemaining++;
             UpdateCountdownDisplay();
-            await Task.Delay(Math.Max(1, speed -= 5));
+            yield return new WaitForSeconds(Math.Max(0.01f, (float)speed / 1000));
+            speed -= 5;
         }
 
-        await Task.Delay(500);
+        yield return new WaitForSeconds(0.5f);
         countdownText.color = defaultColor;
         timeRemaining = defaultRemainingTime;
         OnLevelTimeReloadEnd.Invoke();
+        SetActiveToxicUIPanel(false);
     }
 
     private void SetEnabilityToxicUIAnimations(bool isEnable)
@@ -143,29 +148,47 @@ public class LevelCountdownController : MonoBehaviour
         toxicUIAnims[1].enabled = isEnable;
     }
 
-    async void ToxicUIAnim()
+    private void SetActiveToxicUIPanel(bool hasActive)
+    {
+        toxicUIPanel.gameObject.SetActive(hasActive);
+    }
+
+    private IEnumerator ToxicUIAnimCoroutine()
     {
         SetEnabilityToxicUIAnimations(true);
 
-        await Task.Delay(3000);
+        yield return new WaitForSeconds(3);
 
         SetEnabilityToxicUIAnimations(false);
     }
 
-    async void ResetCountdow(int stop)
+    private void ResetCountdow(int stop)
     {
-        if (stop != 0) StartCountdown();
-        else await ReloadLevelTime();
+        if (stop != 0)
+        {
+            SetActiveToxicUIPanel(true);
+            StartCountdown();
+        }
+        else
+            StartCoroutine(ReloadLevelTimeCoroutine());
     }
 
-    public async void Restart()
+    public void Restart()
     {
         inSafe = true;
 
         PrepareForQuit();
 
-        for (int i = 10; i >= 0; i--, await Task.Delay(1000))
+        StartCoroutine(QuitCountdownCoroutine());
+    }
+
+    private IEnumerator QuitCountdownCoroutine()
+    {
+        for (int i = 10; i >= 0; i--)
+        {
             countdownText.text = "Quit in\n" + i;
+            yield return new WaitForSeconds(1);
+        }
 
         Application.Quit();
     }

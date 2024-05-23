@@ -93,10 +93,6 @@ namespace StarterAssets
         [Header("Headbob Params")]
         [SerializeField] private float walkBobSpeed = 14f;
         [SerializeField] private float walkBobAmount = 0.05f;
-        [SerializeField] private float sprintBobSpeed = 18f;
-        [SerializeField] private float sprintBobAmount = 0.1f;
-        [SerializeField] private float crouchBobSpeed = 8f;
-        [SerializeField] private float crouchBobAmount = 0.025f;
         private float defaultYPos = 0;
         private float timer;
 
@@ -311,7 +307,6 @@ namespace StarterAssets
 
             if (Mathf.Abs(_input.move.x) > 0.1f || Mathf.Abs(_input.move.y) > 0.1f)
             {
-                print("WALK");
                 timer += Time.deltaTime * walkBobSpeed;
 
                 CinemachineCameraTarget.transform.localPosition = new Vector3

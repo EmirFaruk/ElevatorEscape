@@ -2502,6 +2502,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5913740272664310109, guid: c6198f403a2bb49439886c8655723cad, type: 3}
   m_PrefabInstance: {fileID: 185170748}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &194874849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2158952999057473717, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+  m_PrefabInstance: {fileID: 2069317623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &206055077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,6 +4367,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556167990}
     m_Modifications:
+    - target: {fileID: 229305863087457622, guid: dc219ceb3ae904c459afccc9d79e4d31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fc416def6723e94d971ac2ee52dd947, type: 2}
+    - target: {fileID: 1295789023441063408, guid: dc219ceb3ae904c459afccc9d79e4d31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fc416def6723e94d971ac2ee52dd947, type: 2}
     - target: {fileID: 5900276602757013111, guid: dc219ceb3ae904c459afccc9d79e4d31, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.75
@@ -4453,6 +4472,14 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: JumpHeight
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: walkBobSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: walkBobAmount
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: GroundLayers.m_Bits
@@ -6775,6 +6802,26 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &691699734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4448340583284443861, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+  m_PrefabInstance: {fileID: 2069317623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &691699739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691699734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cc01fe97f8ba44c94f146fb8a908b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownText: {fileID: 194874849}
+  toxicUIPanel: {fileID: 1320030058}
+  timeRemaining: 60
 --- !u!4 &692781535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4908813740766756, guid: 80838a7a0b8d3494cb3b5b60f6ab6d9b, type: 3}
@@ -8807,7 +8854,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -11653,8 +11700,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 410922629}
   toxicAirColor: {r: 0.5322036, g: 0.745, b: 0.43224058, a: 0.6}
-  basementAirColor: {r: 0.55124396, g: 0.47912958, b: 0.9150943, a: 0.6666667}
+  basementAirColor: {r: 0.36007172, g: 0.23375754, b: 0.9716981, a: 0.6666667}
   transitionSpeed: 0.5
+--- !u!224 &1320030058 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 960021433269960939, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+  m_PrefabInstance: {fileID: 2069317623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321839216
 GameObject:
   m_ObjectHideFlags: 0
@@ -14367,7 +14419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395323, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_Lens.NearClipPlane
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16199,6 +16251,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202056665489859083, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 371752555432725131, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 825839533461865955, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -16209,6 +16269,14 @@ PrefabInstance:
         However, there is no poisonous gas on the basement floor. Use the Basement
         Floor to reset the timer.\n\n\nE -> Interact\r\n\nG -> Drop \n\nM -> Change
         Music \n\nTab -> Open/Close this Menu"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094284303185922959, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094284303185922959, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2196506506076938801, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16223,6 +16291,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2516407601784555361, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520938069477011886, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -16327,8 +16399,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5157097025019511561, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157097025019511561, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: toxicUIPanel
+      value: 
+      objectReference: {fileID: 1320030058}
+    - target: {fileID: 5157097025019511561, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: timeRemaining
-      value: 60
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169133342965230886, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5453773685208376866, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16349,6 +16433,10 @@ PrefabInstance:
     - target: {fileID: 6725440419310062197, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213327827674746408, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7522085529788367911, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
       propertyPath: m_Type
@@ -16413,7 +16501,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4448340583284443861, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 691699739}
   m_SourcePrefab: {fileID: 100100000, guid: f6923aa2ca27e0a42898fa3ddb7e04cd, type: 3}
 --- !u!43 &2096061536
 Mesh:
