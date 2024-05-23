@@ -87,6 +87,22 @@ namespace StarterAssets
         private float _fallTimeoutDelta;
 
 
+        #region Headbob Params
+        //-----------------------------------------------------------------------------------------------------
+
+        [Header("Headbob Params")]
+        [SerializeField] private float walkBobSpeed = 14f;
+        [SerializeField] private float walkBobAmount = 0.05f;
+        [SerializeField] private float sprintBobSpeed = 18f;
+        [SerializeField] private float sprintBobAmount = 0.1f;
+        [SerializeField] private float crouchBobSpeed = 8f;
+        [SerializeField] private float crouchBobAmount = 0.025f;
+        private float defaultYPos = 0;
+        private float timer;
+
+        //-----------------------------------------------------------------------------------------------------
+        #endregion
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
 #endif
@@ -130,6 +146,7 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            defaultYPos = CinemachineCameraTarget.transform.localPosition.y;
         }
 
         private void Update()
@@ -137,6 +154,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            HandleHeadbob();
         }
 
         private void LateUpdate()
@@ -286,5 +304,24 @@ namespace StarterAssets
             // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
             Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
         }
+
+        private void HandleHeadbob()
+        {
+            if (!_controller.isGrounded) return;
+
+            if (Mathf.Abs(_input.move.x) > 0.1f || Mathf.Abs(_input.move.y) > 0.1f)
+            {
+                print("WALK");
+                timer += Time.deltaTime * walkBobSpeed;
+
+                CinemachineCameraTarget.transform.localPosition = new Vector3
+                (
+                 CinemachineCameraTarget.transform.localPosition.x,
+                defaultYPos + Mathf.Sin(timer) * walkBobAmount,
+                 CinemachineCameraTarget.transform.localPosition.z
+                );
+            }
+        }
+
     }
 }
