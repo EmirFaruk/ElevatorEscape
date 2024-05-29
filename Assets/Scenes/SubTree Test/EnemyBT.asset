@@ -1,0 +1,261 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7905699462525948910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 0
+  observerAbort: 3
+  key: {fileID: -6294560918645965703, guid: 65e9984f2adac7947b7a3888ca56f772, type: 2}
+  keyQuery:
+    rid: 4284102527363579905
+  references:
+    version: 2
+    RefIds:
+    - rid: 4284102527363579905
+      type: {class: BoolQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 0
+--- !u!114 &-5179216805049005452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfa5172728b8b145b57e07583a812f2, type: 3}
+  m_Name: SubTree
+  m_EditorClassIdentifier: 
+  nodeName: Patrol
+  nodePosition: {x: 0, y: 225}
+  breakpoint: 0
+  decorators:
+  - {fileID: 7053716347720299626}
+  services: []
+  ignoreAbortSelf: 0
+  sharedBehaviourTree: {fileID: 11400000, guid: 222893ddee9f4f74cb76ca7a28912ff7, type: 2}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7a65a64ca895842abc0e2c774d054e, type: 3}
+  m_Name: EnemyBT
+  m_EditorClassIdentifier: 
+  blackboard: {fileID: 11400000, guid: 65e9984f2adac7947b7a3888ca56f772, type: 2}
+  updateMode: 0
+  tickRate: 30
+  rootNode: {fileID: 5284156083150002207}
+  nodes:
+  - {fileID: 5284156083150002207}
+  - {fileID: 13724343459571477}
+  - {fileID: -5179216805049005452}
+  - {fileID: 7053716347720299626}
+  - {fileID: 2899406117321886502}
+  - {fileID: 7473169896676016682}
+  - {fileID: 7959390647485812137}
+  - {fileID: 3476077986478521599}
+  - {fileID: -7905699462525948910}
+  - {fileID: 9210317676639897199}
+  groups: []
+  notes: []
+  selectedNode: {fileID: 0}
+--- !u!114 &13724343459571477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1770628119ce54980deb844516c178, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  nodeName: Selector
+  nodePosition: {x: 313.5, y: 107}
+  breakpoint: 0
+  decorators: []
+  services: []
+  children:
+  - {fileID: -5179216805049005452}
+  - {fileID: 2899406117321886502}
+--- !u!114 &2899406117321886502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1770628119ce54980deb844516c178, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  nodeName: Alert
+  nodePosition: {x: 393, y: 225}
+  breakpoint: 0
+  decorators:
+  - {fileID: 7473169896676016682}
+  services: []
+  children:
+  - {fileID: 7959390647485812137}
+  - {fileID: 3476077986478521599}
+--- !u!114 &3476077986478521599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc23b5c9709a6d45aba7cee20aa2227, type: 3}
+  m_Name: RunBehaviourTask
+  m_EditorClassIdentifier: 
+  nodeName: Run Behaviour
+  nodePosition: {x: 524, y: 403.55908}
+  breakpoint: 0
+  decorators:
+  - {fileID: -7905699462525948910}
+  services: []
+  ignoreAbortSelf: 0
+  runBehaviourTree: {fileID: 11400000, guid: 3dc955ed52e8280498372fff804adf24, type: 2}
+--- !u!114 &5284156083150002207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9bdc4129dd9f64c97141f9b4995906, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  nodeName: 
+  nodePosition: {x: 328, y: 0}
+  breakpoint: 0
+  child: {fileID: 13724343459571477}
+--- !u!114 &7053716347720299626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 1
+  observerAbort: 3
+  key: {fileID: -2279349245040699837, guid: 65e9984f2adac7947b7a3888ca56f772, type: 2}
+  keyQuery:
+    rid: 4284102481298063360
+  references:
+    version: 2
+    RefIds:
+    - rid: 4284102481298063360
+      type: {class: TransformQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 1
+--- !u!114 &7473169896676016682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 0
+  observerAbort: 3
+  key: {fileID: -2279349245040699837, guid: 65e9984f2adac7947b7a3888ca56f772, type: 2}
+  keyQuery:
+    rid: 4284102481298063360
+  references:
+    version: 2
+    RefIds:
+    - rid: 4284102481298063360
+      type: {class: TransformQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 0
+--- !u!114 &7959390647485812137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc23b5c9709a6d45aba7cee20aa2227, type: 3}
+  m_Name: RunBehaviourTask
+  m_EditorClassIdentifier: 
+  nodeName: Run Behaviour
+  nodePosition: {x: 243.40001, y: 408.55002}
+  breakpoint: 0
+  decorators:
+  - {fileID: 9210317676639897199}
+  services: []
+  ignoreAbortSelf: 0
+  runBehaviourTree: {fileID: 11400000, guid: dd188d53b2c6b3b4ba783509fc5fdfef, type: 2}
+--- !u!114 &9210317676639897199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f33bd97f999943bfba3bc98458f77, type: 3}
+  m_Name: BlackboardConditionDecorator
+  m_EditorClassIdentifier: 
+  nodeName: Blackboard Condition
+  nodePosition: {x: 0, y: 0}
+  breakpoint: 0
+  child: {fileID: 0}
+  notifyObserver: 0
+  observerAbort: 3
+  key: {fileID: -6294560918645965703, guid: 65e9984f2adac7947b7a3888ca56f772, type: 2}
+  keyQuery:
+    rid: 4284102527363579904
+  references:
+    version: 2
+    RefIds:
+    - rid: 4284102527363579904
+      type: {class: BoolQuery, ns: RenownedGames.AITree, asm: AITree}
+      data:
+        comparer: 1
